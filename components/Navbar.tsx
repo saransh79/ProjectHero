@@ -8,7 +8,7 @@ const Navbar = () => {
     <nav className={styles.navbar}>
       <div className={styles.logo}>
         <img src="/assets/PH New Logo.svg" alt="logo" />
-        <img src="/assets/business.svg" alt="logo-content" className="business"/>
+        <img src="/assets/Business.svg" alt="logo-content" className="business"/>
       </div>
       <div className={styles.navOptions}>
         <div className={styles.link}>
