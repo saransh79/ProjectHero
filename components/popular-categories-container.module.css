@@ -1,0 +1,34 @@
+.frameParent{
+    padding-right: 65px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+    width: 980px;
+}
+.frameGroup {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    }
+.topBuildingContractorsWrapper{
+    display: flex;
+    align-items: flex-start;
+}
+
+@media only screen and (max-width: 440px){
+    .frameParent{
+        width: 100%;
+        padding: 0 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* padding: 0; */
+    }
+    .frameGroup{
+        width: 330px;
+    }
+}

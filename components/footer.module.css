@@ -1,0 +1,131 @@
+.whiteLogo {
+  -webkit-filter: invert(100%); /* Safari/Chrome */
+  filter: invert(100%);
+  height: 16px;
+}
+.footer {
+  /* height: 368px; */
+  padding: 5rem;
+  padding-bottom: 2rem;
+  background: #111;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+.footer small {
+  color: #ccc;
+  font-family: Open Sans;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  /* line-height: 20px; */
+}
+.footerHeading {
+  color: var(--Color, #fff);
+  font-family: Dosis;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+.footerContent {
+  display: flex;
+  padding-bottom: 3rem;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.p1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .logoDesc {
+    width: 252px;
+    color: #eceff3;
+    text-align: center;
+    font-family: Dosis;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 19.8px; /* 110% */
+  }
+.p2{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+}
+.footerIcons{
+    display: flex;
+    gap: 20px;
+}
+.p3{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+}
+.p3_heading{
+    display: flex;
+}
+.contactTypes {
+  color: #ddae40;
+  font-family: Open Sans;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18.571px; /* 142.857% */
+  width: 70px;
+}
+.copyright{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+.copyright img{
+    width: 84px;
+    height: 15px;
+}
+
+
+/* Media query */
+@media only screen and (max-width: 440px){
+  .footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .footerContent{
+    width: 310px;
+    /* height: 480px; */
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .p1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+  .p1 img{
+    width: 213px;
+  }
+  .p2{
+    margin-bottom: 24px;
+  }
+  .copyright{
+    width: 310px;
+    flex-direction: column;
+  }
+}
