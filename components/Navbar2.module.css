@@ -1,0 +1,93 @@
+.phNewLogo {
+    position: relative;
+    width: 148.83px;
+    height: 26.71px;
+    overflow: hidden;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+.business {
+    position: relative;
+    letter-spacing: 0.08em;
+    text-transform: capitalize;
+    font-weight: 500;
+    display: inline-block;
+    width: 56.97px;
+    height: 10.09px;
+    flex-shrink: 0;
+}
+.phNewLogoParent {
+    position: absolute;
+    top: 9.54px;
+    left: 13.08px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3.27px;
+}
+.phLogo2 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: #fff;
+    width: 175px;
+    height: 58.88px;
+    overflow: hidden;
+}
+.interfaceSearchMagnifying1 {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    overflow: hidden;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+.search {
+    position: relative;
+}
+.interfaceSearchMagnifyingParent {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 4px;
+}
+.rightLinks {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 32px;
+}
+.groupChild {
+    position: absolute;
+    top: 29.5px;
+    left: 180.5px;
+    width: 136px;
+    height: 3px;
+    object-fit: cover;
+}
+.rightLinksParent {
+    position: absolute;
+    top: 13.94px;
+    left: 1001px;
+    width: 315px;
+    height: 31px;
+    font-size: 16px;
+    color: #373737;
+    font-family: Roboto;
+}
+.phLogo2Parent {
+    position: relative;
+    width: 100%;
+    height: 59px;
+    text-align: left;
+    font-size: 11.99px;
+    color: #000;
+    font-family: Saira;
+}
+

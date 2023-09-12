@@ -1,0 +1,51 @@
+.frameParent {
+  position: relative;
+  height: 467px;
+  width: 100%;
+  border-radius: 0px 0px 30px 30px;
+  background: #fff0b2;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.navigation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  position: absolute;
+  top: 2rem;
+  left: 6rem;
+}
+.userName {
+  color: #000;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.UserCard {
+  margin-top: 3rem;
+}
+.shareprofile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 30.933px 0px 0px 30.933px;
+  background: var(--green-light, #e9fff8);
+  width: fit-content;
+  color: var(--black-100, #000);
+  font-family: Karla;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding: 15px;
+  position: absolute;
+  right: 0;
+  top: 3rem;
+}

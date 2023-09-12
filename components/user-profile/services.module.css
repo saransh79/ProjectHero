@@ -1,0 +1,158 @@
+.servicesOffered {
+    position: relative;
+    line-height: 140%;
+    font-weight: 600;
+}
+.details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.frameChild {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: 50%;
+    background-color: #ecfaf1;
+    width: 64px;
+    height: 64px;
+}
+.carpenter113 {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0%;
+    right: 0%;
+    bottom: 0%;
+    left: 0%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: cover;
+}
+.ellipseParent {
+    position: relative;
+    width: 64px;
+    height: 64px;
+}
+.workType11 {
+    position: relative;
+    font-size: 18px;
+    line-height: 36px;
+    font-weight: 600;
+    font-family: Roboto;
+}
+.label {
+    position: relative;
+    line-height: 18px;
+    font-weight: 500;
+}
+.labelWrapper {
+    border-radius: 80px;
+    background-color: #fff;
+    border: 1px solid #efc41a;
+    box-sizing: border-box;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    padding: 8px 12px;
+    align-items: center;
+    justify-content: flex-start;
+}
+.chip {
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.chipParent {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+}
+.chipWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.workType1Parent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+}
+.frameGroup {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 16px;
+}
+.frameItem {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: 50%;
+    background-color: #fdf7d9;
+    width: 64px;
+    height: 64px;
+}
+.brick {
+    position: absolute;
+    top: 8.28px;
+    left: 8px;
+    width: 48px;
+    height: 48px;
+}
+.workType21 {
+    position: relative;
+    line-height: 36px;
+    font-weight: 600;
+    font-family: Roboto;
+}
+.frameParent1 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 16px;
+}
+.frameInner {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: 50%;
+    background-color: #e5d9fd;
+    width: 64px;
+    height: 64px;
+}
+.frameParent {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 40px;
+    font-size: 16px;
+    color: #000;
+    font-family: Karla;
+}
+.detailsParent {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 24px;
+    text-align: left;
+    font-size: 24px;
+    color: #2a254b;
+    font-family: Roboto;
+}
+

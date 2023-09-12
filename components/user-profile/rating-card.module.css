@@ -1,0 +1,191 @@
+.addYourRating1 {
+  	position: relative;
+}
+.frameChild {
+  	position: relative;
+  	border-right: 1px solid #000;
+  	box-sizing: border-box;
+  	width: 1px;
+  	height: 21px;
+}
+.anonymus {
+  	position: relative;
+  	line-height: 32px;
+  	font-weight: 500;
+}
+.lessThan2MinParent {
+  	display: flex;
+  	flex-direction: row;
+  	align-items: center;
+  	justify-content: center;
+  	gap: 16px;
+  	font-size: 16px;
+  	color: #3d3d3d;
+}
+.addYourRatingParent {
+  	position: relative;
+  	border-radius: 12px 12px 0px 0px;
+  	background-color: #fffbeb;
+  	width: 397px;
+  	height: 100px;
+  	display: flex;
+  	flex-direction: column;
+  	padding: 16px 63px;
+  	box-sizing: border-box;
+  	align-items: center;
+  	justify-content: flex-start;
+  	gap: 8px;
+  	text-align: center;
+  	font-size: 28px;
+  	color: #000;
+  	font-family: Roboto;
+}
+
+
+
+.howWasYour {
+    margin: 0;
+}
+.span {
+    font-weight: 500;
+    font-family: Roboto;
+}
+.patagoniaConstructions {
+    font-weight: 600;
+    font-family: Roboto;
+}
+.label {
+    position: relative;
+    line-height: 32px;
+    z-index: 0;
+}
+.icInput1 {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: none;
+}
+.inputfield {
+    align-self: stretch;
+    border-radius: 8px;
+    background-color: #282828;
+    box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.25) inset;
+    height: 48px;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: none;
+    flex-direction: row;
+    padding: 10px 12px;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    z-index: 1;
+    text-align: left;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.4);
+    font-family: Karla;
+}
+.interfaceStar5 {
+    position: relative;
+    width: 47px;
+    height: 47px;
+    overflow: hidden;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+.interfaceStarParent {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 19.58px;
+    z-index: 2;
+}
+.veryBad {
+    position: relative;
+    line-height: 20px;
+}
+.veryBadParent {
+    margin: 0 !important;
+    position: absolute;
+    top: 135.5px;
+    left: 27.5px;
+    width: 318px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    z-index: 3;
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.4);
+}
+.labelParent {
+    border-radius: 8px;
+    width: 369px;
+    height: 163px;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 24px 16px;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    gap: 20px;
+}
+.cta1 {
+    position: relative;
+    line-height: 24px;
+    font-weight: 500;
+}
+.cta {
+    border-radius: 40px;
+    background: linear-gradient(25.54deg, #f3f3f3 63.54%, #fefefe);
+    border: 1px solid #efc41a;
+    box-sizing: border-box;
+    width: 297px;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    padding: 8px 0px;
+    align-items: center;
+    justify-content: center;
+}
+.weWillNever1 {
+    position: relative;
+    font-size: 13px;
+    line-height: 32px;
+    font-family: Roboto;
+    text-align: center;
+}
+.ctaParent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    text-align: right;
+    font-size: 16px;
+    color: #3d3d3d;
+    font-family: Karla;
+}
+.frameParent {
+    position: relative;
+    border-radius: 12px;
+    border: 1px solid #d9d9d9;
+    background-color: #fff;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+    text-align: center;
+    font-size: 20px;
+    color: #000;
+    font-family: Roboto;
+}
+

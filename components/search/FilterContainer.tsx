@@ -3,7 +3,7 @@
 import type { NextPage } from "next";
 import styles from "./filter-container.module.css";
 import { useState } from "react";
-import Viewmore from "./Viewmore";
+import Viewmore from "../Viewmore";
 import LocationContainer from "./LocationContainer";
 
 const FilterContainer: NextPage = () => {

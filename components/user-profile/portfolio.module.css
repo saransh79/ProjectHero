@@ -1,0 +1,205 @@
+.portfolio {
+    position: relative;
+    line-height: 140%;
+    font-weight: 600;
+}
+.details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.abcConstruction {
+    position: relative;
+    line-height: 150%;
+}
+.phNewLogo {
+    position: relative;
+    width: 50.47px;
+    height: 8.97px;
+    overflow: hidden;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+.poweredByProjectHeroLogo2 {
+    width: 62.31px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+}
+.badges {
+    position: absolute;
+    top: 0.88px;
+    left: 6.14px;
+    border-radius: 21.06px;
+    background-color: #fff;
+    border: 0.4px solid #efb309;
+    box-sizing: border-box;
+    width: 71.09px;
+    height: 15.99px;
+    display: flex;
+    flex-direction: row;
+    padding: 3.510666847229004px 14.042667388916016px;
+    align-items: center;
+    justify-content: center;
+}
+.groupChild {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: 50%;
+    background-color: #fcfaf4;
+    width: 17.55px;
+    height: 17.55px;
+}
+.tickIcon2 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 17.55px;
+    height: 17.55px;
+    overflow: hidden;
+    object-fit: cover;
+}
+.badgesParent {
+    position: relative;
+    width: 77.23px;
+    height: 17.55px;
+}
+.abcConstructionParent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 22.21px;
+}
+.productCard {
+    width: 241.53px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    font-family: Roboto;
+}
+.labourContractor {
+    position: relative;
+    font-size: 15.62px;
+    line-height: 18.51px;
+    font-weight: 500;
+    color: #000;
+}
+.b {
+    color: rgba(0, 0, 0, 0.8);
+}
+.span {
+    font-weight: 500;
+    color: #000;
+}
+.orderValueContainer1 {
+    line-break: anywhere;
+    width: 100%;
+}
+.orderValueContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 189.44px;
+    flex-shrink: 0;
+}
+.orderValue50000Wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 13.67px;
+    color: #3d3d3d;
+}
+.productCardParent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 3.7px;
+    font-size: 18.47px;
+    font-family: Karla;
+}
+.bangaloreKarnataka {
+    position: relative;
+    line-height: 150%;
+    display: inline-block;
+    width: 205.44px;
+    flex-shrink: 0;
+    z-index: 0;
+    margin-left: 25px;
+}
+.locationIcon3 {
+    position: absolute;
+    margin: 0 !important;
+    top: 2.78px;
+    left: 0px;
+    width: 15.73px;
+    height: 15.73px;
+    overflow: hidden;
+    flex-shrink: 0;
+    object-fit: cover;
+    z-index: 1;
+}
+.bangaloreKarnatakaParent {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    position: relative;
+    gap: 3.7px;
+}
+.loremIpsumDolor3 {
+    position: relative;
+    line-height: 150%;
+    display: inline-block;
+    width: 241.53px;
+}
+.frameGroup {
+    border-radius: 3.7px;
+    background-color: #fcfaf4;
+    box-shadow: 3.9059929847717285px 3.9059929847717285px 0px rgba(239, 196, 26, 0.5);
+    width: 266.51px;
+    display: flex;
+    flex-direction: column;
+    padding: 14.80623722076416px;
+    box-sizing: border-box;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 9.25px;
+}
+.abcConstructionWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+.frameParent {
+    border-radius: 4.63px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 15.73px;
+    font-size: 13.67px;
+}
+.detailsParent {
+    position: relative;
+    border-radius: 4px;
+    width: 100%;
+    height: 249px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 24px;
+    text-align: left;
+    font-size: 24px;
+    color: #2a254b;
+    font-family: Roboto;
+}
+

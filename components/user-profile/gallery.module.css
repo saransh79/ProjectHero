@@ -1,0 +1,80 @@
+.gallery {
+    position: relative;
+    line-height: 140%;
+    font-weight: 600;
+}
+.details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.image6Icon {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 272.01px;
+    height: 195.7px;
+    object-fit: cover;
+}
+.photo {
+    position: absolute;
+    height: 100%;
+    width: 85.57%;
+    top: 0%;
+    right: 14.43%;
+    bottom: 0%;
+    left: 0%;
+    background-color: #c4c4c4;
+    overflow: hidden;
+}
+.parent {
+    position: relative;
+    width: 230.45px;
+    height: 195.7px;
+}
+.productCardWrapper {
+    width: 197.21px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.image7Icon {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 293.92px;
+    height: 195.7px;
+    object-fit: cover;
+}
+.image8Icon {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 224.41px;
+    height: 195.7px;
+    object-fit: cover;
+}
+.frameParent {
+    width: 830px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 13.72px;
+}
+.detailsParent {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 24px;
+    text-align: left;
+    font-size: 24px;
+    color: #2a254b;
+    font-family: Roboto;
+}
+

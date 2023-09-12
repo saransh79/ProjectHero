@@ -1,12 +1,12 @@
-import Categories from "@/components/PopularCategories";
-import Download from "@/components/Download";
+import Categories from "@/components/search/PopularCategories";
+import Download from "@/components/search/Download";
 import Footer from "@/components/Footer";
-import Hero from "@/components/Hero";
-import Navbar from "@/components/Navbar";
+import Hero from "@/components/search/Hero";
+import Navbar from "@/components/Navbar1";
 import Overlay from "@/components/Overlay";
 import styles from "./search.module.css";
-import FilterContainer from "@/components/FilterContainer";
-import PopularCategoriesContainer from "@/components/PopularCategoriesContainer";
+import FilterContainer from "@/components/search/FilterContainer";
+import PopularCategoriesContainer from "@/components/search/PopularCategoriesContainer";
 // import ContractorCard from '@/components/ContractorCard'
 
 const Search = () => {
