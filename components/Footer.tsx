@@ -10,7 +10,7 @@ const Footer = () => {
             <img src="/assets/PH New Logo (2).svg" alt="logo" />
             <img
               className={styles.whiteLogo}
-              src="/assets/business.svg"
+              src="/assets/Business.svg"
               alt="logo-content"
             />
           </div>
