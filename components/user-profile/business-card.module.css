@@ -1,282 +1,438 @@
 .businessCard {
-    position: relative;
-    font-size: 24px;
-    line-height: 140%;
-    font-weight: 600;
-    font-family: Roboto;
-    color: #2a254b;
-    text-align: left;
-    margin-bottom: 24px;
+  position: relative;
+  font-size: 24px;
+  line-height: 140%;
+  font-weight: 600;
+  font-family: Roboto;
+  color: #2a254b;
+  text-align: left;
+  margin-bottom: 24px;
 }
-
+.businessWrapper{
+  margin: 24px 0;
+}
 .userPicIcon {
-    position: relative;
-    border-radius: 50px;
-    width: 93px;
-    height: 92px;
-    overflow: hidden;
-    flex-shrink: 0;
-    object-fit: cover;
+  position: relative;
+  border-radius: 50px;
+  width: 93px;
+  height: 92px;
+  overflow: hidden;
+  flex-shrink: 0;
+  object-fit: cover;
 }
 .patagoniaConstructions {
-    position: relative;
-    line-height: 18px;
+  position: relative;
+  line-height: 18px;
 }
 .fvIcon {
-    position: relative;
-    width: 16px;
-    height: 16px;
-    overflow: hidden;
-    flex-shrink: 0;
-    object-fit: cover;
+  position: relative;
+  width: 16px;
+  height: 16px;
+  overflow: hidden;
+  flex-shrink: 0;
+  object-fit: cover;
 }
 .fvWrapper {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: flex-start;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 .patagoniaConstructionsParent {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 4px;
+  font-size: 20px;
+}
+.patagoniaPrivateLimited1 {
+  position: relative;
+  line-height: 20px;
+}
+.patagoniaPrivateLimitedWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+.generalContractor {
+  position: relative;
+}
+.generalContractorWrapper {
+  width: 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+.bangaloreKarnatakaWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.frameParent1 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 8px;
+}
+.userPicParent {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 16px;
+}
+.frameDiv {
+  /* width: 296px; */
+  display: flex;
+  flex-direction: row;
+  padding: 0px 16px;
+  box-sizing: border-box;
+  align-items: flex-start;
+  justify-content: center;
+}
+.frameWrapper {
+  border-radius: 12px;
+  height: 89px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.frameChild {
+  position: relative;
+  width: 1px;
+  height: 90px;
+  object-fit: cover;
+  opacity: 0.2;
+}
+.groupChild {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border-radius: 50%;
+  background-color: #daf3ed;
+  width: 22px;
+  height: 22px;
+}
+.taxPercentageIcon1 {
+  position: absolute;
+  top: 4.28px;
+  left: 3.67px;
+  width: 13.44px;
+  height: 13.44px;
+  object-fit: cover;
+}
+.ellipseParent {
+  position: relative;
+  width: 22px;
+  height: 22px;
+}
+.span {
+  color: #000;
+}
+.gstinNo {
+  position: relative;
+  line-height: 19px;
+}
+.groupParent {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+}
+.div {
+  position: relative;
+  line-height: 19px;
+  font-weight: 500;
+  color: #000;
+  text-align: right;
+  display: inline-block;
+  width: 148px;
+}
+.frameParent4 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.groupItem {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border-radius: 50%;
+  background-color: #fff0b2;
+  width: 22px;
+  height: 22px;
+}
+.rupeeWallet111 {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 19.25px;
+  height: 19.25px;
+  object-fit: cover;
+}
+.crFy2023 {
+  position: relative;
+  line-height: 19px;
+  font-weight: 500;
+  color: #000;
+  text-align: right;
+  display: inline-block;
+  width: 150px;
+}
+.frameParent3 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 16px;
+}
+.groupInner {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border-radius: 50%;
+  background-color: #fff4e7;
+  width: 22px;
+  height: 22px;
+}
+.companyBuildingIcon1 {
+  position: absolute;
+  top: 1.83px;
+  left: 2.44px;
+  width: 17.11px;
+  height: 17.11px;
+  object-fit: cover;
+}
+.privateLimited {
+  position: relative;
+  line-height: 19px;
+  font-weight: 500;
+  color: #000;
+  text-align: right;
+  display: inline-block;
+  width: 130px;
+}
+.ellipseDiv {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border-radius: 50%;
+  background-color: #e4f3ff;
+  width: 22px;
+  height: 22px;
+}
+.badgeCalendar111 {
+  position: absolute;
+  top: 3.06px;
+  left: 3.67px;
+  width: 14.67px;
+  height: 14.67px;
+  object-fit: cover;
+}
+.years {
+  position: relative;
+  line-height: 19px;
+  font-weight: 500;
+  color: #000;
+  text-align: right;
+  display: inline-block;
+  width: 76px;
+}
+.frameParent2 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+  color: #3d3d3d;
+  font-family: Karla;
+}
+.frameGroup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 26px;
+}
+.frameParent {
+  position: relative;
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0px 2px 12px #eee;
+  border: 1px solid #e4f3ff;
+  box-sizing: border-box;
+  width: 831px;
+  height: 168px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 28px 16px;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+  font-size: 14px;
+}
+.personalDetailsParent {
+  display: none;
+}
+.divParent img{
+  display: none;
+}
+
+
+@media only screen and (max-width: 440px) {
+  .businessCard {
+    display: none;
+  }
+  .businessWrapper{
+    margin: 0;
+  }
+  .personalDetailsParent {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    text-align: left;
+    margin: 24px 0;
+  }
+  .personalDetails {
+    position: relative;
+    letter-spacing: 0.01em;
+    line-height: 32px;
+    font-weight: 600;
+  }
+  .personalDetailsWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .vector {
+    position: relative;
+    height: 3px;
+    width: fit-content;
+    opacity: 2;
+    object-fit: contain;
+  }
+  .frameChild {
+    flex-direction: column;
+    width: 100%;
+    height: 2px;
+    object-fit: cover;
+    opacity: 1;
+  }
+  .personalDetails {
+    display: block;
+    position: relative;
+    font-size: 20px;
+    letter-spacing: 0.01em;
+    line-height: 32px;
+    font-weight: 600;
+    font-family: Saira;
+    color: #000;
+    text-align: left;
+  }
+  .frameParent {
+    width: 350px;
+    height: 316px;
+    padding: 15px;
+  }
+  .frameGroup {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .frameParent1 {
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+  }
+  .generalContractorWrapper {
+    width: fit-content;
+    font-weight: 500;
+  }
+  .frameWrapper {
+    height: 145px;
+  }
+
+  .userPicIcon {
+    border-radius: 35.83px;
+    width: 68px;
+    height: 68px;
+  }
+  .fvIcon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .patagoniaConstructionsParent {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: flex-start;
     gap: 4px;
-    font-size: 20px;
-}
-.patagoniaPrivateLimited1 {
-    position: relative;
-    line-height: 20px;
-}
-.patagoniaPrivateLimitedWrapper {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
     font-size: 16px;
-}
-.generalContractor {
-    position: relative;
-}
-.generalContractorWrapper {
-    width: 100px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-}
-.bangaloreKarnatakaWrapper {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-.frameParent1 {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 8px;
-}
-.userPicParent {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 16px;
-}
-.frameDiv {
-    /* width: 296px; */
-    display: flex;
-    flex-direction: row;
-    padding: 0px 16px;
-    box-sizing: border-box;
-    align-items: flex-start;
-    justify-content: center;
-}
-.frameWrapper {
-    border-radius: 12px;
-    height: 89px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-.frameChild {
-    position: relative;
-    width: 1px;
-    height: 90px;
-    object-fit: cover;
-    opacity: 0.2;
-}
-.groupChild {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    border-radius: 50%;
-    background-color: #daf3ed;
-    width: 22px;
-    height: 22px;
-}
-.taxPercentageIcon1 {
-    position: absolute;
-    top: 4.28px;
-    left: 3.67px;
-    width: 13.44px;
-    height: 13.44px;
-    object-fit: cover;
-}
-.ellipseParent {
-    position: relative;
-    width: 22px;
-    height: 22px;
-}
-.span {
-    color: #000;
-}
-.gstinNo {
-    position: relative;
-    line-height: 19px;
-}
-.groupParent {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 8px;
-}
-.div {
-    position: relative;
-    line-height: 19px;
+  }
+  .patagoniaPrivateLimited1 {
     font-weight: 500;
-    color: #000;
-    text-align: right;
-    display: inline-block;
-    width: 148px;
-}
-.frameParent4 {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-}
-.groupItem {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    border-radius: 50%;
-    background-color: #fff0b2;
-    width: 22px;
-    height: 22px;
-}
-.rupeeWallet111 {
-    position: absolute;
-    top: 1px;
-    left: 1px;
-    width: 19.25px;
-    height: 19.25px;
-    object-fit: cover;
-}
-.crFy2023 {
-    position: relative;
-    line-height: 19px;
-    font-weight: 500;
-    color: #000;
-    text-align: right;
-    display: inline-block;
-    width: 150px;
-}
-.frameParent3 {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 16px;
-}
-.groupInner {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    border-radius: 50%;
-    background-color: #fff4e7;
-    width: 22px;
-    height: 22px;
-}
-.companyBuildingIcon1 {
-    position: absolute;
-    top: 1.83px;
-    left: 2.44px;
-    width: 17.11px;
-    height: 17.11px;
-    object-fit: cover;
-}
-.privateLimited {
-    position: relative;
-    line-height: 19px;
-    font-weight: 500;
-    color: #000;
-    text-align: right;
-    display: inline-block;
-    width: 130px;
-}
-.ellipseDiv {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    border-radius: 50%;
-    background-color: #e4f3ff;
-    width: 22px;
-    height: 22px;
-}
-.badgeCalendar111 {
-    position: absolute;
-    top: 3.06px;
-    left: 3.67px;
-    width: 14.67px;
-    height: 14.67px;
-    object-fit: cover;
-}
-.years {
-    position: relative;
-    line-height: 19px;
-    font-weight: 500;
-    color: #000;
-    text-align: right;
-    display: inline-block;
-    width: 76px;
-}
-.frameParent2 {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 20px;
-    color: #3d3d3d;
-    font-family: Karla;
-}
-.frameGroup {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 26px;
-}
-.frameParent {
-    position: relative;
-    border-radius: 12px;
-    background-color: #fff;
-    box-shadow: 0px 2px 12px #eee;
-    border: 1px solid #e4f3ff;
-    box-sizing: border-box;
-    width: 831px;
-    height: 168px;
-    display: flex;
-    flex-wrap: wrap;
-    padding: 28px 16px;
-    align-items: center;
-    justify-content: flex-start;
-    text-align: left;
+    line-height: 26px;;
+  }
+  .patagoniaPrivateLimitedWrapper {
     font-size: 14px;
+  }
 
+  .userPicParent {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+    text-align: left;
+    font-size: 12px;
+    color: #000;
+    font-family: Karla;
+  }
+
+
+  .dividersChild {
+    flex: 1;
+    position: relative;
+    border-top: 1px dashed #d9d9d9;
+    box-sizing: border-box;
+    height: 1px;
 }
-
+.frameParent2{
+    font-size: 12px;
+    gap: 15px;
+}
+.frameParent2 .frameChild{
+  height: 70px;
+  width: 2px;
+}
+.frameParent3{
+  gap: 12px;
+}
+.div{
+  text-align: left;
+  padding-left: 30px;
+  width: fit-content;
+}
+.divParent{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.divParent img{
+  width: 12px;
+  height: 12px;
+}
+}

@@ -4,7 +4,11 @@ const UserCard: NextPage = () => {
   return (
     <div className={styles.frameParent}>
       <div className={styles.rectangleParent}>
-        <img className={styles.frameChild} alt="" src="assets/UserProfile.png" />
+        <img
+          className={styles.frameChild}
+          alt=""
+          src="assets/UserProfile.png"
+        />
         <div className={styles.rectangleParent}>
           <div className={styles.frameWrapper}>
             <div className={styles.ajayVarmaParent}>
@@ -43,11 +47,37 @@ const UserCard: NextPage = () => {
             <div className={styles.whatsapp}>Call</div>
           </div>
           <div className={styles.cta2}>
-            <img className={styles.whatsappIcon1} alt="" src="assets/Whatsapp.svg" />
+            <img
+              className={styles.whatsappIcon1}
+              alt=""
+              src="assets/Whatsapp.svg"
+            />
             <div className={styles.whatsapp}>Whatsapp</div>
           </div>
         </div>
       </div>
+      {/* for mobile screen */}
+      {/* <div className={styles.frameParent}>
+        <div className={styles.ctaParent}>
+          <div className={styles.cta}>
+            <img
+              className={styles.communicationPhone1}
+              alt=""
+              src="Communication / Phone.svg"
+            />
+          </div>
+          <img className={styles.whatsappIcon1} alt="" src="Whatsapp.svg" />
+        </div>
+        <div className={styles.cta1}>
+          <div className={styles.cta2}>Rate this Company</div>
+          <img
+            className={styles.arrowChevronRight1}
+            alt=""
+            src="Arrow / Chevron_Right.svg"
+          />
+        </div>
+      </div> */}
+      
     </div>
   );
 };

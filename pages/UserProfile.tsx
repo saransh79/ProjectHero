@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar1";
 import AboutSection from "@/components/user-profile/About";
 import BusinessCard from "@/components/user-profile/BusinessCard";
 import Download from "@/components/user-profile/DownloadCard";
+import DownloadApp from "@/components/Download";
 import Gallery from "@/components/user-profile/Gallery";
 import HeroSection from "@/components/user-profile/HeroSection";
 import Portfolio from "@/components/user-profile/PortFolio";
@@ -31,12 +32,14 @@ const UserProfile: NextPage = () => {
             <div className={styles.stroke}></div>
           </div>
           <AboutSection />
-          <Trust_Safety />
-          <BusinessCard />
-          <Services />
-          <Gallery />
-          <Portfolio />
-          <RatingSection />
+          <div className={styles.backgroundColor}>
+            <Trust_Safety />
+            <BusinessCard />
+            <Services />
+            <Gallery />
+            <Portfolio />
+            <RatingSection />
+          </div>
         </div>
         <div className={styles.advertiseWrapper}>
           <RatingCard />
@@ -45,7 +48,10 @@ const UserProfile: NextPage = () => {
       </div>
 
       <SimilarProfiles />
-      <Footer/>
+      <div className={styles.download}>
+        <DownloadApp/>
+      </div>
+      <Footer />
     </div>
   );
 };

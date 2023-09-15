@@ -1,34 +1,97 @@
 .about {
-    position: relative;
-    line-height: 140%;
-    font-weight: 600;
+  position: relative;
+  line-height: 140%;
+  font-weight: 600;
 }
 .details {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 .woremIpsumDolor1 {
-    position: relative;
-    font-size: 18px;
-    line-height: 28px;
-    color: #3d3d3d;
-    display: flex;
-    align-items: center;
-    width: 817px;
+  position: relative;
+  font-size: 18px;
+  line-height: 28px;
+  color: #3d3d3d;
+  display: flex;
+  align-items: center;
+  width: 817px;
 }
 .detailsParent {
-    position: relative;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 24px;
-    text-align: left;
-    font-size: 24px;
-    color: #2a254b;
-    font-family: Roboto;
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 24px;
+  text-align: left;
+  font-size: 24px;
+  color: #2a254b;
+  font-family: Roboto;
+}
+.personalDetailsParent {
+  display: none;
 }
 
+@media only screen and (max-width: 440px) {
+  .detailsParent {
+    gap: 20px;
+    font-size: 14px;
+    height: fit-content;
+    margin-top: 24px;
+  }
+  .personalDetailsParent {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    text-align: left;
+  }
+  .personalDetails {
+    position: relative;
+    letter-spacing: 0.01em;
+    line-height: 32px;
+    font-weight: 600;
+  }
+  .personalDetailsWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .frameChild {
+    position: relative;
+    height: 3px;
+    object-fit: contain;
+  }
+  .personalDetails {
+    display: block;
+    position: relative;
+    font-size: 20px;
+    letter-spacing: 0.01em;
+    line-height: 32px;
+    font-weight: 600;
+    font-family: Saira;
+    color: #000;
+    text-align: left;
+  }
+  .details {
+    position: relative;
+    font-size: 16px;
+    letter-spacing: 0.01em;
+    line-height: 28px;
+    font-weight: 600;
+    font-family: Saira;
+    color: #000;
+    text-align: left;
+  }
+  .woremIpsumDolor1 {
+    font-size: 14px;
+    line-height: 20px;
+    width: fit-content;
+  }
+}

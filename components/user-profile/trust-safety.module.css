@@ -223,7 +223,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    gap: 414px;
+    /* gap: 414px; */
 }
 .groupParent {
     position: absolute;
@@ -256,3 +256,41 @@
     font-family: Karla;
 }
 
+@media only screen and (max-width:440px){
+    .projectheroTrust {
+        position: relative;
+        font-size: 16px;
+        letter-spacing: 0.01em;
+        line-height: 28px;
+        font-weight: 600;
+        font-family: Saira;
+        color: #000;
+        text-align: left;
+  }
+  .detailsParent{
+    font-size: 14px;
+    gap: 16px;
+  }
+  .frameWrapper{
+    width: 350px;
+    height: 260px;
+  }
+  .frameDiv{
+    height: 261px;
+  }
+  .frameGroup, .dividers, .frameParent1, .dividers1, .frameParent2, .dividers2, .frameParent4, .frameParent, .frameDiv, .frameWrapper, .frameWrapper1, .groupParent{
+    width: 350px;
+  }
+  .frameParent{
+        align-items: center;
+        justify-content: center;
+        gap: 0;
+        padding: 0;
+  }
+  .frameDiv{
+    padding: 0;
+  }
+  .frameGroup{
+    padding: 5px 5px;
+  }
+}

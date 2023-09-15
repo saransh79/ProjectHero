@@ -19,7 +19,10 @@ const Services: NextPage = () => {
             </div>
           </div>
           <div className={styles.workType1Parent}>
-            <div className={styles.workType11}>Work Type 1</div>
+            <div className={styles.mobileWorktype}>
+              <img src="assets/Carpenter 1 1.png" alt="" />
+              <div className={styles.workType21}>Work Type 1</div>
+            </div>
             <div className={styles.chipParent}>
               <div className={styles.chip}>
                 <div className={styles.labelWrapper}>
@@ -34,13 +37,6 @@ const Services: NextPage = () => {
               <div className={styles.chip}>
                 <div className={styles.labelWrapper}>
                   <div className={styles.label}>Gypsum</div>
-                </div>
-              </div>
-            </div>
-            <div className={styles.chipWrapper}>
-              <div className={styles.chip}>
-                <div className={styles.labelWrapper}>
-                  <div className={styles.label}>Carpenter</div>
                 </div>
               </div>
             </div>
@@ -50,11 +46,19 @@ const Services: NextPage = () => {
           <div className={styles.ellipseParent}>
             <div className={styles.frameItem} />
             <div className={styles.brick}>
-              <img className={styles.carpenter113} alt="" src="assets/Brick.png" />
+              <img
+                className={styles.carpenter113}
+                alt=""
+                src="assets/Brick.png"
+              />
             </div>
           </div>
           <div className={styles.workType1Parent}>
-            <div className={styles.workType21}>Work Type 2</div>
+            <div className={styles.mobileWorktype}>
+              <img src="assets/Carpenter 1 1.png" alt="" />
+              <div className={styles.workType21}>Work Type 2</div>
+            </div>
+
             <div className={styles.chipParent}>
               <div className={styles.chip}>
                 <div className={styles.labelWrapper}>
@@ -69,13 +73,6 @@ const Services: NextPage = () => {
               <div className={styles.chip}>
                 <div className={styles.labelWrapper}>
                   <div className={styles.label}>Gypsum</div>
-                </div>
-              </div>
-            </div>
-            <div className={styles.chipWrapper}>
-              <div className={styles.chip}>
-                <div className={styles.labelWrapper}>
-                  <div className={styles.label}>Carpenter</div>
                 </div>
               </div>
             </div>
@@ -93,7 +90,10 @@ const Services: NextPage = () => {
             </div>
           </div>
           <div className={styles.workType1Parent}>
-            <div className={styles.workType21}>Work Type 3</div>
+            <div className={styles.mobileWorktype}>
+              <img src="assets/Carpenter 1 1.png" alt="" />
+              <div className={styles.workType21}>Work Type 3</div>
+            </div>
             <div className={styles.chipParent}>
               <div className={styles.chip}>
                 <div className={styles.labelWrapper}>
@@ -103,13 +103,6 @@ const Services: NextPage = () => {
               <div className={styles.chip}>
                 <div className={styles.labelWrapper}>
                   <div className={styles.label}>HVAC</div>
-                </div>
-              </div>
-            </div>
-            <div className={styles.chipWrapper}>
-              <div className={styles.chip}>
-                <div className={styles.labelWrapper}>
-                  <div className={styles.label}>Carpenter</div>
                 </div>
               </div>
             </div>

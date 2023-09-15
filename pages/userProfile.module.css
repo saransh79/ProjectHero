@@ -45,3 +45,29 @@
     justify-content: space-around;
     margin-bottom: 44px;
 }
+.download{
+  display: none;
+}
+
+@media only screen and (max-width: 440px) {
+  .sectionnameContainer{
+    display: none;
+  }
+  .mainContainer{
+    /* padding: 16px; */
+    width: 350px;
+    gap: 24px;
+  }
+  .backgroundColor{
+    background-color: #fcfaf4;
+  }
+  .advertiseWrapper{
+    display: none;
+  }
+  .download{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 16px 0;
+  }
+}

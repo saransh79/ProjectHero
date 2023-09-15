@@ -1,146 +1,199 @@
 .ratingsReviews1 {
-    position: relative;
-    line-height: 140%;
-    font-weight: 600;
+  position: relative;
+  line-height: 140%;
+  font-weight: 600;
 }
 .details {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    text-align: left;
-    font-family: Roboto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: left;
+  font-family: Roboto;
 }
 .interfaceStar20 {
-    position: relative;
-    width: 21.95px;
-    height: 21.95px;
-    overflow: hidden;
-    flex-shrink: 0;
-    object-fit: cover;
+  position: relative;
+  width: 21.95px;
+  height: 21.95px;
+  overflow: hidden;
+  flex-shrink: 0;
+  object-fit: cover;
 }
 .interfaceStarParent {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 6.86px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 6.86px;
 }
 .frameWrapper1 {
-    display: flex;
-    flex-direction: row;
-    padding: 6.75278377532959px 0px;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: row;
+  padding: 6.75278377532959px 0px;
+  align-items: center;
+  justify-content: center;
 }
 .div {
-    position: relative;
-    font-weight: 800;
+  position: relative;
+  font-weight: 800;
 }
 .wrapper {
-    border-radius: 4.22px;
-    background-color: #00a976;
-    display: flex;
-    flex-direction: row;
-    padding: 3.376391887664795px 10.129175186157227px;
-    align-items: flex-start;
-    justify-content: flex-start;
+  border-radius: 4.22px;
+  background-color: #00a976;
+  display: flex;
+  flex-direction: row;
+  padding: 3.376391887664795px 10.129175186157227px;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 .frameDiv {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 3.38px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 3.38px;
 }
 .frameGroup {
-    position: absolute;
-    top: 0px;
-    left: 1.5px;
-    width: 297px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 8px;
+  position: absolute;
+  top: 0px;
+  left: 1.5px;
+  width: 297px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
 }
 .frameWrapper {
-    position: relative;
-    width: 300px;
-    height: 35.45px;
-    font-size: 10.13px;
-    color: #fff;
+  position: relative;
+  width: 300px;
+  height: 35.45px;
+  font-size: 10.13px;
+  color: #fff;
 }
 .globalRatings {
-    position: relative;
-    font-size: 16px;
-    font-weight: 500;
-    color: #828181;
+  position: relative;
+  font-size: 16px;
+  font-weight: 500;
+  color: #828181;
 }
 .detailsParent {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 6px;
 }
 .woremIpsumDolor3 {
-    position: relative;
-    line-height: 28px;
-    font-weight: 500;
-    text-align: left;
-    display: flex;
-    align-items: center;
-    width: 806px;
+  position: relative;
+  line-height: 28px;
+  font-weight: 500;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  width: 806px;
 }
 .irfanKhan {
-    position: relative;
-    font-size: 24px;
-    font-weight: 500;
-    color: #000;
+  position: relative;
+  font-size: 24px;
+  font-weight: 500;
+  color: #000;
 }
 .postedOn123 {
-    position: relative;
-    font-size: 16px;
-    font-weight: 500;
-    color: #808080;
+  position: relative;
+  font-size: 16px;
+  font-weight: 500;
+  color: #808080;
 }
 .woremIpsumDolorSitAmetCoParent {
-    width: 806px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 8px;
+  width: 806px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 8px;
 }
-.frameChild {
+.frameParent1 {
+  width: 827px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 24px;
+  font-size: 18px;
+  color: #3d3d3d;
+}
+.frameParent {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 24px;
+  text-align: center;
+  font-size: 24px;
+  color: #2a254b;
+  font-family: Karla;
+}
+.lineDiv {
     position: relative;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
-    width: 828px;
+    width: 100%;
     height: 1px;
 }
-.frameParent1 {
-    width: 827px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 24px;
-    font-size: 18px;
-    color: #3d3d3d;
-}
-.frameParent {
-    position: relative;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 24px;
-    text-align: center;
-    font-size: 24px;
-    color: #2a254b;
-    font-family: Karla;
+.Viewmore {
+  margin: 0 auto;
 }
 
+@media only screen and (max-width: 440px) {
+  .ratingsReviews1 {
+    position: relative;
+    font-size: 16px;
+    letter-spacing: 0.01em;
+    line-height: 28px;
+    font-weight: 600;
+    font-family: Saira;
+    color: #000;
+    text-align: left;
+  }
+  .frameParent {
+    font-size: 14px;
+    padding: 24px 0;
+  }
+  .frameParent1 {
+    width: 350px;
+    flex-wrap: wrap;
+    padding: 24px 16px;
+    background-color: #fff;
+    border-radius: 16px;
+  }
+  .woremIpsumDolorSitAmetCoParent {
+    width: 320px;
+    font-size: 12px;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  .woremIpsumDolor3 {
+    width: 100%;
+    line-height: 20px;
+  }
+  .interfaceStar21 {
+    width: 16px;
+    height: 16px;
+  }
+  .irfanKhan {
+    position: relative;
+    font-size: 14px;
+    font-family: Karla;
+    color: #000;
+    text-align: center;
+    font-weight: 600;
+  }
+ 
+.Viewmore{
+    font-size: 14px;
+}
+
+}

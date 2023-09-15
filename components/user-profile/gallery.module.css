@@ -13,14 +13,14 @@
     position: absolute;
     top: 0px;
     left: 0px;
-    width: 272.01px;
+    width: 230.45px;
     height: 195.7px;
     object-fit: cover;
 }
 .photo {
     position: absolute;
     height: 100%;
-    width: 85.57%;
+    width: 100%;
     top: 0%;
     right: 14.43%;
     bottom: 0%;
@@ -34,17 +34,17 @@
     height: 195.7px;
 }
 .productCardWrapper {
-    width: 197.21px;
+    height: 195.7px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
+    align-items: center;
+    justify-content: center;
 }
 .image7Icon {
     position: absolute;
     top: 0px;
     left: 0px;
-    width: 293.92px;
+    width: 230.45px;
     height: 195.7px;
     object-fit: cover;
 }
@@ -52,22 +52,25 @@
     position: absolute;
     top: 0px;
     left: 0px;
-    width: 224.41px;
+    width: 230.45px;
     height: 195.7px;
     object-fit: cover;
 }
 .frameParent {
     width: 830px;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
-    align-items: flex-start;
+    align-items: center;
     justify-content: flex-start;
     gap: 13.72px;
 }
 .detailsParent {
+  margin-top: 24px;
     position: relative;
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
@@ -78,3 +81,37 @@
     font-family: Roboto;
 }
 
+@media only screen and (max-width: 440px){
+    .gallery {
+        position: relative;
+        font-size: 16px;
+        letter-spacing: 0.01em;
+        line-height: 28px;
+        font-weight: 600;
+        font-family: Saira;
+        color: #000;
+        text-align: left;
+        height: fit-content;
+  }
+  
+  .frameParent{
+    width: 350px;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .productCardWrapper{
+    width: 104px;
+    height: 93px;
+  }
+  .parent{
+    width: 104px;
+    height: 93px;
+  }
+  .photo img{
+    object-fit: cover;
+  }
+  .detailsParent{
+    margin-top: 0;
+    width: 350px;
+  }
+}

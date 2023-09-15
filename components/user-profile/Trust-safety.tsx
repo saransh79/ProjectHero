@@ -34,7 +34,7 @@ const Trust_Safety: NextPage = () => {
             <div className={styles.dividers}>
               <div className={styles.dividersChild} />
             </div>
-            <div className={styles.frameParent1}>
+            <div className={`${styles.frameParent1} ${styles.frameGroup}`}>
               <div className={styles.maskGroupParent}>
                 <img
                   className={styles.maskGroupIcon1}
@@ -57,7 +57,7 @@ const Trust_Safety: NextPage = () => {
             <div className={styles.dividers1}>
               <div className={styles.dividersChild} />
             </div>
-            <div className={styles.frameParent2}>
+            <div className={`${styles.frameParent2} ${styles.frameGroup}`}>
               <div className={styles.biometricIdParent}>
                 <img
                   className={styles.maskGroupIcon1}
@@ -80,7 +80,7 @@ const Trust_Safety: NextPage = () => {
             <div className={styles.dividers2}>
               <div className={styles.dividersChild} />
             </div>
-            <div className={styles.frameParent2}>
+            <div className={`${styles.frameParent2} ${styles.frameGroup}`}>
               <div className={styles.biometricIdParent}>
                 <img
                   className={styles.taxPercentageIcon1}
@@ -103,7 +103,7 @@ const Trust_Safety: NextPage = () => {
             <div className={styles.dividers1}>
               <div className={styles.dividersChild} />
             </div>
-            <div className={styles.frameParent4}>
+            <div className={`${styles.frameParent4} ${styles.frameGroup}`}>
               <div className={styles.maskGroupParent}>
                 <img
                   className={styles.rupeeWallet111}

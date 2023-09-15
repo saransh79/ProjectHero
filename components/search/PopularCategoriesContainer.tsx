@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import styles from "./popular-categories-container.module.css";
-import Download from "./Download";
+import Download from "../Download";
 import ContractorCard from "./ContractorCard";
 import PopularCategories from "./PopularCategories";
 import Viewmore from "../Viewmore";

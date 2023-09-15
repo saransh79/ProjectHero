@@ -2,8 +2,14 @@ import type { NextPage } from "next";
 import styles from "./business-card.module.css";
 const BusinessCard: NextPage = () => {
   return (
-    <div>
+    <div className={styles.businessWrapper}>
       <div className={styles.businessCard}>Business Card</div>
+      <div className={styles.personalDetailsParent}>
+        <div className={styles.personalDetailsWrapper}>
+          <div className={styles.personalDetails}>Business Details</div>
+        </div>
+        <img className={styles.vector} alt="" src="assets/Vector 93.svg" />
+      </div>
       <div className={styles.frameParent}>
         <div className={styles.frameGroup}>
           <div className={styles.frameWrapper}>
@@ -46,11 +52,8 @@ const BusinessCard: NextPage = () => {
               </div>
             </div>
           </div>
-          <img
-            className={styles.frameChild}
-            alt=""
-            src="assets/Vector 96.png"
-          />
+          <img className={styles.frameChild} alt="" src="assets/Dividers.png" />
+
           <div className={styles.frameParent2}>
             <div className={styles.frameParent3}>
               <div className={styles.frameParent4}>
@@ -68,7 +71,10 @@ const BusinessCard: NextPage = () => {
                     <span className={styles.span}>{`: `}</span>
                   </div>
                 </div>
-                <div className={styles.div}>098765432109876</div>
+                <div className={styles.divParent}>
+                  <div className={styles.div}>098765432109876</div>
+                  <img src="assets/FV.svg" alt="" />
+                </div>
               </div>
               <div className={styles.frameParent4}>
                 <div className={styles.groupParent}>
@@ -85,13 +91,16 @@ const BusinessCard: NextPage = () => {
                     <span className={styles.span}>{`: `}</span>
                   </div>
                 </div>
-                <div className={styles.crFy2023}>1.5 - 5 Cr (FY 2023)</div>
+                <div className={styles.divParent}>
+                  <div className={styles.div}>1.5 - 5 Cr (2023)</div>
+                  <img src="assets/FV.svg" alt="" />
+                </div>
               </div>
             </div>
             <img
               className={styles.frameChild}
               alt=""
-              src="assets/Vector 96.png"
+              src="assets/Vector 96.svg"
             />
             <div className={styles.frameParent3}>
               <div className={styles.frameParent4}>
@@ -109,7 +118,10 @@ const BusinessCard: NextPage = () => {
                     <span className={styles.span}>{`: `}</span>
                   </div>
                 </div>
-                <div className={styles.privateLimited}>Private Limited</div>
+                <div className={styles.divParent}>
+                  <div className={styles.div}>Private Limited</div>
+                  <img src="assets/FV.svg" alt="" />
+                </div>
               </div>
               <div className={styles.frameParent4}>
                 <div className={styles.groupParent}>
@@ -126,7 +138,10 @@ const BusinessCard: NextPage = () => {
                     <span className={styles.span}>{`: `}</span>
                   </div>
                 </div>
-                <div className={styles.years}>7 years</div>
+                <div className={styles.divParent}>
+                  <div className={styles.div}>7 Years</div>
+                  <img src="assets/FV.svg" alt="" />
+                </div>
               </div>
             </div>
           </div>

@@ -72,6 +72,7 @@
     flex-direction: row;
     align-items: flex-start;
     justify-content: flex-start;
+    flex-wrap: wrap;
     gap: 8px;
 }
 .chipWrapper {
@@ -155,4 +156,55 @@
     color: #2a254b;
     font-family: Roboto;
 }
+.mobileWorktype img{
+    display: none;
+}
 
+
+@media only screen and (max-width: 440px){
+    .servicesOffered {
+        position: relative;
+        font-size: 16px;
+        letter-spacing: 0.01em;
+        line-height: 28px;
+        font-weight: 600;
+        font-family: Saira;
+        color: #000;
+        text-align: left;
+  }
+  
+  .detailsParent{
+    padding: 24px 0;
+    gap: 16px;
+  }
+  .frameParent{
+    flex-direction: column;
+    font-size: 12px;
+    gap: 16px;
+  }
+  .mobileWorktype {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .mobileWorktype img{
+    display: block;
+    width: 20px;
+    height: 20px;
+  }
+  .ellipseParent{
+    display: none;
+  }
+  .workType21 {
+    position: relative;
+    font-size: 14px;
+    line-height: 20px;
+    font-family: Karla;
+    color: #000;
+    text-align: left;
+    font-weight: normal;
+}
+
+
+}

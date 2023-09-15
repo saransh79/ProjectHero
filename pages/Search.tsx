@@ -1,5 +1,5 @@
 import Categories from "@/components/search/PopularCategories";
-import Download from "@/components/search/Download";
+import Download from "@/components/Download";
 import Footer from "@/components/Footer";
 import Hero from "@/components/search/Hero";
 import Navbar from "@/components/Navbar1";
