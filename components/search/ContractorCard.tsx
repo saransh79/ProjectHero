@@ -1,4 +1,4 @@
-import type { NextPage } from "next";
+import { NextPage } from "next";
 import styles from "./contracotorCard.module.css";
 const ContractorCard: NextPage = () => {
   return (

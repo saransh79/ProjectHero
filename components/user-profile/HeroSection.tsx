@@ -1,7 +1,23 @@
-import type { NextPage } from "next";
 import styles from "./hero-section.module.css";
 import UserCard from "./UserCard";
-const HeroSection: NextPage = () => {
+
+
+interface Iprops {
+  personalDetails: {
+    name: string;
+    isVerified: boolean;
+    isMember: boolean;
+    phoneNumber: string;
+    companyName: string;
+    designation: string;
+    city: string;
+    state: string;
+  };
+}
+
+const HeroSection: React.FC<Iprops> = ({personalDetails}) => {
+  // console.log(personalDetails);
+
   return (
     <div className={styles.frameParent}>
       <div className={styles.navigation}>
@@ -13,10 +29,10 @@ const HeroSection: NextPage = () => {
 
         <img src="assets/Right Arrow.svg" alt="" />
 
-        <span className={styles.userName}>Ajay Verma</span>
+        <span className={styles.userName}>{personalDetails.name}</span>
       </div>
       <div className={styles.UserCard}>
-        <UserCard />
+        <UserCard personalData={personalDetails}/>
       </div>
       <div className={styles.shareprofile}>
         <div>Share Profile</div>
@@ -46,7 +62,7 @@ const HeroSection: NextPage = () => {
           <img
             className={styles.arrowChevronRight1}
             alt=""
-            src="assets/rightArrow.svg"
+            src="assets/rightarrow.svg"
           />
         </div>
       </div>

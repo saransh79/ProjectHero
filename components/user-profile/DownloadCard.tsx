@@ -1,6 +1,5 @@
-import type { NextPage } from 'next';
 import styles from './download-card.module.css';
-const DownloadCard:NextPage = () => {
+const DownloadCard = () => {
   	return (
     		<div className={styles.container1}>
       			<div className={styles.textContent}>

@@ -1,6 +1,5 @@
 "use client"; // This is a client component
-
-import type { NextPage } from "next";
+import { NextPage } from "next";
 import styles from "./filter-container.module.css";
 import { useState } from "react";
 import Viewmore from "../Viewmore";

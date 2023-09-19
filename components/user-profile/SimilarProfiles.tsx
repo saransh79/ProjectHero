@@ -1,6 +1,6 @@
-import type { NextPage } from "next";
+
 import styles from "./similar-profiles.module.css";
-const SimilarProfiles: NextPage = () => {
+const SimilarProfiles = () => {
   return (
     <div className={styles.listings}>
       <div className={styles.similarProfilesParent}>

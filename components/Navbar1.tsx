@@ -1,7 +1,5 @@
 import React from "react";
 import styles from "./navbar1.module.css";
-import Link from "next/link";
-import { styled } from "@mui/material";
 
 const Navbar = () => {
   return (

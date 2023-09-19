@@ -1,6 +1,6 @@
-// import type { NextPage } from "next";
+import type { NextPage } from "next";
 import styles from "./popular-categories.module.css";
-const PopularCategories = () => {
+const PopularCategories: NextPage = () => {
   return (
     <div className={styles.frameParent}>
       <div className={styles.popularCategories}>Popular Categories</div>

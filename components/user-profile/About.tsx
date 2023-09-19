@@ -1,6 +1,5 @@
-import type { NextPage } from "next";
 import styles from "./about.module.css";
-const AboutSection: NextPage = () => {
+const AboutSection = () => {
   return (
     <div className={styles.detailsParent}>
       <div className={styles.personalDetailsParent}>
@@ -14,7 +13,7 @@ const AboutSection: NextPage = () => {
       </div>
       <div
         className={styles.woremIpsumDolor1}
-      >{`Worem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Worem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Worem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. `}</div>
+      >Not Available</div>
     </div>
   );
 };

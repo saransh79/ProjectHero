@@ -1,7 +1,6 @@
-import type { NextPage } from "next";
 import styles from "./portfolio.module.css";
 import Viewmore from "../Viewmore";
-const Portfolio: NextPage = () => {
+const Portfolio = () => {
   return (
     <div className={styles.detailsParent}>
       <div className={styles.details}>

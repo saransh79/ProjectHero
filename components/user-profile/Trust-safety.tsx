@@ -1,6 +1,12 @@
-import type { NextPage } from "next";
+import { TrustAndSafety } from "@/Api's/PersonDetails";
 import styles from "./trust-safety.module.css";
-const Trust_Safety: NextPage = () => {
+
+interface Iprops {
+  data: TrustAndSafety[];
+}
+
+const Trust_Safety: React.FC<Iprops>= ( {data} ) => {
+  // console.log(data);
   return (
     <div className={styles.detailsParent}>
       <div className={styles.details}>
@@ -11,118 +17,44 @@ const Trust_Safety: NextPage = () => {
       <div className={styles.frameWrapper}>
         <div className={styles.frameDiv}>
           <div className={styles.frameParent}>
-            <div className={styles.frameGroup}>
+           {data.map((i: TrustAndSafety)=>{
+            return (
+              <div className={styles.frameGroup}>
               <div className={styles.maskGroupParent}>
                 <img
                   className={styles.maskGroupIcon1}
                   alt=""
-                  src="assets/verified user.png"
+                  src={i.url}
                 />
-                <div className={styles.userIdentity}>User Identity</div>
+                <div className={styles.userIdentity}>
+                  {i.key}
+                </div>
               </div>
               <div className={styles.warningCircleCheckParent}>
-                <img
-                  className={styles.warningCircleCheck5}
-                  alt=""
-                  src="assets/Circle_Check.svg"
-                />
+                {i.isVerified ? (
+                  <img
+                    className={styles.warningCircleCheck5}
+                    alt=""
+                    src="assets/Circle_Check.svg"
+                  />
+                ) : (
+                  <img
+                    src="assets/cross.png"
+                    alt=""
+                    className={styles.warningCircleCheck5}
+                  />
+                )}
                 <div className={styles.verificationStatusTags5}>
-                  <div className={styles.userIdentity}>{`Verified `}</div>
+                  {i.isVerified && (
+                    <div className={styles.userIdentity}>{`Verified `}</div>
+                  )}
                 </div>
               </div>
             </div>
-            <div className={styles.dividers}>
-              <div className={styles.dividersChild} />
-            </div>
-            <div className={`${styles.frameParent1} ${styles.frameGroup}`}>
-              <div className={styles.maskGroupParent}>
-                <img
-                  className={styles.maskGroupIcon1}
-                  alt=""
-                  src="assets/Phone Call.png"
-                />
-                <div className={styles.userIdentity}>Phone Number</div>
-              </div>
-              <div className={styles.warningCircleCheckParent}>
-                <img
-                  className={styles.warningCircleCheck5}
-                  alt=""
-                  src="assets/Circle_Check.svg"
-                />
-                <div className={styles.verificationStatusTags5}>
-                  <div className={styles.userIdentity}>{`Verified `}</div>
-                </div>
-              </div>
-            </div>
-            <div className={styles.dividers1}>
-              <div className={styles.dividersChild} />
-            </div>
-            <div className={`${styles.frameParent2} ${styles.frameGroup}`}>
-              <div className={styles.biometricIdParent}>
-                <img
-                  className={styles.maskGroupIcon1}
-                  alt=""
-                  src="assets/Biometric Id.png"
-                />
-                <div className={styles.userIdentity}>{`Adhaar `}</div>
-              </div>
-              <div className={styles.warningCircleCheckParent}>
-                <img
-                  className={styles.warningCircleCheck5}
-                  alt=""
-                  src="assets/Circle_Check.svg"
-                />
-                <div className={styles.verificationStatusTags5}>
-                  <div className={styles.userIdentity}>{`Verified `}</div>
-                </div>
-              </div>
-            </div>
-            <div className={styles.dividers2}>
-              <div className={styles.dividersChild} />
-            </div>
-            <div className={`${styles.frameParent2} ${styles.frameGroup}`}>
-              <div className={styles.biometricIdParent}>
-                <img
-                  className={styles.taxPercentageIcon1}
-                  alt=""
-                  src="assets/Tax Percentage.png"
-                />
-                <div className={styles.userIdentity}>GST Number</div>
-              </div>
-              <div className={styles.warningCircleCheckParent}>
-                <img
-                  className={styles.warningCircleCheck5}
-                  alt=""
-                  src="assets/Circle_Check.svg"
-                />
-                <div className={styles.verificationStatusTags5}>
-                  <div className={styles.userIdentity}>{`Verified `}</div>
-                </div>
-              </div>
-            </div>
-            <div className={styles.dividers1}>
-              <div className={styles.dividersChild} />
-            </div>
-            <div className={`${styles.frameParent4} ${styles.frameGroup}`}>
-              <div className={styles.maskGroupParent}>
-                <img
-                  className={styles.rupeeWallet111}
-                  alt=""
-                  src="assets/rupee-wallet (1) 1.png"
-                />
-                <div className={styles.userIdentity}>Turnover</div>
-              </div>
-              <div className={styles.warningCircleCheckParent}>
-                <img
-                  className={styles.warningCircleCheck5}
-                  alt=""
-                  src="assets/Circle_Check.svg"
-                />
-                <div className={styles.verificationStatusTags5}>
-                  <div className={styles.userIdentity}>{`Verified `}</div>
-                </div>
-              </div>
-            </div>
+            )
+           })}
+            
+            
           </div>
         </div>
       </div>

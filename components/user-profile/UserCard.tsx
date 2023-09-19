@@ -1,6 +1,19 @@
-import type { NextPage } from "next";
+import Link from "next/link";
 import styles from "./user-card.module.css";
-const UserCard: NextPage = () => {
+
+interface Iprops {
+  personalData: {
+    name: string;
+    isVerified: boolean;
+    isMember: boolean;
+    phoneNumber: string;
+    companyName: string;
+    designation: string;
+    city?: string;
+    state: string;
+  };
+}
+const UserCard: React.FC<Iprops> = ({ personalData }) => {
   return (
     <div className={styles.frameParent}>
       <div className={styles.rectangleParent}>
@@ -12,19 +25,23 @@ const UserCard: NextPage = () => {
         <div className={styles.rectangleParent}>
           <div className={styles.frameWrapper}>
             <div className={styles.ajayVarmaParent}>
-              <b className={styles.ajayVarma}>Ajay Varma</b>
+              <b className={styles.ajayVarma}>{personalData.name}</b>
               <div className={styles.fvParent}>
-                <img className={styles.fvIcon} alt="" src="assets/FV.svg" />
-                <img
-                  className={styles.fvIcon}
-                  alt=""
-                  src="assets/mdi_crown-circle-outline.svg"
-                />
+                {personalData.isVerified && (
+                  <img className={styles.fvIcon} alt="" src="assets/FV.svg" />
+                )}
+                {personalData.isMember && (
+                  <img
+                    className={styles.fvIcon}
+                    alt=""
+                    src="assets/mdi_crown-circle-outline.svg"
+                  />
+                )}
               </div>
             </div>
           </div>
           <b className={styles.patagoniaConstructions1}>
-            Patagonia Constructions | CEO/Owner
+            {personalData.companyName} | {personalData.designation}
           </b>
           <div className={styles.navigationMapPinParent}>
             <img
@@ -32,52 +49,40 @@ const UserCard: NextPage = () => {
               alt=""
               src="assets/Map_Pin.svg"
             />
-            <div className={styles.ajayVarma}>Bangalore, Karnataka</div>
+            <div className={styles.ajayVarma}>
+              {personalData.city}, {personalData.state}
+            </div>
           </div>
         </div>
       </div>
       <div className={styles.frameDiv}>
         <div className={styles.ctaParent}>
-          <div className={styles.cta}>
-            <img
-              className={styles.communicationPhone1}
-              alt=""
-              src="assets/Phone.svg"
-            />
-            <div className={styles.whatsapp}>Call</div>
-          </div>
-          <div className={styles.cta2}>
-            <img
-              className={styles.whatsappIcon1}
-              alt=""
-              src="assets/Whatsapp.svg"
-            />
-            <div className={styles.whatsapp}>Whatsapp</div>
-          </div>
+          <Link href={`tel:${personalData.phoneNumber}`} target="_blank">  
+            <div className={styles.cta}>
+              <img
+                className={styles.communicationPhone1}
+                alt=""
+                src="assets/Phone.svg"
+              />
+              <div className={styles.whatsapp}>Call</div>
+            </div>
+          </Link>
+
+          <Link
+            href={`https://wa.me/${personalData.phoneNumber}`}
+            target="_blank"
+          >
+            <div className={styles.cta2}>
+              <img
+                className={styles.whatsappIcon1}
+                alt=""
+                src="assets/Whatsapp.svg"
+              />
+              <div className={styles.whatsapp}>Whatsapp</div>
+            </div>
+          </Link>
         </div>
       </div>
-      {/* for mobile screen */}
-      {/* <div className={styles.frameParent}>
-        <div className={styles.ctaParent}>
-          <div className={styles.cta}>
-            <img
-              className={styles.communicationPhone1}
-              alt=""
-              src="Communication / Phone.svg"
-            />
-          </div>
-          <img className={styles.whatsappIcon1} alt="" src="Whatsapp.svg" />
-        </div>
-        <div className={styles.cta1}>
-          <div className={styles.cta2}>Rate this Company</div>
-          <img
-            className={styles.arrowChevronRight1}
-            alt=""
-            src="Arrow / Chevron_Right.svg"
-          />
-        </div>
-      </div> */}
-      
     </div>
   );
 };

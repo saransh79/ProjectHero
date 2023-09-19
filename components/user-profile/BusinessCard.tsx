@@ -1,6 +1,11 @@
-import type { NextPage } from "next";
+import {  Payload } from "@/Api's/PersonDetails";
 import styles from "./business-card.module.css";
-const BusinessCard: NextPage = () => {
+interface Iprops {
+  data: Payload;
+}
+const BusinessCard: React.FC<Iprops> = ({ data }) => {
+  // console.log(data);
+
   return (
     <div className={styles.businessWrapper}>
       <div className={styles.businessCard}>Business Card</div>
@@ -23,29 +28,29 @@ const BusinessCard: NextPage = () => {
                 <div className={styles.frameParent1}>
                   <div className={styles.patagoniaConstructionsParent}>
                     <b className={styles.patagoniaConstructions}>
-                      Patagonia Constructions
+                      {data.businessCardDetails.companyName}
                     </b>
-                    <div className={styles.fvWrapper}>
+                    {data.personalDetails.isVerified && <div className={styles.fvWrapper}>
                       <img
                         className={styles.fvIcon}
                         alt=""
                         src="assets/FV.svg"
                       />
-                    </div>
+                    </div>}
                   </div>
                   <div className={styles.patagoniaPrivateLimitedWrapper}>
                     <div className={styles.patagoniaPrivateLimited1}>
-                      Patagonia Private Limited
+                      {data.businessCardDetails.gstCompanyName}
                     </div>
                   </div>
                   <div className={styles.generalContractorWrapper}>
                     <div className={styles.generalContractor}>
-                      General Contractor
+                      {data.businessCardDetails.organisationSpecializationDetails.root}
                     </div>
                   </div>
                   <div className={styles.bangaloreKarnatakaWrapper}>
                     <div className={styles.generalContractor}>
-                      Bangalore, Karnataka
+                      {data.personalDetails.city}, {data.personalDetails.state}
                     </div>
                   </div>
                 </div>
@@ -92,7 +97,7 @@ const BusinessCard: NextPage = () => {
                   </div>
                 </div>
                 <div className={styles.divParent}>
-                  <div className={styles.div}>1.5 - 5 Cr (2023)</div>
+                  <div className={styles.div}>{data.businessCardDetails.turnover}</div>
                   <img src="assets/FV.svg" alt="" />
                 </div>
               </div>
@@ -119,7 +124,7 @@ const BusinessCard: NextPage = () => {
                   </div>
                 </div>
                 <div className={styles.divParent}>
-                  <div className={styles.div}>Private Limited</div>
+                  <div className={styles.div}>{data.businessCardDetails.companyType}</div>
                   <img src="assets/FV.svg" alt="" />
                 </div>
               </div>
@@ -139,7 +144,7 @@ const BusinessCard: NextPage = () => {
                   </div>
                 </div>
                 <div className={styles.divParent}>
-                  <div className={styles.div}>7 Years</div>
+                  <div className={styles.div}>{data.businessCardDetails.financialYear}</div>
                   <img src="assets/FV.svg" alt="" />
                 </div>
               </div>

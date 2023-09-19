@@ -1,6 +1,7 @@
 import React from 'react'
+import { NextPage } from 'next'
 import styles from './hero.module.css'
-const Hero = () => {
+const Hero: NextPage = () => {
   return (
     <div className={styles.hero}>
         <p>Our Professionals</p>

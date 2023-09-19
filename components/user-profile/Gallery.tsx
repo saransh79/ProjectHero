@@ -1,7 +1,6 @@
-import type { NextPage } from "next";
 import styles from "./gallery.module.css";
 import Viewmore from "../Viewmore";
-const Gallery: NextPage = () => {
+const Gallery = () => {
   return (
     <div className={styles.detailsParent}>
       <div className={styles.details}>

@@ -1,6 +1,5 @@
-import type { NextPage } from "next";
 import styles from "./rating-card.module.css";
-const RatingCard: NextPage = () => {
+const RatingCard = () => {
   return (
     <div className={styles.frameParent}>
       <div className={styles.addYourRatingParent}>

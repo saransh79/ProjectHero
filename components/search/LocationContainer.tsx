@@ -1,4 +1,5 @@
-import type { NextPage } from "next";
+import { NextPage } from "next";
+
 import styles from "./location-container.module.css";
 const LocationContainer: NextPage = () => {
   return (
