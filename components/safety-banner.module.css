@@ -1,0 +1,278 @@
+.verifiedStampIcon {
+    position: relative;
+    width: 245px;
+    height: 245px;
+    object-fit: cover;
+    z-index: 0;
+}
+.projectheroTrust {
+    position: relative;
+    letter-spacing: 0.01em;
+    line-height: 43.2px;
+}
+.frameChild {
+    position: relative;
+    width: 442.8px;
+    height: 0px;
+}
+.projectheroTrustSafetyParent {
+    width: 426.6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16.2px;
+}
+.icon {
+    position: relative;
+    border-radius: 210.19px;
+    width: 56.39px;
+    height: 56.39px;
+    object-fit: cover;
+}
+.koremIpsumDolor3 {
+    position: relative;
+    font-size: 16px;
+    line-height: 25.63px;
+    display: inline-block;
+}
+.phoneNumberVerificationParent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 5.13px;
+}
+.parent {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 20.51px;
+}
+.frameWrapper {
+    position: relative;
+    width: 581.9px;
+    height: 57.13px;
+    z-index: 0;
+}
+.icon1 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: 206.34px;
+    width: 56.39px;
+    height: 56.39px;
+    object-fit: cover;
+}
+.image28267Icon1 {
+    position: absolute;
+    top: 14.1px;
+    left: 5.55px;
+    border-radius: 2.56px;
+    width: 45.47px;
+    height: 30.21px;
+    object-fit: cover;
+}
+.securityCheckIcon1 {
+    position: absolute;
+    top: 13.7px;
+    left: 37.68px;
+    width: 15.07px;
+    height: 15.31px;
+    object-fit: cover;
+}
+.group {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 56.39px;
+    height: 56.39px;
+}
+.groupWrapper {
+    position: relative;
+    width: 56.39px;
+    height: 56.39px;
+}
+.adhaarVerification {
+    position: relative;
+    line-height: 25.63px;
+    display: inline-block;
+    width: 328.1px;
+}
+.koremIpsumDolor4 {
+    position: relative;
+    font-size: 16px;
+    line-height: 25.63px;
+    display: inline-block;
+    width: 506px;
+}
+.groupDiv {
+    position: relative;
+    width: 582.9px;
+    height: 57.13px;
+    z-index: 1;
+}
+.koremIpsumDolor5 {
+    position: relative;
+    font-size: 16px;
+    line-height: 25.63px;
+    display: inline-block;
+    width: 508px;
+}
+.frameWrapper1 {
+    position: relative;
+    width: 584.9px;
+    height: 57.13px;
+    z-index: 2;
+}
+.frameItem {
+    position: absolute;
+    margin: 0 !important;
+    top: 58.06px;
+    left: 27.31px;
+    border-right: 1.3px dashed #b3b3b3;
+    box-sizing: border-box;
+    width: 1.28px;
+    height: 40.28px;
+    z-index: 3;
+}
+.frameInner {
+    position: absolute;
+    margin: 0 !important;
+    top: 154.06px;
+    left: 26.31px;
+    border-right: 1.3px dashed #b3b3b3;
+    box-sizing: border-box;
+    width: 1.28px;
+    height: 43.28px;
+    z-index: 4;
+}
+.groupParent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: relative;
+    gap: 41.01px;
+    font-size: 18px;
+    color: #000;
+    font-family: Karla;
+}
+.frameParent {
+    width: 603px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 35.1px;
+    z-index: 1;
+}
+.frameChild1 {
+    position: absolute;
+    margin: 0 !important;
+    top: 20px;
+    right: 20px;
+    width: 43px;
+    height: 43px;
+    z-index: 2;
+}
+.verifiedStampParent {
+    position: relative;
+    width: 690px;
+    height: 690px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 26px 45px 45px 45px;
+    gap: 24px;
+    text-align: left;
+    font-size: 28px;
+    color: #222121;
+    font-family: Saira;
+}
+
+.stampWrapper{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media only screen and (max-width: 440px){
+    .koremIpsumDolor3{
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    .verifiedStampIcon {
+        width: 145px;
+        height: 145px;
+  }
+  .adhaarVerification{
+    width: fit-content;
+  }
+  .projectheroTrust {
+        position: relative;
+        letter-spacing: 0.01em;
+        line-height: 32px;
+  }
+  .projectheroTrustSafetyParent {
+        width: 316px;
+        gap: 12px;
+  }
+  .parent {
+        gap: 15.19px;
+  }
+  .frameWrapper {
+        width: 300px;
+        height: 60.8px;
+  }
+  .groupWrapper {
+        position: relative;
+        width: 41.77px;
+        height: 41.77px;
+        margin-right: 35px;
+  }
+  .groupParent {
+        gap: 40.38px;
+        font-size: 13.29px;
+        color: #000;
+        padding-bottom: 20px;
+  }
+  .frameParent {
+        width: 320px;
+        gap: 26px;
+  }
+
+  .frameChild1 {
+        width: 20px;
+        height: 20px;
+        top: 10px;
+        right: 10px;
+  }
+
+  .verifiedStampParent {
+        position: relative;
+        border-radius: 12px;
+        width: 328px;
+        height: fit-content;
+        padding: 24px;
+        gap: 8px;
+        font-size: 20px;
+        color: #222121;
+  }
+  
+  
+}

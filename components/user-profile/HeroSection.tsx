@@ -12,7 +12,7 @@ interface Iprops {
     designation: string;
     city: string;
     state: string;
-  };
+  } | any;
 }
 
 const HeroSection: React.FC<Iprops> = ({personalDetails}) => {

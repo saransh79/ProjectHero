@@ -1,12 +1,17 @@
 import { TrustAndSafety } from "@/Api's/PersonDetails";
 import styles from "./trust-safety.module.css";
+import { useState } from "react";
+import SafetyBanner from "../SafetyBanner";
 
 interface Iprops {
   data: TrustAndSafety[];
 }
 
 const Trust_Safety: React.FC<Iprops>= ( {data} ) => {
-  // console.log(data);
+  const [showSafetyBanner, setShowSafetyBanner]= useState<boolean>(false);
+  const showBanner= ()=>{
+    setShowSafetyBanner(true);
+  }
   return (
     <div className={styles.detailsParent}>
       <div className={styles.details}>
@@ -58,7 +63,8 @@ const Trust_Safety: React.FC<Iprops>= ( {data} ) => {
           </div>
         </div>
       </div>
-      <div className={styles.frameWrapper1}>
+      <div className={styles.frameWrapper1}
+      onClick={showBanner}>
         <div className={styles.groupParent}>
           <div className={styles.ellipseParent}>
             <div className={styles.groupChild} />
@@ -82,6 +88,8 @@ const Trust_Safety: React.FC<Iprops>= ( {data} ) => {
           </div>
         </div>
       </div>
+      {showSafetyBanner && <SafetyBanner setShowSafetyBanner= {setShowSafetyBanner}
+      showSafetyBanner= {showSafetyBanner}/>}
     </div>
   );
 };

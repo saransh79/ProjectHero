@@ -142,6 +142,7 @@
     box-sizing: border-box;
     width: 100%;
     height: 1px;
+    margin-top: 10px;
 }
 .Viewmore {
   margin: 0 auto;

@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import axios from "axios";
 import Navbar from "@/components/Navbar1";
 import AboutSection from "@/components/user-profile/About";
 import BusinessCard from "@/components/user-profile/BusinessCard";
@@ -19,27 +20,27 @@ import { Root } from "@/Api's/PersonDetails";
 
 const UserProfile: React.FC = () => {
   const [userData, setUserData] = useState<Root | null>(null);
+  const fetchUserData = async () => {
+    try {
+      const res = await axios.get<Root>(
+        "https://stage-api.projecthero.in/gateway/review-website/customer/6461e51dba87b6953276f448/detailsV2"
+      );
+      setUserData(res.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
   useEffect(() => {
-    // Fetch data from the API
-    fetch('https://stage-api.projecthero.in/gateway/review-website/customer/6461e51dba87b6953276f448/detailsV2')
-      .then((response) => response.json())
-      .then((data: Root) => {
-        setUserData(data);
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
-      });
-  }, []); // Empty dependency array ensures the effect runs once
+    fetchUserData();
+  }, []);
 
-
-  // console.log(userData);
-
-  return (
+  return userData ? (
     <div>
       <Navbar />
-      {userData && <HeroSection personalDetails={userData?.payload.personalDetails} />}
-      
+
+      <HeroSection personalDetails={userData?.payload.personalDetails} />
+
       <div className={styles.contentWrapper}>
         <div className={styles.mainContainer}>
           <div className={styles.sectionnameContainer}>
@@ -52,9 +53,13 @@ const UserProfile: React.FC = () => {
           </div>
           <AboutSection />
           <div className={styles.backgroundColor}>
-         { userData && <Trust_Safety data= {userData?.payload.trustAndSafety}/>}
-          { userData && <BusinessCard data={userData?.payload}/>}
-           {userData && <Services data={userData?.payload.primarySpecializations}/>}
+            {userData && (
+              <Trust_Safety data={userData?.payload.trustAndSafety} />
+            )}
+            <BusinessCard data={userData?.payload} />
+
+            <Services data={userData?.payload.primarySpecializations} />
+
             <Gallery />
             <Portfolio />
             <RatingSection />
@@ -72,6 +77,13 @@ const UserProfile: React.FC = () => {
       </div>
       <Footer />
     </div>
+  ) : (
+    <div
+      style={{
+        height: "100vh",
+        width: "100%",
+      }}
+    ></div>
   );
 };
 

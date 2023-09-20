@@ -241,6 +241,8 @@
     background-color: #ffecd7;
     width: 828px;
     height: 60px;
+    cursor: pointer;
+    border: 1px solid lightgray;
 }
 .detailsParent {
     position: relative;

@@ -2,12 +2,14 @@ import styles from "./rating-section.module.css";
 import Viewmore from "../Viewmore";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Pagination } from "@mui/material";
 
 interface Review {
   rating: number;
   description: string;
   createdAt: string;
   ratingId: string;
+  reviewerName: string
 }
 
 interface ReviewsResponse {
@@ -22,9 +24,8 @@ interface ReviewsResponse {
 const RatingSection: React.FC = () => {
   const [reviews, setReviews] = useState<Review[]>([]);
   const [pageNumber, setPageNumber] = useState<number>(1);
-  const [pageSize, setPageSize] = useState<number>(10);
-  const [hasMore, setHasMore] = useState<boolean>(true);
-  let currRating = 1;
+  const [pageSize] = useState<number>(10); // Maximum reviews per page
+  const [hasMore, setHasMore] = useState<boolean>(false);
 
   useEffect(() => {
     fetchReviews();
@@ -36,22 +37,23 @@ const RatingSection: React.FC = () => {
         `https://stage-api.projecthero.in/gateway/review-website/customer/6461f84b54ec61921d974f5d/reviews?page=${pageNumber}&size=${pageSize}`
       );
       const newReviews = response.data.payload.reviews;
+
       if (pageNumber === 1) {
         setReviews(newReviews);
       } else {
         setReviews([...reviews, ...newReviews]);
       }
-
       setHasMore(response.data.payload.hasMore);
     } catch (error) {
       console.error("Error fetching reviews:", error);
     }
   };
 
-  const loadPage = (newPage: number) => {
-    if (newPage >= 1 && newPage <= pageNumber) {
-      setPageNumber(newPage);
-    }
+  const handlePageChange = (
+    event: React.ChangeEvent<unknown>,
+    newPage: number
+  ) => {
+    setPageNumber(newPage);
   };
 
   return (
@@ -106,7 +108,7 @@ const RatingSection: React.FC = () => {
           return (
             <div>
               <div className={styles.woremIpsumDolorSitAmetCoParent}>
-                <div className={styles.irfanKhan}>{`Ajay Pal`}</div>
+                <div className={styles.irfanKhan}>{review.reviewerName}</div>
 
                 <div className={styles.frameWrapper1}>
                   <div className={styles.interfaceStarParent}>
@@ -140,9 +142,20 @@ const RatingSection: React.FC = () => {
             </div>
           );
         })}
-
-        <div className={styles.Viewmore}>
-          <Viewmore />
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: '100%'
+        }}>
+          <Pagination
+            count={Math.ceil(reviews.length / pageSize)}
+            page={pageNumber}
+            onChange={handlePageChange}
+            // color="primary"
+            variant="outlined"
+            // shape="rounded"
+          />
         </div>
       </div>
     </div>
