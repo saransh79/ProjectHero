@@ -1,4 +1,4 @@
-import {  Payload } from "@/Api's/PersonDetails";
+import {  Payload } from "@/Api's/interface/PersonDetails";
 import styles from "./business-card.module.css";
 interface Iprops {
   data: Payload;

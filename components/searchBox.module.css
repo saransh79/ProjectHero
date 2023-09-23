@@ -1,21 +1,3 @@
-.hero {
-  height: 266px;
-  background: url("/assets/hero-background.jpeg");
-  background-position:center;
-  background-repeat: no-repeat;
-  background-size:cover;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-}
-.hero p {
-  color: var(--White, var(--Color, #fff));
-  font-size: 36px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 140%; /* 50.4px */
-}
 .searchbox {
   width: 695px;
   height: 68px;
@@ -26,22 +8,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-.searchbar {
-  display: flex;
-  align-items: center;
-  padding-left: 15px;
-}
-.searchbar input {
-  color: rgba(0, 0, 0, 0.6);
-  font-family: Karla;
-  font-size: 18px;
-  font-weight: 500;
-  outline: none;
-  border: none;
-  padding-left: 10px;
-  width: 500px;
-  background-color: transparent;
 }
 .searchbox button {
   width: 159px;
@@ -58,19 +24,38 @@
   line-height: normal;
   border: none;
 }
-/* .searchbar input:nth-child(2){
-  display: none;
-} */
+.searchbar {
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+  }
+  .searchbar input {
+    color: rgba(0, 0, 0, 0.6);
+    font-family: Karla;
+    font-size: 18px;
+    font-weight: 500;
+    outline: none;
+    border: none;
+    padding-left: 10px;
+    width: 500px;
+    background-color: transparent;
+  }
+  .searchboxWrapper{
+    position: relative;
+    height: 100vh;
+    width: 100%;
+  }
+  .navSearch{
+    position: absolute;
+    top: 90px;
+    display: inline-block;
+    left: auto;
+    right: auto;
+  }
 @media only screen and (max-width: 440px) {
   .searchbox {
     width: 320px;
     height: 42px;
-  }
-  .hero{
-    height: 157px;
-  }
-  .hero p{
-    font-size: 24px;
   }
   .searchbox button {
     height: 42px;
@@ -91,5 +76,11 @@
   }
   .searchbar input{
     width: 200px;
+  }
+  .navSearch{
+    position: absolute;
+    top: 90px;
+    /* left: auto;
+    right: auto; */
   }
 }

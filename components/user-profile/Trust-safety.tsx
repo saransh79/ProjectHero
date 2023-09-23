@@ -1,4 +1,4 @@
-import { TrustAndSafety } from "@/Api's/PersonDetails";
+import { TrustAndSafety } from "@/Api's/interface/PersonDetails";
 import styles from "./trust-safety.module.css";
 import { useState } from "react";
 import SafetyBanner from "../SafetyBanner";

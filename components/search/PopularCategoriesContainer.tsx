@@ -1,17 +1,27 @@
 import { NextPage } from "next";
-
+import { useState, useEffect } from "react";
 import styles from "./popular-categories-container.module.css";
 import Download from "../Download";
 import ContractorCard from "./ContractorCard";
 import PopularCategories from "./PopularCategories";
 import Viewmore from "../Viewmore";
-import LocationContainer from "./LocationContainer";
-import FilterContainer from "./FilterContainer";
-const PopularCategoriesContainer: NextPage= () => {
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { getContractors } from "@/redux/slice/contractors";
+import { fetchAllUsers } from "@/Api's";
+
+const PopularCategoriesContainer: NextPage = () => {
+  const [category, setCategory] = useState<string>("");
+
+  useEffect(() => {
+    fetchAllUsers(category).then(response=>{});
+  }, [category]);
+
   return (
     <div className={styles.frameParent}>
       <div className={`${styles.frameGroup}`}>
-      <PopularCategories />
+        <PopularCategories 
+        category={category}
+        setCategory= {setCategory}/>
       </div>
 
       <div className={styles.frameGroup}>
@@ -24,8 +34,7 @@ const PopularCategoriesContainer: NextPage= () => {
         <ContractorCard />
       </div>
       <div className={styles.frameGroup}>
-
-      <Download />
+        <Download />
       </div>
 
       <Viewmore />

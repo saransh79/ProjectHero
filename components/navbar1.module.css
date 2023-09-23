@@ -20,12 +20,20 @@
   align-items: flex-start;
   gap: 32px;
 }
-.link {
+.link a{
   color: #726e8d;
+  position: relative;
 }
-/* .stroke{
-    margin-top: 12px;
-} */
+.link a.active::after{
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #EEC41A;
+}
 .navIcons{
   display: none;
 }

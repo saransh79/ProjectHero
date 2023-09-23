@@ -1,8 +1,16 @@
 import { NextPage } from "next";
 import styles from "./contracotorCard.module.css";
+import { useNavigate } from "react-router-dom";
+import Link from "next/link";
 const ContractorCard: NextPage = () => {
+  const profileURL= "https://stage-api.projecthero.in/gateway/review-website/customer/6461e51dba87b6953276f448/detailsV2"
+  const encodedURL = encodeURIComponent(profileURL);
+
+  const location= useNavigate();
   return (
-    <div className={styles.frameParent}>
+    <div className={styles.frameParent} 
+    // onClick={()=> location('/profile')}
+    >
       <div className={styles.rectangleParent}>
         <img
           className={styles.frameChild}
@@ -156,32 +164,32 @@ const ContractorCard: NextPage = () => {
             </div>
             <div className={styles.frameWrapper3}>
               <div className={styles.ctaParent}>
-                <div className={styles.cta}>
+                <Link href="https://play.google.com/store/apps/details?id=com.projecthero.contractor&hl=en_IN&gl=US" target="_blank" className={styles.cta}>
                   <img
                     className={styles.communicationPhone1}
                     alt=""
                     src="assets/Phone.svg"
                   />
                   <div className={styles.whatsapp}>Call</div>
-                </div>
-                <div className={styles.cta2}>
+                </Link>
+                <Link href="https://play.google.com/store/apps/details?id=com.projecthero.contractor&hl=en_IN&gl=US" target="_blank" className={styles.cta2}>
                   <img
                     className={styles.fvIcon}
                     alt=""
                     src="assets/Whatsapp.svg"
                   />
                   <div className={styles.whatsapp}>Whatsapp</div>
-                </div>
+                </Link>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div className={styles.whatsapp1Parent}>
+      <Link href={`https://api.whatsapp.com/send?text=${encodedURL}`} className={styles.whatsapp1Parent}>
         <img
           className={styles.whatsapp1Icon1}
           alt=""
-          src="assets/whatsapp 1.svg"
+          src="assets/Whatsapp.svg"
         />
         <div className={styles.bangaloreKarnataka}>Share Profile</div>
         <img
@@ -189,7 +197,7 @@ const ContractorCard: NextPage = () => {
           alt=""
           src="assets/Share_Android.svg"
         />
-      </div>
+      </Link>
     </div>
   );
 };

@@ -1,38 +1,47 @@
-import React from "react";
-import styles from "./navbar1.module.css";
+"use client";
 
-const Navbar = () => {
+import React, { useState } from "react";
+import styles from "./navbar1.module.css";
+import SearchBox from "./SearchBox";
+
+interface Iprops {
+  showSearchBox?: boolean;
+  setShowSearchBox?: any;
+}
+const Navbar: React.FC<Iprops> = ({ showSearchBox, setShowSearchBox }) => {
+  const [activeLink, setActiveLink]= useState<string | null>("");
+  
+  const handleLinkClick=(id: string)=>{
+    setActiveLink(id);
+  }
   return (
     <nav className={styles.navbar}>
       <div className={styles.logo}>
         <img src="/assets/PH New Logo.svg" alt="logo" />
-        <img src="/assets/Business.svg" alt="logo-content" className="business"/>
+        <img
+          src="/assets/Business.svg"
+          alt="logo-content"
+          className="business"
+        />
       </div>
       <div className={styles.navOptions}>
         <div className={styles.link}>
-          <a href="#">Home</a>
+          <a 
+          href="#"
+          className={activeLink === '' ? styles.active: ""}
+          onClick={()=>handleLinkClick('')}>Home</a>
         </div>
-        <div className={`${styles.link}`}>
-          <a href="#">Find Professionals</a>
-          <div className={styles.stroke}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="136"
-              height="4"
-              viewBox="0 0 136 4"
-              fill="none"
-            >
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M-1.31134e-07 1.93994C-5.87108e-08 1.11151 0.671573 0.439941 1.5 0.439942L134.5 0.439953C135.328 0.439953 136 1.11153 136 1.93995C136 2.76838 135.328 3.43995 134.5 3.43995L1.5 3.43994C0.671573 3.43994 -2.03558e-07 2.76837 -1.31134e-07 1.93994Z"
-                fill="#EEC41A"
-              />
-            </svg>
-          </div>
+        <div className={styles.link}>
+          <a 
+          href="#"
+          className={activeLink === 'pro' ? styles.active: ""}
+          onClick={()=>handleLinkClick('pro')}>Find Professionals</a>
         </div>
-        <div className={`${styles.link}`}>
-          <a href="#">Contact Us</a>
+        <div className={styles.link}>
+          <a 
+          href="#"
+          className={activeLink === 'contact' ? styles.active: ""}
+          onClick={()=>handleLinkClick('contact')}>Contact Us</a>
         </div>
       </div>
 
@@ -48,6 +57,10 @@ const Navbar = () => {
           src="assets/hamburger menu.svg"
         />
       </div>
+
+      {/* Searchbox */}
+      {showSearchBox && <SearchBox showSearchBox={showSearchBox}
+      setShowSearchBox={setShowSearchBox}/>}
     </nav>
   );
 };

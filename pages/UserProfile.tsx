@@ -16,14 +16,16 @@ import SimilarProfiles from "@/components/user-profile/SimilarProfiles";
 import Trust_Safety from "@/components/user-profile/Trust-safety";
 import styles from "./userProfile.module.css";
 import Footer from "@/components/Footer";
-import { Root } from "@/Api's/PersonDetails";
+import { Root } from "@/Api's/interface/PersonDetails";
+import { userDataApi } from "@/Api's";
 
 const UserProfile: React.FC = () => {
+  const [showSearchBox, setShowSearchBox] = useState<boolean>(false);
   const [userData, setUserData] = useState<Root | null>(null);
   const fetchUserData = async () => {
     try {
       const res = await axios.get<Root>(
-        "https://stage-api.projecthero.in/gateway/review-website/customer/6461e51dba87b6953276f448/detailsV2"
+        `${userDataApi}6461e51dba87b6953276f448/detailsV2`
       );
       setUserData(res.data);
     } catch (error) {
@@ -35,55 +37,62 @@ const UserProfile: React.FC = () => {
     fetchUserData();
   }, []);
 
-  return userData ? (
+  return (
     <div>
-      <Navbar />
+      {userData ? (
+        <div>
+          <Navbar
+            showSearchBox={showSearchBox}
+            setShowSearchBox={setShowSearchBox}
+          />
+          <HeroSection personalDetails={userData?.payload.personalDetails} />
 
-      <HeroSection personalDetails={userData?.payload.personalDetails} />
+          <div className={styles.contentWrapper}>
+            <div className={styles.mainContainer}>
+              <div className={styles.sectionnameContainer}>
+                <div className={styles.sectionNames}>
+                  <div className={styles.bold}>Summary</div>
+                  <div>Business</div>
+                  <div>Reviews</div>
+                </div>
+                <div className={styles.stroke}></div>
+              </div>
+              <AboutSection />
+              <div className={styles.backgroundColor}>
+                {userData && (
+                  <Trust_Safety data={userData?.payload.trustAndSafety} />
+                )}
+                <BusinessCard data={userData?.payload} />
 
-      <div className={styles.contentWrapper}>
-        <div className={styles.mainContainer}>
-          <div className={styles.sectionnameContainer}>
-            <div className={styles.sectionNames}>
-              <div className={styles.bold}>Summary</div>
-              <div>Business</div>
-              <div>Reviews</div>
+                <Services data={userData?.payload.primarySpecializations} />
+
+                <Gallery />
+                <Portfolio />
+                <RatingSection />
+              </div>
             </div>
-            <div className={styles.stroke}></div>
+            <div className={styles.advertiseWrapper}>
+              <RatingCard />
+              <Download />
+            </div>
           </div>
-          <AboutSection />
-          <div className={styles.backgroundColor}>
-            {userData && (
-              <Trust_Safety data={userData?.payload.trustAndSafety} />
-            )}
-            <BusinessCard data={userData?.payload} />
 
-            <Services data={userData?.payload.primarySpecializations} />
-
-            <Gallery />
-            <Portfolio />
-            <RatingSection />
+          <SimilarProfiles />
+          <div className={styles.download}>
+            <DownloadApp />
           </div>
+          <Footer />
         </div>
-        <div className={styles.advertiseWrapper}>
-          <RatingCard />
-          <Download />
-        </div>
-      </div>
-
-      <SimilarProfiles />
-      <div className={styles.download}>
-        <DownloadApp />
-      </div>
-      <Footer />
+      ) : (
+        <div
+          style={{
+            height: "100vh",
+            width: "100%",
+          }}
+        ></div>
+      )}
+      ;
     </div>
-  ) : (
-    <div
-      style={{
-        height: "100vh",
-        width: "100%",
-      }}
-    ></div>
   );
 };
 

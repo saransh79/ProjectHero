@@ -1,8 +1,8 @@
 import styles from "./rating-section.module.css";
-import Viewmore from "../Viewmore";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Pagination } from "@mui/material";
+import { reviewsApi } from "@/Api's";
 
 interface Review {
   rating: number;
@@ -24,7 +24,7 @@ interface ReviewsResponse {
 const RatingSection: React.FC = () => {
   const [reviews, setReviews] = useState<Review[]>([]);
   const [pageNumber, setPageNumber] = useState<number>(1);
-  const [pageSize] = useState<number>(10); // Maximum reviews per page
+  const [pageSize] = useState<number>(10);
   const [hasMore, setHasMore] = useState<boolean>(false);
 
   useEffect(() => {
@@ -34,7 +34,7 @@ const RatingSection: React.FC = () => {
   const fetchReviews = async () => {
     try {
       const response = await axios.get<ReviewsResponse>(
-        `https://stage-api.projecthero.in/gateway/review-website/customer/6461f84b54ec61921d974f5d/reviews?page=${pageNumber}&size=${pageSize}`
+        `${reviewsApi}6461f84b54ec61921d974f5d/reviews?page=${pageNumber}&size=${pageSize}`
       );
       const newReviews = response.data.payload.reviews;
 

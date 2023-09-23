@@ -1,6 +1,7 @@
 .download{
     height: 180px;
     width: 100%;
+    cursor: pointer;
 }
 .download img{
     width: 100%;

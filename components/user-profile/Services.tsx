@@ -1,4 +1,4 @@
-import { PrimarySpecialization } from "@/Api's/PersonDetails";
+import { PrimarySpecialization } from "@/Api's/interface/PersonDetails";
 import styles from "./services.module.css";
 interface Iprops {
   data: PrimarySpecialization[];
