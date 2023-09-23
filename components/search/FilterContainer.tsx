@@ -17,7 +17,7 @@ import {
 import styles from "./filter-container.module.css";
 
 interface Iprops{
-  setCategory: any;
+  setCategory?: any;
 }
 const FilterContainer: React.FC<Iprops> = ({setCategory}) => {
   // const [topping, setTopping] = useState<string>("Medium");
