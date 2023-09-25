@@ -7,11 +7,11 @@ interface Iprops {
   data: TrustAndSafety[];
 }
 
-const Trust_Safety: React.FC<Iprops>= ( {data} ) => {
-  const [showSafetyBanner, setShowSafetyBanner]= useState<boolean>(false);
-  const showBanner= ()=>{
+const Trust_Safety: React.FC<Iprops> = ({ data }) => {
+  const [showSafetyBanner, setShowSafetyBanner] = useState<boolean>(false);
+  const showBanner = () => {
     setShowSafetyBanner(true);
-  }
+  };
   return (
     <div className={styles.detailsParent}>
       <div className={styles.details}>
@@ -22,49 +22,40 @@ const Trust_Safety: React.FC<Iprops>= ( {data} ) => {
       <div className={styles.frameWrapper}>
         <div className={styles.frameDiv}>
           <div className={styles.frameParent}>
-           {data.map((i: TrustAndSafety)=>{
-            return (
-              <div className={styles.frameGroup}>
-              <div className={styles.maskGroupParent}>
-                <img
-                  className={styles.maskGroupIcon1}
-                  alt=""
-                  src={i.url}
-                />
-                <div className={styles.userIdentity}>
-                  {i.key}
+            {data.map((i: TrustAndSafety) => {
+              return (
+                <div className={styles.frameGroup}>
+                  <div className={styles.maskGroupParent}>
+                    <img className={styles.maskGroupIcon1} alt="" src={i.url} />
+                    <div className={styles.userIdentity}>{i.key}</div>
+                  </div>
+                  <div className={styles.warningCircleCheckParent}>
+                    {i.isVerified ? (
+                      <img
+                        className={styles.warningCircleCheck5}
+                        alt=""
+                        src="assets/Circle_Check.svg"
+                      />
+                    ) : (
+                      <img
+                        src="assets/cross.png"
+                        alt=""
+                        className={styles.warningCircleCheck5}
+                      />
+                    )}
+                    <div className={styles.verificationStatusTags5}>
+                      {i.isVerified && (
+                        <div className={styles.userIdentity}>{`Verified `}</div>
+                      )}
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div className={styles.warningCircleCheckParent}>
-                {i.isVerified ? (
-                  <img
-                    className={styles.warningCircleCheck5}
-                    alt=""
-                    src="assets/Circle_Check.svg"
-                  />
-                ) : (
-                  <img
-                    src="assets/cross.png"
-                    alt=""
-                    className={styles.warningCircleCheck5}
-                  />
-                )}
-                <div className={styles.verificationStatusTags5}>
-                  {i.isVerified && (
-                    <div className={styles.userIdentity}>{`Verified `}</div>
-                  )}
-                </div>
-              </div>
-            </div>
-            )
-           })}
-            
-            
+              );
+            })}
           </div>
         </div>
       </div>
-      <div className={styles.frameWrapper1}
-      onClick={showBanner}>
+      <div className={styles.frameWrapper1} onClick={showBanner}>
         <div className={styles.groupParent}>
           <div className={styles.ellipseParent}>
             <div className={styles.groupChild} />
@@ -88,8 +79,12 @@ const Trust_Safety: React.FC<Iprops>= ( {data} ) => {
           </div>
         </div>
       </div>
-      {showSafetyBanner && <SafetyBanner setShowSafetyBanner= {setShowSafetyBanner}
-      showSafetyBanner= {showSafetyBanner}/>}
+      {showSafetyBanner && (
+        <SafetyBanner
+          setShowSafetyBanner={setShowSafetyBanner}
+          showSafetyBanner={showSafetyBanner}
+        />
+      )}
     </div>
   );
 };

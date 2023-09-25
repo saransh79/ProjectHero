@@ -2,14 +2,37 @@ import { NextPage } from "next";
 import styles from "./contracotorCard.module.css";
 import { useNavigate } from "react-router-dom";
 import Link from "next/link";
-const ContractorCard: NextPage = () => {
-  const profileURL= "https://stage-api.projecthero.in/gateway/review-website/customer/6461e51dba87b6953276f448/detailsV2"
-  const encodedURL = encodeURIComponent(profileURL);
+import { Customer } from "@/Api's/interface/Users";
+import { useEffect, useState } from "react";
+import { Payload } from "@/Api's/interface/PersonDetails";
+import { fetchUserDetails } from "@/Api's";
+import { log } from "console";
 
-  const location= useNavigate();
+interface Iprops {
+  userId?: string;
+}
+const ContractorCard: React.FC<Iprops> = ({ userId }) => {
+  const location = useNavigate();
+  const [userDetails, setUserDetails] = useState<Payload | null>(null);
+
+  // console.log(userId);
+  
+  useEffect(() => {
+    fetchUserDetails(userId)
+      .then((response) => {
+        setUserDetails(response.data);
+        console.log(userDetails);
+        
+      })
+      .catch((error) => {
+        console.error("error while fetching userDetails: ", error);
+      });
+  }, []);
+
   return (
-    <div className={styles.frameParent} 
-    // onClick={()=> location('/profile')}
+    <div
+      className={styles.frameParent}
+      // onClick={()=> location('/profile')}
     >
       <div className={styles.rectangleParent}>
         <img
@@ -22,7 +45,7 @@ const ContractorCard: NextPage = () => {
             <div className={styles.frameDiv}>
               <div className={styles.patagoniaConstructionsGeneParent}>
                 <div className={styles.patagoniaConstructions1}>
-                  Patagonia Constructions | General Contractor
+                  {userDetails?.personalDetails?.designation} | General Contractor
                 </div>
                 <div className={styles.ajayVarmaParent}>
                   <div className={styles.ajayVarma}>Ajay Varma</div>
@@ -164,7 +187,11 @@ const ContractorCard: NextPage = () => {
             </div>
             <div className={styles.frameWrapper3}>
               <div className={styles.ctaParent}>
-                <Link href="https://play.google.com/store/apps/details?id=com.projecthero.contractor&hl=en_IN&gl=US" target="_blank" className={styles.cta}>
+                <Link
+                  href="https://play.google.com/store/apps/details?id=com.projecthero.contractor&hl=en_IN&gl=US"
+                  target="_blank"
+                  className={styles.cta}
+                >
                   <img
                     className={styles.communicationPhone1}
                     alt=""
@@ -172,7 +199,11 @@ const ContractorCard: NextPage = () => {
                   />
                   <div className={styles.whatsapp}>Call</div>
                 </Link>
-                <Link href="https://play.google.com/store/apps/details?id=com.projecthero.contractor&hl=en_IN&gl=US" target="_blank" className={styles.cta2}>
+                <Link
+                  href="https://play.google.com/store/apps/details?id=com.projecthero.contractor&hl=en_IN&gl=US"
+                  target="_blank"
+                  className={styles.cta2}
+                >
                   <img
                     className={styles.fvIcon}
                     alt=""
@@ -185,7 +216,10 @@ const ContractorCard: NextPage = () => {
           </div>
         </div>
       </div>
-      <Link href={`https://api.whatsapp.com/send?text=${encodedURL}`} className={styles.whatsapp1Parent}>
+      <Link
+        href={`https://api.whatsapp.com/send?text=${""}`}
+        className={styles.whatsapp1Parent}
+      >
         <img
           className={styles.whatsapp1Icon1}
           alt=""

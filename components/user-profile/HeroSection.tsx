@@ -1,21 +1,15 @@
+import { PersonalDetails } from "@/Api's/interface/PersonDetails";
 import styles from "./hero-section.module.css";
 import UserCard from "./UserCard";
 
 
 interface Iprops {
-  personalDetails: {
-    name: string;
-    isVerified: boolean;
-    isMember: boolean;
-    phoneNumber: string;
-    companyName: string;
-    designation: string;
-    city: string;
-    state: string;
-  } | any;
+  personalDetails: PersonalDetails;
+  activeComponent: string | null;
+  setActiveComponent: any;
 }
 
-const HeroSection: React.FC<Iprops> = ({personalDetails}) => {
+const HeroSection: React.FC<Iprops> = ({personalDetails, activeComponent, setActiveComponent}) => {
   // console.log(personalDetails);
 
   return (
@@ -32,7 +26,7 @@ const HeroSection: React.FC<Iprops> = ({personalDetails}) => {
         <span className={styles.userName}>{personalDetails.name}</span>
       </div>
       <div className={styles.UserCard}>
-        <UserCard personalData={personalDetails}/>
+        <UserCard data={personalDetails}/>
       </div>
       <div className={styles.shareprofile}>
         <div>Share Profile</div>
@@ -68,9 +62,18 @@ const HeroSection: React.FC<Iprops> = ({personalDetails}) => {
       </div>
 
       <div className={styles.personalParent}>
-        <div className={styles.personal}>Personal</div>
-        <div className={styles.business}>Business</div>
-        <div className={styles.business}>Reviews</div>
+        <button
+        value=''
+        onClick={(e: any)=> setActiveComponent(e.target.value)}
+        className={activeComponent === ''? styles.personal: ""}>Personal</button>
+        <button
+        value='business' 
+        onClick={(e: any)=> setActiveComponent(e.target.value)}
+        className={activeComponent === 'business' ? styles.personal: ""}>Business</button>
+        <button
+        value="reviews"
+        onClick={(e:any)=> setActiveComponent(e.target.value)}
+        className={activeComponent === 'reviews'? styles.personal: ""}>Reviews</button>
       </div>
     </div>
   );

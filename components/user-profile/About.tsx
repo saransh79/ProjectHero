@@ -1,5 +1,9 @@
 import styles from "./about.module.css";
-const AboutSection = () => {
+
+interface Iprops{
+  about?: string | undefined;
+}
+const AboutSection: React.FC<Iprops> = ({about}) => {
   return (
     <div className={styles.detailsParent}>
       <div className={styles.personalDetailsParent}>
@@ -13,7 +17,7 @@ const AboutSection = () => {
       </div>
       <div
         className={styles.woremIpsumDolor1}
-      >Not Available</div>
+      >{about}</div>
     </div>
   );
 };

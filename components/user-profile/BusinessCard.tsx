@@ -23,7 +23,7 @@ const BusinessCard: React.FC<Iprops> = ({ data }) => {
                 <img
                   className={styles.userPicIcon}
                   alt=""
-                  src="assets/user-pic.png"
+                  src={data.personalDetails.profilePicture || "assets/UserProfile.png"}
                 />
                 <div className={styles.frameParent1}>
                   <div className={styles.patagoniaConstructionsParent}>
@@ -77,7 +77,7 @@ const BusinessCard: React.FC<Iprops> = ({ data }) => {
                   </div>
                 </div>
                 <div className={styles.divParent}>
-                  <div className={styles.div}>098765432109876</div>
+                  <div className={styles.div}>{data.businessCardDetails.GSTIN}</div>
                   <img src="assets/FV.svg" alt="" />
                 </div>
               </div>

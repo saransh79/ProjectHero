@@ -4,11 +4,6 @@ export const baseUrl =
   "https://stage-api.projecthero.in/gateway/review-website";
 // ?root=SUB_CONTRACTOR&workTypes=MASON%2CPAINTER%27";
 
-export const reviewsApi =
-  "https://stage-api.projecthero.in/gateway/review-website/customer/";
-
-export const userDataApi =
-  "https://stage-api.projecthero.in/gateway/review-website/customer/";
 
 export const fetchRootCategories = () => {
   return axios.get(`${baseUrl}/categories`);
@@ -26,18 +21,23 @@ export const fetchSecondaryCategories = (
   return axios.get(`${baseUrl}/categories?root=${rootCategory}&${queryParams}`);
 };
 
-export const fetchAllUsers = (
+export const fetchAllUsers = async(
   rootCategory?: string,
   primaryCategories?: string[]
 ) => {
   if (!rootCategory && primaryCategories?.length == 0) {
-    return axios.get(`${baseUrl}/similar-profiles`);
+    return await axios.get(`${baseUrl}/similar-profiles`);
+    // return await axios.get(`${baseUrl}/customer/search`);
   } else if (rootCategory && primaryCategories?.length == 0) {
-    return axios.get(`${baseUrl}/similar-profiles?root=${rootCategory}`);
+    return await axios.get(`${baseUrl}/similar-profiles?root=${rootCategory}`);
   } else {
     const queryParams = "workTypes=" + primaryCategories?.join(",");
-    return axios.get(
+    return await axios.get(
       `${baseUrl}/similar-profiles?root=${rootCategory}&${queryParams}`
     );
   }
 };
+
+export const fetchUserDetails= async (userId?: string)=>{
+  return await axios.get(`${baseUrl}/customer/${userId}/detailsV2`)
+}

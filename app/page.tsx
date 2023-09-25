@@ -11,13 +11,12 @@ import { Provider } from "react-redux";
 
 export default function Home() {
   return (
-    <Provider store={store}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Search />} />
-          <Route path="/profile" element={<UserProfile />} />
-        </Routes>
-      </BrowserRouter>
-    </Provider>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Search />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/profile" element={<UserProfile />} />
+      </Routes>
+    </BrowserRouter>
   );
 }

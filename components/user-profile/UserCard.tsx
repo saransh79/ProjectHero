@@ -1,36 +1,28 @@
 import Link from "next/link";
 import styles from "./user-card.module.css";
+import { PersonalDetails } from "@/Api's/interface/PersonDetails";
 
 interface Iprops {
-  personalData: {
-    name: string;
-    isVerified: boolean;
-    isMember: boolean;
-    phoneNumber: string;
-    companyName: string;
-    designation: string;
-    city?: string;
-    state: string;
-  };
+  data: PersonalDetails;
 }
-const UserCard: React.FC<Iprops> = ({ personalData }) => {
+const UserCard: React.FC<Iprops> = ({ data }) => {
   return (
     <div className={styles.frameParent}>
       <div className={styles.rectangleParent}>
         <img
           className={styles.frameChild}
           alt=""
-          src="assets/UserProfile.png"
+          src={data.profilePicture || "assets/UserProfile.png"}
         />
         <div className={styles.rectangleParent}>
           <div className={styles.frameWrapper}>
             <div className={styles.ajayVarmaParent}>
-              <b className={styles.ajayVarma}>{personalData.name}</b>
+              <b className={styles.ajayVarma}>{data.name}</b>
               <div className={styles.fvParent}>
-                {personalData.isVerified && (
+                {data.isVerified && (
                   <img className={styles.fvIcon} alt="" src="assets/FV.svg" />
                 )}
-                {personalData.isMember && (
+                {data.isMember && (
                   <img
                     className={styles.fvIcon}
                     alt=""
@@ -41,7 +33,7 @@ const UserCard: React.FC<Iprops> = ({ personalData }) => {
             </div>
           </div>
           <b className={styles.patagoniaConstructions1}>
-            {personalData.companyName} | {personalData.designation}
+            {data.companyName} | {data.designation}
           </b>
           <div className={styles.navigationMapPinParent}>
             <img
@@ -50,14 +42,14 @@ const UserCard: React.FC<Iprops> = ({ personalData }) => {
               src="assets/Map_Pin.svg"
             />
             <div className={styles.ajayVarma}>
-              {personalData.city}, {personalData.state}
+              {data.city}, {data.state}
             </div>
           </div>
         </div>
       </div>
       <div className={styles.frameDiv}>
         <div className={styles.ctaParent}>
-          <Link href={`tel:${personalData.phoneNumber}`} target="_blank">  
+          <Link href="https://play.google.com/store/apps/details?id=com.projecthero.contractor&hl=en_IN&gl=US" target="_blank" >  
             <div className={styles.cta}>
               <img
                 className={styles.communicationPhone1}
@@ -69,8 +61,7 @@ const UserCard: React.FC<Iprops> = ({ personalData }) => {
           </Link>
 
           <Link
-            href={`https://wa.me/${personalData.phoneNumber}`}
-            target="_blank"
+            href="https://play.google.com/store/apps/details?id=com.projecthero.contractor&hl=en_IN&gl=US" target="_blank" 
           >
             <div className={styles.cta2}>
               <img

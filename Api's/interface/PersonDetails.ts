@@ -10,14 +10,17 @@ export interface Payload {
 }
 
 export interface PersonalDetails {
-  name: string
-  isVerified: boolean
-  isMember: boolean
-  phoneNumber: string
-  companyName: string
-  designation: string
-  city: string
-  state: string
+  name?: string
+  isVerified?: boolean
+  isMember?: boolean
+  phoneNumber?: string
+  companyName?: string
+  designation?: string
+  city?: string
+  state?: string
+  about?: string
+  email?: string
+  profilePicture?: string;
 }
 
 export interface TrustAndSafety {
@@ -27,19 +30,20 @@ export interface TrustAndSafety {
 }
 
 export interface BusinessCardDetails {
-  companyName: string
-  isVerified: string
-  gstCompanyName: string
-  organisationSpecializationDetails: OrganisationSpecializationDetails
-  companyType: string
-  turnover: string
-  financialYear: string
+  companyName?: string
+  isVerified?: string
+  gstCompanyName?: string
+  organisationSpecializationDetails?: OrganisationSpecializationDetails
+  companyType?: string
+  turnover?: string
+  financialYear?: string
+  GSTIN?: number
 }
 
 export interface OrganisationSpecializationDetails {
-  primarySpecialization: string[]
-  root: string
-  secondarySpecialization: SecondarySpecialization
+  primarySpecialization?: string[]
+  root?: string
+  secondarySpecialization?: SecondarySpecialization
 }
 
 export interface SecondarySpecialization {
@@ -48,10 +52,10 @@ export interface SecondarySpecialization {
 }
 
 export interface PrimarySpecialization {
-  slug: string
-  label: string
-  nodeType: string
-  description: any
-  icon: string
-  secondaryCategories: string[]
+  slug?: string
+  label?: string
+  nodeType?: string
+  description?: any
+  icon?: string
+  secondaryCategories?: string[]
 }

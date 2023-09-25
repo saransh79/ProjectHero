@@ -20,11 +20,17 @@
   align-items: flex-start;
   gap: 32px;
 }
-.link a{
+.searchLink{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.link div{
   color: #726e8d;
   position: relative;
+  cursor: pointer;
 }
-.link a.active::after{
+.link div.active::after{
   content: '';
   display: block;
   position: absolute;

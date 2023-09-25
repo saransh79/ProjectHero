@@ -19,6 +19,11 @@
     align-items: center;
     gap: 3rem;
 }
+.sectionNames button{
+  border: none;
+  background-color: #fff;
+  font-size: 18px;
+}
 .bold {
   font-size: 18px;
   font-weight: 700;

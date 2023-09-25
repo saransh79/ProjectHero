@@ -17,24 +17,23 @@ import Trust_Safety from "@/components/user-profile/Trust-safety";
 import styles from "./userProfile.module.css";
 import Footer from "@/components/Footer";
 import { Root } from "@/Api's/interface/PersonDetails";
-import { userDataApi } from "@/Api's";
+import { fetchUserDetails } from "@/Api's";
+import Link from "next/link";
 
 const UserProfile: React.FC = () => {
+  const [activeComponent, setActiveComponent]= useState<string | null>("");
   const [showSearchBox, setShowSearchBox] = useState<boolean>(false);
   const [userData, setUserData] = useState<Root | null>(null);
-  const fetchUserData = async () => {
-    try {
-      const res = await axios.get<Root>(
-        `${userDataApi}6461e51dba87b6953276f448/detailsV2`
-      );
-      setUserData(res.data);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
 
+  const toggleActiveComponent= (e: any)=>{
+    setActiveComponent(e.target.value)
+  }
   useEffect(() => {
-    fetchUserData();
+    fetchUserDetails("6461e51dba87b6953276f448").then((response)=>{
+      setUserData(response.data);
+    }).catch((error)=>{
+      console.error("Error while fetching userDetails: ", error);
+    })
   }, []);
 
   return (
@@ -45,30 +44,43 @@ const UserProfile: React.FC = () => {
             showSearchBox={showSearchBox}
             setShowSearchBox={setShowSearchBox}
           />
-          <HeroSection personalDetails={userData?.payload.personalDetails} />
+          <HeroSection personalDetails={userData?.payload.personalDetails} 
+          activeComponent={activeComponent}
+          setActiveComponent={setActiveComponent}/>
 
           <div className={styles.contentWrapper}>
             <div className={styles.mainContainer}>
               <div className={styles.sectionnameContainer}>
                 <div className={styles.sectionNames}>
-                  <div className={styles.bold}>Summary</div>
-                  <div>Business</div>
-                  <div>Reviews</div>
+                  <button 
+                  value=''
+                  onClick={toggleActiveComponent}
+                  className={activeComponent === ''? styles.bold: ""}>Summary</button>
+                  <button
+                  value="business"
+                  onClick={toggleActiveComponent}
+                  className={activeComponent === 'business'? styles.bold: ""}
+                  >Business</button>
+                  <button
+                  value="reviews"
+                  onClick={toggleActiveComponent}
+                  className={activeComponent === 'reviews'? styles.bold: ""}
+                  >Reviews</button>
                 </div>
                 <div className={styles.stroke}></div>
               </div>
-              <AboutSection />
+              {activeComponent === '' ?<AboutSection about={userData?.payload?.personalDetails?.about}/>: null}
               <div className={styles.backgroundColor}>
-                {userData && (
+                {userData && activeComponent === '' && (
                   <Trust_Safety data={userData?.payload.trustAndSafety} />
                 )}
-                <BusinessCard data={userData?.payload} />
+               {activeComponent ==="" || activeComponent === "business" ? <BusinessCard data={userData?.payload} /> : null}
 
-                <Services data={userData?.payload.primarySpecializations} />
+                {activeComponent === "" || activeComponent === "business" ? <Services data={userData?.payload.primarySpecializations} />: null}
 
-                <Gallery />
-                <Portfolio />
-                <RatingSection />
+                {activeComponent === "" && <Gallery />}
+                {activeComponent === "" &&<Portfolio />}
+                {activeComponent === "" || activeComponent === "reviews" ? <RatingSection /> : null}
               </div>
             </div>
             <div className={styles.advertiseWrapper}>

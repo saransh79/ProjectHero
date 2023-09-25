@@ -17,28 +17,23 @@ import {
 import styles from "./filter-container.module.css";
 
 interface Iprops{
-  setCategory?: any;
+  selectedRootCategory: string;
+  setSelectedRootCategory: any;
+  selectedPrimaryCategories: string[];
+  setSelectedPrimaryCategories: any;
+
 }
-const FilterContainer: React.FC<Iprops> = ({setCategory}) => {
-  // const [topping, setTopping] = useState<string>("Medium");
-  // const [filters, setFilters] = useState<Payload | null>(null);
-  // const [category, setCategory] = useState<string>("");
+const FilterContainer: React.FC<Iprops> = ({ selectedRootCategory, setSelectedRootCategory, selectedPrimaryCategories, setSelectedPrimaryCategories}) => {
 
   const location = useLocation();
+  
   const [rootCategories, setRootCategories] = useState<RootCategory[]>([]);
-  const [selectedRootCategory, setSelectedRootCategory] = useState<string>("");
   const [primaryCategories, setPrimaryCategories] = useState<PrimaryCategory[]>(
     []
   );
-  const [selectedPrimaryCategories, setSelectedPrimaryCategories] = useState<
-    string[]
-  >([]);
+ 
   const [secondaryCategories, setSecondaryCategories] = useState<SecondaryCategory[]>([]);
   const [selectedSecondaryCategories, setSelectedSecondaryCategories] = useState<string[]>([]);
-
-  // const queryParams = new URLSearchParams(location.search);
-  // const selectedRootCategory = queryParams.get("root");
-  // const selectedPrimaryCategories = queryParams.getAll("workTypes");
 
   useEffect(() => {
     // Fetch root categories
@@ -81,9 +76,7 @@ const FilterContainer: React.FC<Iprops> = ({setCategory}) => {
   }, [selectedRootCategory, selectedPrimaryCategories]);
 
   const handleRootCategoryChange = (event: any) => {
-    console.log(selectedRootCategory);
     setSelectedRootCategory(event.target.value);
-    setCategory(event.target.value)
   };
 
   const handlePrimaryCategoryChange = (event: any) => {

@@ -5,23 +5,25 @@ import Download from "../Download";
 import ContractorCard from "./ContractorCard";
 import PopularCategories from "./PopularCategories";
 import Viewmore from "../Viewmore";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { getContractors } from "@/redux/slice/contractors";
-import { fetchAllUsers } from "@/Api's";
+import { Customer } from "@/Api's/interface/Users";
 
-const PopularCategoriesContainer: NextPage = () => {
-  const [category, setCategory] = useState<string>("");
-
-  useEffect(() => {
-    fetchAllUsers(category).then(response=>{});
-  }, [category]);
-
+interface Iprops {
+  customers?: Customer[];
+  selectedRootCategory: string;
+  setSelectedRootCategory: any;
+}
+const PopularCategoriesContainer: React.FC<Iprops> = ({
+  customers,
+  selectedRootCategory,
+  setSelectedRootCategory,
+}) => {
   return (
     <div className={styles.frameParent}>
       <div className={`${styles.frameGroup}`}>
-        <PopularCategories 
-        category={category}
-        setCategory= {setCategory}/>
+        <PopularCategories
+          selectedRootCategory={selectedRootCategory}
+          setSelectedRootCategory={setSelectedRootCategory}
+        />
       </div>
 
       <div className={styles.frameGroup}>
@@ -31,7 +33,11 @@ const PopularCategoriesContainer: NextPage = () => {
           </div>
         </div>
 
-        <ContractorCard />
+        {customers?.map((customer)=>{
+          return(
+            <ContractorCard userId={customer.userId} />
+          )
+        })}
       </div>
       <div className={styles.frameGroup}>
         <Download />
