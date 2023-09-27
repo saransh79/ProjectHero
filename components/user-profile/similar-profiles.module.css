@@ -94,7 +94,7 @@
 .mumbaiMaharashtra {
   position: relative;
   font-size: 14px;
-  line-height: 22.29px;
+  /* line-height: 22.29px; */
   font-weight: 500;
   color: #5f5f5f;
 }
@@ -140,6 +140,7 @@
   border: 1.6px solid rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
   width: 254.69px;
+  height: 200px;
   display: flex;
   flex-direction: column;
   padding: 24px;

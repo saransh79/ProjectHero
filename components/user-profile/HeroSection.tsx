@@ -4,7 +4,7 @@ import UserCard from "./UserCard";
 
 
 interface Iprops {
-  personalDetails: PersonalDetails;
+  personalDetails?: PersonalDetails;
   activeComponent: string | null;
   setActiveComponent: any;
 }
@@ -23,7 +23,7 @@ const HeroSection: React.FC<Iprops> = ({personalDetails, activeComponent, setAct
 
         <img src="assets/Right Arrow.svg" alt="" />
 
-        <span className={styles.userName}>{personalDetails.name}</span>
+        <span className={styles.userName}>{personalDetails?.name}</span>
       </div>
       <div className={styles.UserCard}>
         <UserCard data={personalDetails}/>

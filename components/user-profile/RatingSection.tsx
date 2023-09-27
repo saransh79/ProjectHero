@@ -1,50 +1,33 @@
 import styles from "./rating-section.module.css";
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 import { Pagination, Rating } from "@mui/material";
-import { reviewsApi } from "@/Api's";
-import { Review, ReviewsResponse } from "@/Api's/interface/Reviews";
-
+import { fetchAllReviews } from "@/Api's";
+import { Review } from "@/Api's/interface/Reviews";
+import { useParams } from "react-router-dom";
 
 const RatingSection: React.FC = () => {
+  const { userId } = useParams();
+
   const [reviews, setReviews] = useState<Review[]>([]);
-  const [allReviews, setAllReviews] = useState<Review[]>([]);
   const [pageNumber, setPageNumber] = useState<number>(1);
   const [pageSize] = useState<number>(10);
   const [hasMore, setHasMore] = useState<boolean>(false);
 
   useEffect(() => {
-    fetchReviews();
-  }, [pageNumber]);
-
-  useEffect(() => {
-    axios
-      .get<ReviewsResponse>(`${reviewsApi}6461f84b54ec61921d974f5d/reviews`)
-      .then((response) => {
-        setAllReviews(response.data.payload.reviews);
-
-      }).catch(error=>{
-        console.error(error)
-      })
-  }, []);
-
-  const fetchReviews = async () => {
-    try {
-      const response = await axios.get<ReviewsResponse>(
-        `${reviewsApi}6461f84b54ec61921d974f5d/reviews?page=${pageNumber}&size=${pageSize}`
-      );
-      const newReviews = response.data.payload.reviews;
-
+    fetchAllReviews(userId, pageNumber, pageSize).then((res)=>{
+      const newReviews = res.data.payload.reviews;
       if (pageNumber === 1) {
         setReviews(newReviews);
       } else {
         setReviews([...reviews, ...newReviews]);
       }
-      setHasMore(response.data.payload.hasMore);
-    } catch (error) {
+      setHasMore(res.data.payload.hasMore);
+    }).catch((error)=>{
       console.error("Error fetching reviews:", error);
-    }
-  };
+    })
+  }, [pageNumber]);
+
 
   const handlePageChange = (
     event: React.ChangeEvent<unknown>,
@@ -52,8 +35,10 @@ const RatingSection: React.FC = () => {
   ) => {
     setPageNumber(newPage);
   };
-  const totalRating = allReviews.reduce((sum, review) => sum + review.rating, 0);
-  const averageRating = totalRating / allReviews.length;
+  
+  const totalRating = reviews.reduce((sum, review) => sum + review.rating, 0);
+  var averageRating = totalRating / reviews.length;
+  const avgRating= averageRating.toFixed(2);
 
   return (
     <div className={styles.frameParent}>
@@ -68,7 +53,7 @@ const RatingSection: React.FC = () => {
                 <div className={styles.interfaceStarParent}>
                   {averageRating && <Rating
                     name="half-rating-read"
-                    defaultValue={averageRating}
+                    defaultValue={parseFloat(avgRating)}
                     precision={0.5}
                     readOnly
                   />}

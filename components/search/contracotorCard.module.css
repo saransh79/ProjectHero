@@ -299,11 +299,13 @@
   align-items: center;
   justify-content: center;
   gap: 12px;
+  color: #3d3d3d;
 }
 .whatsapp {
   position: relative;
   line-height: 24px;
   font-weight: 500;
+
 }
 .cta2 {
   border-radius: 40px;
@@ -319,6 +321,9 @@
   gap: 8px;
   color: #fff;
 }
+.cta2 .whatsapp{
+	color: #fff;
+}
 .ctaParent {
   position: absolute;
   top: 0px;
@@ -328,6 +333,11 @@
   align-items: flex-start;
   justify-content: flex-start;
   gap: 12px;
+}
+.ctaParent button{
+	border: none;
+	color: #3d3d3d;
+	font-family: roboto;
 }
 .frameWrapper3 {
   position: relative;
@@ -375,8 +385,7 @@
 .whatsapp1Parent {
   margin: 0 !important;
   position: absolute;
-  top: 54px;
-  /* left: 880px; */
+  top: 85px;
   right: 0;
   border-radius: 16px 0px 0px 16px;
   background-color: #e9fff8;
@@ -386,7 +395,6 @@
   align-items: center;
   justify-content: flex-start;
   gap: 8px;
-  z-index: 1;
   text-align: left;
   font-size: 12px;
   font-family: Karla;
@@ -719,6 +727,7 @@
   	align-items: center;
   	justify-content: center;
   	gap: 12px;
+	border: none;
 }
 .whatsappIcon1 {
   	position: relative;
@@ -745,6 +754,7 @@
   	justify-content: center;
   	gap: 8px;
   	color: #fff;
+	border: none;
 }
 .ctaParent {
   	position: absolute;
@@ -804,7 +814,6 @@
   	align-items: center;
   	justify-content: flex-start;
   	gap: 8px;
-  	z-index: 2;
   	text-align: left;
   	font-size: 12px;
   	color: #000;

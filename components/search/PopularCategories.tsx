@@ -1,8 +1,8 @@
-import type { NextPage } from "next";
+// import type { NextPage } from "next";
 import styles from "./popular-categories.module.css";
 
 interface Iprops {
-  selectedRootCategory: string | null;
+  selectedRootCategory?: string;
   setSelectedRootCategory: any;
 }
 const PopularCategories: React.FC<Iprops> = ({ selectedRootCategory, setSelectedRootCategory }) => {
@@ -19,7 +19,7 @@ const PopularCategories: React.FC<Iprops> = ({ selectedRootCategory, setSelected
           onClick={handleRootCategoryChange}
           className={styles.radioButtonWrapper}
           style={{
-            backgroundColor: selectedRootCategory === "SUB_CONTRACTOR"? '#fafafa': '#fff'
+            backgroundColor: selectedRootCategory === "SUB_CONTRACTOR"? 'lightgray': '#fff'
           }}
         >
           <div className={styles.radioButton}>
@@ -39,7 +39,7 @@ const PopularCategories: React.FC<Iprops> = ({ selectedRootCategory, setSelected
           onClick={handleRootCategoryChange}
           className={styles.radioButtonWrapper}
           style={{
-            backgroundColor: selectedRootCategory === "GENERAL_CONTRACTOR"? '#fafafa': '#fff'
+            backgroundColor: selectedRootCategory === "GENERAL_CONTRACTOR"? 'lightgray': '#fff'
           }}
         >
           <div className={styles.radioButton}>
@@ -58,7 +58,7 @@ const PopularCategories: React.FC<Iprops> = ({ selectedRootCategory, setSelected
           onClick={handleRootCategoryChange}
           className={styles.radioButtonWrapper}
           style={{
-            backgroundColor: selectedRootCategory === "ARCHITECT_OR_INTERIOR_DESIGNER"? '#fafafa': '#fff'
+            backgroundColor: selectedRootCategory === "ARCHITECT_OR_INTERIOR_DESIGNER"? 'lightgray': '#fff'
           }}
         >
           <div className={styles.radioButton}>
@@ -79,7 +79,7 @@ const PopularCategories: React.FC<Iprops> = ({ selectedRootCategory, setSelected
           onClick={handleRootCategoryChange}
           className={styles.radioButtonWrapper}
           style={{
-            backgroundColor: selectedRootCategory === "LABOUR_CONTRACTOR_OR_SUPPLIER"? '#fafafa': '#fff'
+            backgroundColor: selectedRootCategory === "LABOUR_CONTRACTOR_OR_SUPPLIER"? 'lightgray': '#fff'
           }}
         >
           <div className={styles.radioButton}>
@@ -99,7 +99,7 @@ const PopularCategories: React.FC<Iprops> = ({ selectedRootCategory, setSelected
           onClick={handleRootCategoryChange}
           className={styles.radioButtonWrapper}
           style={{
-            backgroundColor: selectedRootCategory === "PMC_OR_CONSULTANTS"? '#fafafa': '#fff'
+            backgroundColor: selectedRootCategory === "PMC_OR_CONSULTANTS"? 'lightgray': '#fff'
           }}
         >
           <div className={styles.radioButton}>
@@ -119,7 +119,7 @@ const PopularCategories: React.FC<Iprops> = ({ selectedRootCategory, setSelected
           onClick={handleRootCategoryChange}
           className={styles.radioButtonWrapper}
           style={{
-            backgroundColor: selectedRootCategory === "CUSTOMER"? '#fafafa': '#fff'
+            backgroundColor: selectedRootCategory === "CUSTOMER"? 'lightgray': '#fff'
           }}
         >
           <div className={styles.radioButton}>

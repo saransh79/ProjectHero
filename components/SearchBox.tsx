@@ -4,20 +4,23 @@ import React from "react";
 import styles from "./searchBox.module.css";
 
 interface Iprops {
-  showSearchBox?: boolean;
-  setShowSearchBox?: any;
+  searchText?: string;
+  onSearchTextChange?: any;
 }
-const SearchBox: React.FC<Iprops> = ({ showSearchBox, setShowSearchBox }) => {
-  const closeSearchBox = () => {
-    setShowSearchBox(false);
-  };
+const SearchBox: React.FC<Iprops> = ({searchText, onSearchTextChange}) => {
+
+  // console.log(searchText);
+  
   return (
-    <div className={`${showSearchBox && styles.navSearch} ${styles.searchbox}`}>
+    <div className={styles.searchbox}>
       <div className={styles.searchbar}>
         <img src="/assets/Search_Magnifying_Glass.svg" alt="search" />
-        <input type="text" placeholder="Search by Name or Phone Number" />
+        <input type="text"
+        value={searchText} 
+        onChange={(e)=>onSearchTextChange(e.target.value)}
+        placeholder="Search by Name or Phone Number" />
       </div>
-      <div onClick={closeSearchBox}>
+      <div>
         <button>Search</button>
       </div>
     </div>

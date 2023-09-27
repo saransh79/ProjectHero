@@ -1,7 +1,7 @@
 import { PrimarySpecialization } from "@/Api's/interface/PersonDetails";
 import styles from "./services.module.css";
 interface Iprops {
-  data: PrimarySpecialization[];
+  data?: PrimarySpecialization[];
 }
 const Services: React.FC<Iprops> = ({ data }) => {
   return (
@@ -10,7 +10,7 @@ const Services: React.FC<Iprops> = ({ data }) => {
         <div className={styles.servicesOffered}>{`Services Offered `}</div>
       </div>
       <div className={styles.frameParent}>
-        {data.map((i: PrimarySpecialization) => {
+        {data?.map((i: PrimarySpecialization) => {
           return (
             <div className={styles.frameGroup}>
               <div className={styles.ellipseParent}>
@@ -25,7 +25,7 @@ const Services: React.FC<Iprops> = ({ data }) => {
                   <div className={styles.workType21}>{i.slug}</div>
                 </div>
                 <div className={styles.chipParent}>
-                  {i.secondaryCategories.map((category: string) => {
+                  {i?.secondaryCategories?.map((category: string) => {
                     return (
                       <div className={styles.chip}>
                         <div className={styles.labelWrapper}>

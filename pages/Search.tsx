@@ -1,16 +1,16 @@
-import Categories from "@/components/search/PopularCategories";
-import { useState, useEffect } from "react";
+// import Categories from "@/components/search/PopularCategories";
+import { useState } from "react";
 
-import Download from "@/components/Download";
+// import Download from "@/components/Download";
 import Footer from "@/components/Footer";
 import Hero from "@/components/search/Hero";
 import Navbar from "@/components/Navbar1";
-import Overlay from "@/components/Overlay";
+// import Overlay from "@/components/Overlay";
 import styles from "./search.module.css";
 import FilterContainer from "@/components/search/FilterContainer";
 import PopularCategoriesContainer from "@/components/search/PopularCategoriesContainer";
-import { Customer, Payload } from "@/Api's/interface/Users";
-import { fetchAllUsers } from "@/Api's";
+// import { Customer, Payload } from "@/Api's/interface/Users";
+// import { fetchAllUsers } from "@/Api's";
 // import ContractorCard from '@/components/ContractorCard'
 
 const Search = () => {
@@ -18,24 +18,26 @@ const Search = () => {
   const [selectedPrimaryCategories, setSelectedPrimaryCategories] = useState<
     string[]
   >([]);
-  const [customers, setCustomers] = useState<Customer[]>();
+  const [location, setLocation] = useState<string>("");
+  const [searchText, setSearchText] = useState<string>('');
+  const [showSearchBox, setShowSearchBox] = useState<boolean>(false);
 
-  useEffect(() => {
-    fetchAllUsers(selectedRootCategory, selectedPrimaryCategories)
-      .then((response: any) => {
-        setCustomers(response.data.payload.customers);
-      })
-      .catch((error: string) => {
-        console.error("error while fetching customers: ", error);
-      });
-  }, [selectedRootCategory, selectedPrimaryCategories]);
-  
+   const onLocationChange= (value: any)=>{
+    setLocation(value);
+   }
+   const onSearchTextChange= (value: any)=>{
+    setSearchText(value);
+   }
+   const handleSearchBox= ()=>{
+    setShowSearchBox(prev=> !prev);
+   }
   return (
     <div>
-      <Navbar />
-      <Hero />
-      {/* <Overlay/> */}
-      {/* <Download/> */}
+      <Navbar showSearchBox={showSearchBox}
+      handleSearchBox= {handleSearchBox}/>
+      <Hero 
+      searchText= {searchText}
+      onSearchTextChange= {onSearchTextChange}/>
       <div className={styles.card_location_container}>
         <div>
           <FilterContainer
@@ -43,16 +45,21 @@ const Search = () => {
             setSelectedRootCategory={setSelectedRootCategory}
             selectedPrimaryCategories={selectedPrimaryCategories}
             setSelectedPrimaryCategories={setSelectedPrimaryCategories}
+            location={location}
+            onLocationChange={onLocationChange}
           />
         </div>
         <div className={styles.card_container}>
-          <PopularCategoriesContainer customers={customers}
-          selectedRootCategory={selectedRootCategory}
-          setSelectedRootCategory={setSelectedRootCategory}/>
+          <PopularCategoriesContainer
+            selectedRootCategory={selectedRootCategory}
+            setSelectedRootCategory={setSelectedRootCategory}
+            selectedPrimaryCategories={selectedPrimaryCategories}
+            setSelectedPrimaryCategories={setSelectedPrimaryCategories}
+            location={location}
+            searchText= {searchText}
+          />
         </div>
       </div>
-      {/* <Categories/> */}
-      {/* <ContractorCard/> */}
       <Footer />
     </div>
   );

@@ -1,4 +1,4 @@
-import type { NextPage } from "next";
+// import type { NextPage } from "next";
 import styles from "./safety-banner.module.css";
 interface Iprops {
   setShowSafetyBanner: any;

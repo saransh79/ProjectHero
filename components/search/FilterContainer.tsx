@@ -1,10 +1,9 @@
 "use client"; // This is a client component
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import Viewmore from "../Viewmore";
+// import Viewmore from "../Viewmore";
 import LocationContainer from "./LocationContainer";
 import {
-  Payload,
   PrimaryCategory,
   RootCategory,
   SecondaryCategory,
@@ -15,18 +14,31 @@ import {
   fetchSecondaryCategories,
 } from "@/Api's";
 import styles from "./filter-container.module.css";
+import {KeyboardArrowDown, KeyboardArrowUp} from '@mui/icons-material';
 
 interface Iprops{
-  selectedRootCategory: string;
+  selectedRootCategory?: string;
   setSelectedRootCategory: any;
   selectedPrimaryCategories: string[];
   setSelectedPrimaryCategories: any;
-
+  location?: string;
+  onLocationChange?: any;
 }
-const FilterContainer: React.FC<Iprops> = ({ selectedRootCategory, setSelectedRootCategory, selectedPrimaryCategories, setSelectedPrimaryCategories}) => {
-
-  const location = useLocation();
-  
+const FilterContainer: React.FC<Iprops> = ({ selectedRootCategory, setSelectedRootCategory, selectedPrimaryCategories, setSelectedPrimaryCategories,
+location,
+onLocationChange}) => {
+  const [show, setShow]= useState(false);
+  const [showWorktype, setShowWorktype]= useState(false);
+  const [showSpecialization, setShowSpecialization]= useState(false);
+  const handleChange= ()=>{
+    setShow(prev=>!prev);
+  }
+  const handleWorktypeChange= ()=>{
+    setShowWorktype(prev=>!prev);
+  }
+  const handleSpecialChange= ()=>{
+    setShowSpecialization(prev=>!prev);
+  }
   const [rootCategories, setRootCategories] = useState<RootCategory[]>([]);
   const [primaryCategories, setPrimaryCategories] = useState<PrimaryCategory[]>(
     []
@@ -53,7 +65,7 @@ const FilterContainer: React.FC<Iprops> = ({ selectedRootCategory, setSelectedRo
       fetchPrimaryCategories(selectedRootCategory)
         .then((response) => {
           setPrimaryCategories(response.data.payload.primaryCategories);
-          console.log(primaryCategories);
+          // console.log(primaryCategories);
         })
         .catch((error) => {
           console.error("Error fetching primary categories:", error);
@@ -67,7 +79,7 @@ const FilterContainer: React.FC<Iprops> = ({ selectedRootCategory, setSelectedRo
       fetchSecondaryCategories(selectedRootCategory, selectedPrimaryCategories)
         .then((response) => {
           setSecondaryCategories(response.data.payload.secondaryCategories);
-          console.log(secondaryCategories);
+          // console.log(secondaryCategories);
         })
         .catch((error) => {
           console.error("Error fetching secondary categories:", error);
@@ -110,7 +122,8 @@ const FilterContainer: React.FC<Iprops> = ({ selectedRootCategory, setSelectedRo
   return (
     <div>
       <div className={styles.frameParent}>
-        <LocationContainer />
+        <LocationContainer location={location}
+        onLocationChange={onLocationChange}/>
 
         <div className={styles.frameGroup}>
           <div className={styles.stroke}></div>
@@ -119,13 +132,19 @@ const FilterContainer: React.FC<Iprops> = ({ selectedRootCategory, setSelectedRo
         {/* Root Categories */}
         <div className={styles.categoryFilter}>
           <div className={styles.categoryHeader}>
-            <div className={styles.categories}>Categories</div>
-            <button>
-              <img src="/assets/uparrow.svg" alt="uparrow" />
-            </button>
+            <div className={styles.categories}
+            onClick={handleChange}>Categories</div>
+            {show && <div
+            onClick={handleChange}>
+              <KeyboardArrowUp/>
+            </div>}
+            {!show && <div
+            onClick={handleChange}>
+              <KeyboardArrowDown/>
+            </div>}
           </div>
 
-          <div className={styles.filters}>
+          {show && <div className={styles.filters}>
             {rootCategories?.map((category) => (
               <div className={styles.option}>
                 <input
@@ -140,23 +159,29 @@ const FilterContainer: React.FC<Iprops> = ({ selectedRootCategory, setSelectedRo
                 <label htmlFor={category.slug}>{category.label}</label>
               </div>
             ))}
-          </div>
+          </div>}
         </div>
 
-        {selectedRootCategory && <div className={styles.frameGroup}>
+        {selectedRootCategory && show && <div className={styles.frameGroup}>
           <div className={styles.stroke}></div>
         </div>}
 
         {/* Worktype filter */}
         <div className={styles.categoryFilter}>
           {selectedRootCategory && <div className={styles.categoryHeader}>
-            <div className={styles.workType}>Work Type</div>
-            <button>
-              <img src="/assets/uparrow.svg" alt="uparrow" />
-            </button>
+            <div className={styles.workType}
+            onClick={handleWorktypeChange}>Work Type</div>
+            {!showWorktype && <div
+            onClick={handleWorktypeChange}>
+             <KeyboardArrowDown/>
+            </div>}
+            {showWorktype && <div
+            onClick={handleWorktypeChange}>
+             <KeyboardArrowUp/>
+            </div>}
           </div>}
 
-          <div className={styles.filters}>
+          {showWorktype && <div className={styles.filters}>
             {primaryCategories.map((category) => {
               return (
                 <div className={styles.workOption}>
@@ -172,12 +197,12 @@ const FilterContainer: React.FC<Iprops> = ({ selectedRootCategory, setSelectedRo
                 </div>
               );
             })}
-          </div>
+          </div>}
 
-          {selectedRootCategory && <Viewmore />}
+          {/* {selectedRootCategory && <Viewmore />} */}
         </div>
 
-        {selectedRootCategory && <div className={styles.frameGroup}>
+        {selectedRootCategory && showWorktype && <div className={styles.frameGroup}>
           <div className={styles.stroke}></div>
         </div>}
 
@@ -185,14 +210,20 @@ const FilterContainer: React.FC<Iprops> = ({ selectedRootCategory, setSelectedRo
 
         <div className={styles.categoryFilter}>
           {selectedPrimaryCategories.length > 0 && <div className={styles.categoryHeader}>
-            <div className={styles.workType}>Specialisation</div>
-            <button>
-              <img src="/assets/uparrow.svg" alt="uparrow" />
-            </button>
+            <div className={styles.workType}
+            onClick={handleSpecialChange}>Specialisation</div>
+            {!showSpecialization && <div 
+            onClick={handleSpecialChange}>
+              <KeyboardArrowDown/>
+            </div>}
+            {showSpecialization && <div 
+            onClick={handleSpecialChange}>
+              <KeyboardArrowUp/>
+            </div>}
           </div>}
 
             
-          <div className={styles.filters}>
+         {showSpecialization && selectedPrimaryCategories.length > 0 && <div className={styles.filters}>
             {secondaryCategories?.map((category)=>{
               return (
                 <div className={styles.specOption}>
@@ -208,9 +239,9 @@ const FilterContainer: React.FC<Iprops> = ({ selectedRootCategory, setSelectedRo
             </div>
               )
             })}
-          </div>
+          </div>}
 
-          {selectedPrimaryCategories && <Viewmore />}
+          {/* {selectedPrimaryCategories && <Viewmore />} */}
         </div>
       </div>
 

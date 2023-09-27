@@ -1,6 +1,19 @@
-
+import { useState } from "react";
+import { Customer } from "@/Api's/interface/SimilarProfiles";
 import styles from "./similar-profiles.module.css";
-const SimilarProfiles = () => {
+import Overlay from "../Overlay";
+import { useNavigate } from "react-router-dom";
+interface Iprops {
+  data?: Customer[];
+}
+const SimilarProfiles: React.FC<Iprops> = ({ data }) => {
+  const location= useNavigate();
+
+  const [isCardVisible, setCardVisibility] = useState(false);
+
+  const toggleCardVisibility = () => {
+    setCardVisibility(!isCardVisible);
+  };
   return (
     <div className={styles.listings}>
       <div className={styles.similarProfilesParent}>
@@ -20,153 +33,46 @@ const SimilarProfiles = () => {
         <div className={styles.viewAllContractors1}>View all Contractors</div>
       </div>
       <div className={styles.frameParent}>
-        <div className={styles.profilePhotoParent}>
-          <div className={styles.profilePhoto}>
-            <img
-              className={styles.image487Icon}
-              alt=""
-              src="assets/image 487.png"
-            />
-            <div className={styles.goldWrapper}>
-              <b className={styles.gold}>{`Gold `}</b>
+        {data?.slice(0, 5).map((profile: Customer) => {
+          return (
+            <div className={styles.profilePhotoParent}>
+              <div className={styles.profilePhoto}
+              onClick={()=>location(`profile/${profile.userId}`)}>
+                <img
+                  className={styles.image487Icon}
+                  alt=""
+                  src={profile.profilePicture ? profile.profilePicture : "assets/image 487.png"}
+                />
+              </div>
+              <div className={styles.frameGroup}>
+                <div className={styles.raviKishanParent}>
+                  <b className={styles.raviKishan}>{profile.name}</b>
+                  {profile.isVerified && <img className={styles.fvIcon} alt="" src="assets/FV.svg" />}
+                </div>
+                <div className={styles.raviConstruction}>{profile.companyName}</div>
+                <div className={styles.generalContractor}>
+                  {profile.rootPersona}
+                </div>
+                <div className={styles.mumbaiMaharashtra}>
+                  {profile.city}, {profile.state}
+                </div>
+              </div>
+              <div className={styles.primaryCta}>
+                <img
+                  className={styles.communicationPhone5}
+                  alt=""
+                  src="assets/Phone.svg"
+                />
+                <div className={styles.cta}
+                onClick={toggleCardVisibility}>Contact</div>
+              </div>
             </div>
-          </div>
-          <div className={styles.frameGroup}>
-            <div className={styles.raviKishanParent}>
-              <b className={styles.raviKishan}>Ravi Kishan</b>
-              <img className={styles.fvIcon} alt="" src="assets/FV.svg" />
-            </div>
-            <div className={styles.raviConstruction}>Ravi Construction</div>
-            <div className={styles.generalContractor}>General Contractor</div>
-            <div className={styles.mumbaiMaharashtra}>Mumbai, Maharashtra</div>
-          </div>
-          <div className={styles.primaryCta}>
-            <img
-              className={styles.communicationPhone5}
-              alt=""
-              src="assets/Phone.svg"
-            />
-            <div className={styles.cta}>Contact</div>
-          </div>
-        </div>
-        <div className={styles.profilePhotoParent}>
-          <div className={styles.profilePhoto}>
-            <img
-              className={styles.image487Icon}
-              alt=""
-              src="assets/image 487.png"
-            />
-            <div className={styles.goldWrapper}>
-              <b className={styles.gold}>{`Gold `}</b>
-            </div>
-          </div>
-          <div className={styles.frameGroup}>
-            <div className={styles.raviKishanParent}>
-              <b className={styles.raviKishan}>Ravi Kishan</b>
-              <img className={styles.fvIcon} alt="" src="assets/FV.svg" />
-            </div>
-            <div className={styles.raviConstruction}>Ravi Construction</div>
-            <div className={styles.generalContractor}>General Contractor</div>
-            <div className={styles.mumbaiMaharashtra}>Mumbai, Maharashtra</div>
-          </div>
-          <div className={styles.primaryCta}>
-            <img
-              className={styles.communicationPhone5}
-              alt=""
-              src="assets/Phone.svg"
-            />
-            <div className={styles.cta}>Contact</div>
-          </div>
-        </div>
-        <div className={styles.profilePhotoParent}>
-          <div className={styles.profilePhoto}>
-            <img
-              className={styles.image487Icon}
-              alt=""
-              src="assets/image 487.png"
-            />
-            <div className={styles.goldWrapper}>
-              <b className={styles.gold}>{`Gold `}</b>
-            </div>
-          </div>
-          <div className={styles.frameGroup}>
-            <div className={styles.raviKishanParent}>
-              <b className={styles.raviKishan}>Ravi Kishan</b>
-              <img className={styles.fvIcon} alt="" src="assets/FV.svg" />
-            </div>
-            <div className={styles.raviConstruction}>Ravi Construction</div>
-            <div className={styles.generalContractor}>General Contractor</div>
-            <div className={styles.mumbaiMaharashtra}>Mumbai, Maharashtra</div>
-          </div>
-          <div className={styles.primaryCta}>
-            <img
-              className={styles.communicationPhone5}
-              alt=""
-              src="assets/Phone.svg"
-            />
-            <div className={styles.cta}>Contact</div>
-          </div>
-        </div>
-        <div className={styles.profilePhotoParent}>
-          <div className={styles.profilePhoto}>
-            <img
-              className={styles.image487Icon}
-              alt=""
-              src="assets/image 487.png"
-            />
-            <div className={styles.goldWrapper}>
-              <b className={styles.gold}>{`Gold `}</b>
-            </div>
-          </div>
-          <div className={styles.frameGroup}>
-            <div className={styles.raviKishanParent}>
-              <b className={styles.raviKishan}>Ravi Kishan</b>
-              <img className={styles.fvIcon} alt="" src="assets/FV.svg" />
-            </div>
-            <div className={styles.raviConstruction}>Ravi Construction</div>
-            <div className={styles.generalContractor}>General Contractor</div>
-            <div className={styles.mumbaiMaharashtra}>Mumbai, Maharashtra</div>
-          </div>
-          <div className={styles.primaryCta}>
-            <img
-              className={styles.communicationPhone5}
-              alt=""
-              src="assets/Phone.svg"
-            />
-            <div className={styles.cta}>Contact</div>
-          </div>
-        </div>
-        <div className={styles.profilePhotoParent}>
-          <div className={styles.profilePhoto}>
-            <img
-              className={styles.image487Icon}
-              alt=""
-              src="assets/image 487.png"
-            />
-            <div className={styles.goldWrapper}>
-              <b className={styles.gold}>{`Gold `}</b>
-            </div>
-          </div>
-          <div className={styles.frameGroup}>
-            <div className={styles.raviKishanParent}>
-              <b className={styles.raviKishan}>Ravi Kishan</b>
-              <img className={styles.fvIcon} alt="" src="assets/FV.svg" />
-            </div>
-            <div className={styles.raviConstruction}>Ravi Construction</div>
-            <div className={styles.generalContractor}>General Contractor</div>
-            <div className={styles.mumbaiMaharashtra}>Mumbai, Maharashtra</div>
-          </div>
-          <div className={styles.primaryCta}>
-            <img
-              className={styles.communicationPhone5}
-              alt=""
-              src="assets/Phone.svg"
-            />
-            <div className={styles.cta}>Contact</div>
-          </div>
-        </div>
-        
+          );
+        })}
       </div>
+      {isCardVisible && <Overlay
+      isCardVisible={isCardVisible}
+      setCardVisibility={setCardVisibility}/>}
     </div>
   );
 };

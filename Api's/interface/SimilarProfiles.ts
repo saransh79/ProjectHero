@@ -10,18 +10,15 @@ export interface Root {
   }
   
   export interface Customer {
-    personalDetails: PersonalDetails
-  }
-  
-  export interface PersonalDetails {
-    isVerified: boolean
-    isMember: boolean
-    companyName: string
-    city: string
-    state: string
+    name: string
     userId: string
     userType: string
-    rating: string
-    reviewsCount: number
+    city: string
+    state: string
+    isVerified: boolean
+    isMember: boolean
+    rootPersona: string
+    companyName?: string
+    profilePicture?: string
   }
   

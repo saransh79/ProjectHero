@@ -1,7 +1,7 @@
 import {  Payload } from "@/Api's/interface/PersonDetails";
 import styles from "./business-card.module.css";
 interface Iprops {
-  data: Payload;
+  data?: Payload;
 }
 const BusinessCard: React.FC<Iprops> = ({ data }) => {
   // console.log(data);
@@ -23,14 +23,14 @@ const BusinessCard: React.FC<Iprops> = ({ data }) => {
                 <img
                   className={styles.userPicIcon}
                   alt=""
-                  src={data.personalDetails.profilePicture || "assets/UserProfile.png"}
+                  src={data?.personalDetails.profilePicture || "assets/UserProfile.png"}
                 />
                 <div className={styles.frameParent1}>
                   <div className={styles.patagoniaConstructionsParent}>
                     <b className={styles.patagoniaConstructions}>
-                      {data.businessCardDetails.companyName}
+                      {data?.businessCardDetails?.companyName}
                     </b>
-                    {data.personalDetails.isVerified && <div className={styles.fvWrapper}>
+                    {data?.personalDetails.isVerified && <div className={styles.fvWrapper}>
                       <img
                         className={styles.fvIcon}
                         alt=""
@@ -40,17 +40,17 @@ const BusinessCard: React.FC<Iprops> = ({ data }) => {
                   </div>
                   <div className={styles.patagoniaPrivateLimitedWrapper}>
                     <div className={styles.patagoniaPrivateLimited1}>
-                      {data.businessCardDetails.gstCompanyName}
+                      {data?.businessCardDetails?.gstCompanyName}
                     </div>
                   </div>
                   <div className={styles.generalContractorWrapper}>
                     <div className={styles.generalContractor}>
-                      {data.businessCardDetails.organisationSpecializationDetails.root}
+                      {data?.businessCardDetails?.organisationSpecializationDetails?.root}
                     </div>
                   </div>
                   <div className={styles.bangaloreKarnatakaWrapper}>
                     <div className={styles.generalContractor}>
-                      {data.personalDetails.city}, {data.personalDetails.state}
+                      {data?.personalDetails?.city}, {data?.personalDetails?.state}
                     </div>
                   </div>
                 </div>
@@ -77,7 +77,7 @@ const BusinessCard: React.FC<Iprops> = ({ data }) => {
                   </div>
                 </div>
                 <div className={styles.divParent}>
-                  <div className={styles.div}>{data.businessCardDetails.GSTIN}</div>
+                  <div className={styles.div}>{data?.businessCardDetails?.GSTIN}</div>
                   <img src="assets/FV.svg" alt="" />
                 </div>
               </div>
@@ -97,7 +97,7 @@ const BusinessCard: React.FC<Iprops> = ({ data }) => {
                   </div>
                 </div>
                 <div className={styles.divParent}>
-                  <div className={styles.div}>{data.businessCardDetails.turnover}</div>
+                  <div className={styles.div}>{data?.businessCardDetails?.turnover}</div>
                   <img src="assets/FV.svg" alt="" />
                 </div>
               </div>
@@ -124,7 +124,7 @@ const BusinessCard: React.FC<Iprops> = ({ data }) => {
                   </div>
                 </div>
                 <div className={styles.divParent}>
-                  <div className={styles.div}>{data.businessCardDetails.companyType}</div>
+                  <div className={styles.div}>{data?.businessCardDetails?.companyType}</div>
                   <img src="assets/FV.svg" alt="" />
                 </div>
               </div>
@@ -144,7 +144,7 @@ const BusinessCard: React.FC<Iprops> = ({ data }) => {
                   </div>
                 </div>
                 <div className={styles.divParent}>
-                  <div className={styles.div}>{data.businessCardDetails.financialYear}</div>
+                  <div className={styles.div}>{data?.businessCardDetails?.financialYear}</div>
                   <img src="assets/FV.svg" alt="" />
                 </div>
               </div>

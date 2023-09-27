@@ -1,28 +1,35 @@
-import { NextPage } from "next";
+// import { NextPage } from "next";
 import styles from "./contracotorCard.module.css";
 import { useNavigate } from "react-router-dom";
 import Link from "next/link";
-import { Customer } from "@/Api's/interface/Users";
+import { PersonalDetails } from "@/Api's/interface/Users";
 import { useEffect, useState } from "react";
-import { Payload } from "@/Api's/interface/PersonDetails";
+
 import { fetchUserDetails } from "@/Api's";
-import { log } from "console";
+// import { log } from "console";
+import { Payload } from "@/Api's/interface/PersonDetails";
+import { Rating } from "@mui/material";
+import Overlay from "../Overlay";
 
 interface Iprops {
-  userId?: string;
+  data: PersonalDetails;
 }
-const ContractorCard: React.FC<Iprops> = ({ userId }) => {
-  const location = useNavigate();
-  const [userDetails, setUserDetails] = useState<Payload | null>(null);
 
-  // console.log(userId);
-  
+const ContractorCard: React.FC<Iprops> = ({ data }) => {
+  const location = useNavigate();
+  const [userDetails, setUserDetails] = useState<Payload>();
+  const [isCardVisible, setCardVisibility] = useState(false);
+
+  const toggleCardVisibility = () => {
+    setCardVisibility(!isCardVisible);
+  };
+  // console.log(data);
+
   useEffect(() => {
-    fetchUserDetails(userId)
+    fetchUserDetails(data.userId)
       .then((response) => {
-        setUserDetails(response.data);
-        console.log(userDetails);
-        
+        setUserDetails(response.data.payload);
+        // console.log(userDetails);
       })
       .catch((error) => {
         console.error("error while fetching userDetails: ", error);
@@ -32,33 +39,44 @@ const ContractorCard: React.FC<Iprops> = ({ userId }) => {
   return (
     <div
       className={styles.frameParent}
-      // onClick={()=> location('/profile')}
     >
       <div className={styles.rectangleParent}>
         <img
           className={styles.frameChild}
           alt=""
-          src="assets/Rectangle 5660.png"
+          src={userDetails?.personalDetails.profilePicture ? userDetails.personalDetails.profilePicture : "assets/Rectangle 5660.png"}
+          onClick={()=>location(`/profile/${data.userId}`)}
         />
         <div className={styles.frameWrapper}>
           <div className={styles.frameGroup}>
             <div className={styles.frameDiv}>
               <div className={styles.patagoniaConstructionsGeneParent}>
                 <div className={styles.patagoniaConstructions1}>
-                  {userDetails?.personalDetails?.designation} | General Contractor
+                  {data.companyName} |
+                  {userDetails?.personalDetails.designation}
                 </div>
                 <div className={styles.ajayVarmaParent}>
-                  <div className={styles.ajayVarma}>Ajay Varma</div>
+                  <div className={styles.ajayVarma}>
+                    {userDetails?.personalDetails.name}
+                  </div>
                   <div className={styles.fvParent}>
-                    <img className={styles.fvIcon} alt="" src="assets/FV.svg" />
-                    <img
-                      className={styles.fvIcon}
-                      alt=""
-                      src="assets/mdi_crown-circle-outline.svg"
-                    />
+                    {userDetails?.personalDetails.isVerified && (
+                      <img
+                        className={styles.fvIcon}
+                        alt=""
+                        src="assets/FV.svg"
+                      />
+                    )}
+                    {userDetails?.personalDetails.isMember && (
+                      <img
+                        className={styles.fvIcon}
+                        alt=""
+                        src="assets/mdi_crown-circle-outline.svg"
+                      />
+                    )}
                   </div>
                 </div>
-                <div className={styles.ceoowner}>CEO/Owner</div>
+                <div className={styles.ceoowner}>{userDetails?.personalDetails.designation}</div>
                 <div className={styles.navigationMapPinParent}>
                   <img
                     className={styles.fvIcon}
@@ -66,46 +84,28 @@ const ContractorCard: React.FC<Iprops> = ({ userId }) => {
                     src="assets/Map_Pin.svg"
                   />
                   <div className={styles.bangaloreKarnataka}>
-                    Bangalore, Karnataka
+                    {data.city}, {data.state}
                   </div>
                 </div>
                 <div className={styles.frameWrapper1}>
                   <div className={styles.frameParent1}>
                     <div className={styles.frameParent2}>
                       <div className={styles.wrapper}>
-                        <div className={styles.div}>4.5</div>
+                        <div className={styles.div}>{data.rating}</div>
                       </div>
                       <div className={styles.frameWrapper2}>
                         <div className={styles.interfaceStarParent}>
-                          <img
-                            className={styles.interfaceStar5}
-                            alt=""
-                            src="assets/Star.svg"
-                          />
-                          <img
-                            className={styles.interfaceStar5}
-                            alt=""
-                            src="assets/Star.svg"
-                          />
-                          <img
-                            className={styles.interfaceStar5}
-                            alt=""
-                            src="assets/Star.svg"
-                          />
-                          <img
-                            className={styles.interfaceStar5}
-                            alt=""
-                            src="assets/Star.svg"
-                          />
-                          <img
-                            className={styles.interfaceStar5}
-                            alt=""
-                            src="assets/StarEmpty.svg"
-                          />
+                          
+                        <Rating
+                    name="half-rating-read"
+                    defaultValue={Math.ceil(parseInt(data.rating))}
+                    precision={0.5}
+                    readOnly
+                  />
                         </div>
                       </div>
                     </div>
-                    <div className={styles.ratings}>12 Ratings</div>
+                    <div className={styles.ratings}>{data.reviewsCount} Ratings</div>
                   </div>
                 </div>
               </div>
@@ -126,7 +126,7 @@ const ContractorCard: React.FC<Iprops> = ({ userId }) => {
                         <span className={styles.span}>{`: `}</span>
                       </div>
                     </div>
-                    <div className={styles.div1}>098765432109876</div>
+                    <div className={styles.div1}>{userDetails?.businessCardDetails?.GSTIN}</div>
                   </div>
                   <div className={styles.frameParent5}>
                     <div className={styles.groupParent}>
@@ -143,7 +143,7 @@ const ContractorCard: React.FC<Iprops> = ({ userId }) => {
                         <span className={styles.span}>{`: `}</span>
                       </div>
                     </div>
-                    <div className={styles.crFy2023}>1.5 - 5 Cr (FY 2023)</div>
+                    <div className={styles.crFy2023}>{userDetails?.businessCardDetails?.turnover}</div>
                   </div>
                 </div>
 
@@ -163,7 +163,7 @@ const ContractorCard: React.FC<Iprops> = ({ userId }) => {
                         <span className={styles.span}>{`: `}</span>
                       </div>
                     </div>
-                    <div className={styles.privateLimited}>Private Limited</div>
+                    <div className={styles.privateLimited}>{userDetails?.businessCardDetails?.companyType}</div>
                   </div>
                   <div className={styles.frameParent5}>
                     <div className={styles.groupParent}>
@@ -180,16 +180,15 @@ const ContractorCard: React.FC<Iprops> = ({ userId }) => {
                         <span className={styles.span}>{`: `}</span>
                       </div>
                     </div>
-                    <div className={styles.privateLimited}>11.03.2023</div>
+                    <div className={styles.privateLimited}>{userDetails?.businessCardDetails?.financialYear}</div>
                   </div>
                 </div>
               </div>
             </div>
             <div className={styles.frameWrapper3}>
               <div className={styles.ctaParent}>
-                <Link
-                  href="https://play.google.com/store/apps/details?id=com.projecthero.contractor&hl=en_IN&gl=US"
-                  target="_blank"
+                <button
+                onClick={toggleCardVisibility}
                   className={styles.cta}
                 >
                   <img
@@ -198,10 +197,9 @@ const ContractorCard: React.FC<Iprops> = ({ userId }) => {
                     src="assets/Phone.svg"
                   />
                   <div className={styles.whatsapp}>Call</div>
-                </Link>
-                <Link
-                  href="https://play.google.com/store/apps/details?id=com.projecthero.contractor&hl=en_IN&gl=US"
-                  target="_blank"
+                </button>
+                <button
+                  onClick={toggleCardVisibility}
                   className={styles.cta2}
                 >
                   <img
@@ -210,7 +208,7 @@ const ContractorCard: React.FC<Iprops> = ({ userId }) => {
                     src="assets/Whatsapp.svg"
                   />
                   <div className={styles.whatsapp}>Whatsapp</div>
-                </Link>
+                </button>
               </div>
             </div>
           </div>
@@ -232,6 +230,11 @@ const ContractorCard: React.FC<Iprops> = ({ userId }) => {
           src="assets/Share_Android.svg"
         />
       </Link>
+
+      {isCardVisible && <Overlay
+      isCardVisible={isCardVisible}
+      setCardVisibility= {setCardVisibility}
+      />}
     </div>
   );
 };

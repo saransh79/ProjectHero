@@ -3,19 +3,20 @@
 "use client";
 
 import Search from "@/pages/Search";
-import styles from "./page.module.css";
+// import styles from "./page.module.css";
 import UserProfile from "@/pages/UserProfile";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { store } from "@/redux/store";
-import { Provider } from "react-redux";
+// import { store } from "@/redux/store";
+// import { Provider } from "react-redux";
 
 export default function Home() {
   return (
     <BrowserRouter>
+{/* <UserProfile /> */}
       <Routes>
         <Route path="/" element={<Search />} />
         <Route path="/search" element={<Search />} />
-        <Route path="/profile" element={<UserProfile />} />
+        <Route path="/profile/:userId" element={<UserProfile />} />
       </Routes>
     </BrowserRouter>
   );

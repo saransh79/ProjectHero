@@ -1,9 +1,7 @@
 import axios from "axios";
 
-export const baseUrl =
+const baseUrl =
   "https://stage-api.projecthero.in/gateway/review-website";
-// ?root=SUB_CONTRACTOR&workTypes=MASON%2CPAINTER%27";
-
 
 export const fetchRootCategories = () => {
   return axios.get(`${baseUrl}/categories`);
@@ -21,23 +19,54 @@ export const fetchSecondaryCategories = (
   return axios.get(`${baseUrl}/categories?root=${rootCategory}&${queryParams}`);
 };
 
-export const fetchAllUsers = async(
-  rootCategory?: string,
-  primaryCategories?: string[]
+export const fetchAllUsers = async (
+  root?: string,
+  primaryCategories?: string[],
+  pageSize?: number,
+  pageNumber?: number,
+  location?: string ,
+  searchText?: string
 ) => {
-  if (!rootCategory && primaryCategories?.length == 0) {
-    return await axios.get(`${baseUrl}/similar-profiles`);
-    // return await axios.get(`${baseUrl}/customer/search`);
-  } else if (rootCategory && primaryCategories?.length == 0) {
-    return await axios.get(`${baseUrl}/similar-profiles?root=${rootCategory}`);
-  } else {
-    const queryParams = "workTypes=" + primaryCategories?.join(",");
-    return await axios.get(
-      `${baseUrl}/similar-profiles?root=${rootCategory}&${queryParams}`
-    );
-  }
+  const searchUrl =
+    "https://stage-api.projecthero.in/gateway/review-website/customer/search";
+
+  if(primaryCategories?.length )primaryCategories.join(',');
+
+  const response= await axios.get(searchUrl, {
+    params: {
+      root: root,
+      primarySpecializations: primaryCategories,
+      pageSize: pageSize,
+      pageNumber: pageNumber,
+      searchText: searchText,
+      state: location,
+    },
+  });
+  // console.log(response.data);
+  
+  return response; 
+
 };
 
-export const fetchUserDetails= async (userId?: string)=>{
-  return await axios.get(`${baseUrl}/customer/${userId}/detailsV2`)
-}
+export const fetchUserDetails = async (userId?: string) => {
+  return await axios.get(`${baseUrl}/customer/${userId}/detailsV2`);
+};
+
+export const fetchAllReviews = async (
+  userId?: string,
+  pageNumber?: number,
+  pageSize?: number
+) => {
+  // if (!pageNumber && !pageSize) {
+  //   return await axios.get(`${baseUrl}/customer/${userId}/reviews`);
+  // } else {
+  return await axios.get(
+    `${baseUrl}/customer/${userId}/reviews?page=${pageNumber}&size=${pageSize}`
+  );
+};
+
+export const fetchSimilarProfiles = async (category?: string) => {
+  return await axios.get(
+    `https://stage-api.projecthero.in/gateway/review-website/similar-profiles?root=${category}`
+  );
+};

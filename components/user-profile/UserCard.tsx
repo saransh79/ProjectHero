@@ -3,7 +3,7 @@ import styles from "./user-card.module.css";
 import { PersonalDetails } from "@/Api's/interface/PersonDetails";
 
 interface Iprops {
-  data: PersonalDetails;
+  data?: PersonalDetails;
 }
 const UserCard: React.FC<Iprops> = ({ data }) => {
   return (
@@ -12,17 +12,17 @@ const UserCard: React.FC<Iprops> = ({ data }) => {
         <img
           className={styles.frameChild}
           alt=""
-          src={data.profilePicture || "assets/UserProfile.png"}
+          src={data?.profilePicture || "assets/UserProfile.png"}
         />
         <div className={styles.rectangleParent}>
           <div className={styles.frameWrapper}>
             <div className={styles.ajayVarmaParent}>
-              <b className={styles.ajayVarma}>{data.name}</b>
+              <b className={styles.ajayVarma}>{data?.name}</b>
               <div className={styles.fvParent}>
-                {data.isVerified && (
+                {data?.isVerified && (
                   <img className={styles.fvIcon} alt="" src="assets/FV.svg" />
                 )}
-                {data.isMember && (
+                {data?.isMember && (
                   <img
                     className={styles.fvIcon}
                     alt=""
@@ -33,7 +33,7 @@ const UserCard: React.FC<Iprops> = ({ data }) => {
             </div>
           </div>
           <b className={styles.patagoniaConstructions1}>
-            {data.companyName} | {data.designation}
+            {data?.companyName} | {data?.designation}
           </b>
           <div className={styles.navigationMapPinParent}>
             <img
@@ -42,7 +42,7 @@ const UserCard: React.FC<Iprops> = ({ data }) => {
               src="assets/Map_Pin.svg"
             />
             <div className={styles.ajayVarma}>
-              {data.city}, {data.state}
+              {data?.city}, {data?.state}
             </div>
           </div>
         </div>

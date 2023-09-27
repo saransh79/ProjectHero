@@ -3,19 +3,23 @@ import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import styles from "./navbar1.module.css";
 import SearchBox from "./SearchBox";
+import { Close, KeyboardArrowUp } from "@mui/icons-material";
 
 interface Iprops {
   showSearchBox?: boolean;
-  setShowSearchBox?: any;
+  handleSearchBox?: any;
 }
-const Navbar: React.FC<Iprops> = ({ showSearchBox, setShowSearchBox }) => {
+const Navbar: React.FC<Iprops> = ({ showSearchBox, handleSearchBox }) => {
   const location = useNavigate();
   const currentURL = window.location.pathname;
   const segments = currentURL.split("/");
   const lastSegment = segments[segments.length - 1];
 
   const [activeLink, setActiveLink] = useState<string | null>("home");
-
+  const [showSidebar, setShowSidebar]= useState(false);
+  const handleSidebar=()=>{
+    setShowSidebar(prev=>!prev);
+  }
   const handleLinkClick = (id: string) => {
     setActiveLink(id);
   };
@@ -30,17 +34,14 @@ const Navbar: React.FC<Iprops> = ({ showSearchBox, setShowSearchBox }) => {
         />
       </div>
       <div className={styles.navOptions}>
-        <div className={styles.link}
-        style={{
-          display: lastSegment === 'search'? "none": "inline-block"
-        }}
+        <div
+          className={styles.link}
+          style={{
+            display: lastSegment === "search" ? "none" : "inline-block",
+          }}
+          onClick={handleSearchBox}
         >
-          <div
-            onClick={() => {
-              location("/search");
-            }}
-            className={styles.searchLink}
-          >
+          <div className={styles.searchLink}>
             <img
               src="assets/Search_Magnifying_Glass.svg"
               alt=""
@@ -79,20 +80,59 @@ const Navbar: React.FC<Iprops> = ({ showSearchBox, setShowSearchBox }) => {
           className={styles.interfaceSearchMagnifying1}
           alt=""
           src="assets/Search_Magnifying_Glass.svg"
+          onClick={handleSearchBox}
+          style={{
+            display: lastSegment === "search" ? "none" : "inline-block",
+          }}
         />
         <img
           className={styles.interfaceSearchMagnifying1}
           alt=""
           src="assets/hamburger menu.svg"
+          onClick={handleSidebar}
         />
       </div>
 
+     {showSidebar && <div className={styles.sidebar}>
+        <div className={styles.items}>
+          <div className={styles.close} onClick={handleSidebar}>
+          <Close/>
+          </div>
+          <div className={styles.link}>
+            <div
+              className={activeLink === "home" ? styles.active : ""}
+              onClick={() => {
+                handleLinkClick("home");
+                location("/");
+              }}
+            >
+              Home
+            </div>
+          </div>
+          <div className={styles.link}>
+            <div
+              className={activeLink === "pro" ? styles.active : ""}
+              onClick={() => {
+                handleLinkClick("pro");
+                location("/search");
+              }}
+            >
+              Find Professionals
+            </div>
+          </div>
+        </div>
+      </div>}
+
       {/* Searchbox */}
       {showSearchBox && (
-        <SearchBox
-          showSearchBox={showSearchBox}
-          setShowSearchBox={setShowSearchBox}
-        />
+        <div className={styles.searchboxWrapper}>
+          <div className={styles.searchbox_container}>
+            <SearchBox />
+            <div className={styles.toggler} onClick={handleSearchBox}>
+              <KeyboardArrowUp />
+            </div>
+          </div>
+        </div>
       )}
     </nav>
   );
