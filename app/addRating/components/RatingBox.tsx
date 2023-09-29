@@ -11,8 +11,9 @@ interface Iprops {
 const RatingBox: React.FC<Iprops> = ({ data }) => {
   const [rating, setRating] = useState(0);
   const [isSubmit, setIsSubmit] = useState<boolean>(false);
-  const [suggestion, setSuggestion] = useState("");
+  const [suggestion, setSuggestion] = useState<string>("");
   const [error, setError] = useState<string>("");
+  console.log(suggestion);
 
   const [formData, setFormData] = useState({
     Experience: "",
@@ -104,7 +105,17 @@ const RatingBox: React.FC<Iprops> = ({ data }) => {
                       What could have been better?
                     </div>
                     <div className={styles.itemsWrapper}>
-                      <div className={styles.item}>
+                      <div
+                        className={styles.item}
+                        style={{
+                          border:
+                            suggestion === "Safety"
+                              ? "1px solid var(--Primary, #efc41a)"
+                              : "none",
+                          background:
+                            suggestion === "Safety" ? "#fffbea" : "none",
+                        }}
+                      >
                         <input
                           type="radio"
                           id="Safety"
@@ -114,7 +125,17 @@ const RatingBox: React.FC<Iprops> = ({ data }) => {
                         />
                         <label htmlFor="Safety">Safety</label>
                       </div>
-                      <div className={styles.item}>
+                      <div
+                        className={styles.item}
+                        style={{
+                          border:
+                            suggestion === "Communication"
+                              ? "1px solid var(--Primary, #efc41a)"
+                              : "none",
+                          background:
+                            suggestion === "Communication" ? "#fffbea" : "none",
+                        }}
+                      >
                         <input
                           type="radio"
                           id="Communication"
@@ -124,7 +145,17 @@ const RatingBox: React.FC<Iprops> = ({ data }) => {
                         />
                         <label htmlFor="Communication">Communication</label>
                       </div>
-                      <div className={styles.item}>
+                      <div
+                        className={styles.item}
+                        style={{
+                          border:
+                            suggestion === "Food and Stay"
+                              ? "1px solid var(--Primary, #efc41a)"
+                              : "none",
+                          background:
+                            suggestion === "Food and Stay" ? "#fffbea" : "none",
+                        }}
+                      >
                         <input
                           type="radio"
                           id="Food"
@@ -134,7 +165,19 @@ const RatingBox: React.FC<Iprops> = ({ data }) => {
                         />
                         <label htmlFor="Food">Food and Stay</label>
                       </div>
-                      <div className={styles.item}>
+                      <div
+                        className={styles.item}
+                        style={{
+                          border:
+                            suggestion === "Professionalism"
+                              ? "1px solid var(--Primary, #efc41a)"
+                              : "none",
+                          background:
+                            suggestion === "Professionalism"
+                              ? "#fffbea"
+                              : "none",
+                        }}
+                      >
                         <input
                           type="radio"
                           id="Professionalism"
@@ -225,10 +268,7 @@ const RatingBox: React.FC<Iprops> = ({ data }) => {
 
           {/* <button className={styles.ctaWrapper}>Submit</button> */}
           {!isSubmit && (
-            <button
-              type="submit"
-              className={styles.ctaWrapper2}
-            >
+            <button type="submit" className={styles.ctaWrapper2}>
               Submit
             </button>
           )}

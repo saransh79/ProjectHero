@@ -11,6 +11,10 @@
   z-index: 2;
   margin-top: -60px;
 }
+.active {
+  border: 1px solid var(--Primary, #efc41a);
+  background: var(--yellow-light, #fffbea);
+}
 .frameParent {
   position: relative;
   box-sizing: border-box;
@@ -271,13 +275,13 @@
     font-weight: 500;
     line-height: 20px; /* 142.857% */
   }
-  .gotohome a{
+  .gotohome a {
     color: #3d3d3d;
     font-size: 14px;
     font-weight: 700;
     line-height: 18px; /* 128.571% */
   }
-  .submitted_content{
+  .submitted_content {
     height: 300px;
   }
 }
