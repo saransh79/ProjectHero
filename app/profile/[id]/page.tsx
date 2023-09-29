@@ -114,7 +114,7 @@ const UserProfile: React.FC = () => {
             </div>
           </div>
           <div className={styles.advertiseWrapper}>
-            <RatingCard />
+            <RatingCard userId= {userData?.payload.personalDetails.userId}/>
             <Download />
           </div>
         </div>

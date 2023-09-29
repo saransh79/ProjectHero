@@ -1,6 +1,10 @@
-
+import Link from "next/link";
 import styles from "./rating-card.module.css";
-const RatingCard = () => {
+
+interface Iprops{
+  userId?: string;
+}
+const RatingCard: React.FC<Iprops> = ({userId}) => {
   return (
     <div className={styles.frameParent}>
       <div className={styles.addYourRatingParent}>
@@ -61,11 +65,10 @@ const RatingCard = () => {
         </div>
       </div>
       <div className={styles.ctaParent}>
-        <div className={styles.cta}
-        // onClick={()=>location(`/add-rating/${userId}`)}
+        <Link href={`/addRating/${userId}`} className={styles.cta}
         >
           <div className={styles.cta1}>Rate this Company</div>
-        </div>
+        </Link>
         <div className={styles.weWillNever1}>
           We will never share your name and number
         </div>
