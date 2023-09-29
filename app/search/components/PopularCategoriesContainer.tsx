@@ -105,7 +105,7 @@ const PopularCategoriesContainer: React.FC<Iprops> = ({
         <Download />
       </div>
 
-      <Viewmore />
+      {/* <Viewmore /> */}
     </div>
   );
 };
