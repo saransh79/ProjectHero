@@ -1,22 +1,23 @@
 import axios from "axios";
 
-const baseUrl =
-  "https://stage-api.projecthero.in/gateway/review-website";
+const baseUrl = "https://stage-api.projecthero.in/gateway/review-website";
 
-export const fetchRootCategories = () => {
-  return axios.get(`${baseUrl}/categories`);
-};
-
-export const fetchPrimaryCategories = (rootCategory: string) => {
-  return axios.get(`${baseUrl}/categories?root=${rootCategory}`);
-};
-
-export const fetchSecondaryCategories = (
-  rootCategory: string,
-  primaryCategories: string[]
+export const fetchCategories = async (
+  rootCategory?: string,
+  primaryCategories?: string[]
 ) => {
-  const queryParams = "workTypes=" + primaryCategories.join(",");
-  return axios.get(`${baseUrl}/categories?root=${rootCategory}&${queryParams}`);
+  const categoryUrl =
+    "https://stage-api.projecthero.in/gateway/review-website/categories";
+
+  const joinedPrimaryCategories = primaryCategories?.join(",");
+
+  const response = await axios.get(categoryUrl, {
+    params: {
+      root: rootCategory,
+      workTypes: joinedPrimaryCategories,
+    },
+  });
+  return response;
 };
 
 export const fetchAllUsers = async (
@@ -24,32 +25,30 @@ export const fetchAllUsers = async (
   primaryCategories?: string[],
   pageSize?: number,
   pageNumber?: number,
-  location?: string ,
+  location?: string,
   searchText?: string
 ) => {
   const searchUrl =
     "https://stage-api.projecthero.in/gateway/review-website/customer/search";
 
-  if(primaryCategories?.length )primaryCategories.join(',');
+  const joinedPrimaryCategories = primaryCategories?.join(",");
 
-  const response= await axios.get(searchUrl, {
+  const response = await axios.get(searchUrl, {
     params: {
       root: root,
-      primarySpecializations: primaryCategories,
+      primarySpecializations: joinedPrimaryCategories,
       pageSize: pageSize,
       pageNumber: pageNumber,
       searchText: searchText,
       state: location,
     },
   });
-  // console.log(response.data);
-  
-  return response; 
-
+  return response;
 };
 
 export const fetchUserDetails = async (userId?: string) => {
-  return await axios.get(`${baseUrl}/customer/${userId}/detailsV2`);
+  const url = `https://stage-api.projecthero.in/gateway/review-website/customer/${userId}/detailsV2`;
+  return await axios.get(url);
 };
 
 export const fetchAllReviews = async (
@@ -57,16 +56,27 @@ export const fetchAllReviews = async (
   pageNumber?: number,
   pageSize?: number
 ) => {
-  // if (!pageNumber && !pageSize) {
-  //   return await axios.get(`${baseUrl}/customer/${userId}/reviews`);
-  // } else {
-  return await axios.get(
-    `${baseUrl}/customer/${userId}/reviews?page=${pageNumber}&size=${pageSize}`
-  );
+  const url = `https://stage-api.projecthero.in/gateway/review-website/customer/${userId}/reviews`;
+  return await axios.get(url, {
+    params: {
+      pageNumber: pageNumber,
+      pageSize: pageSize,
+    },
+  });
 };
 
 export const fetchSimilarProfiles = async (category?: string) => {
-  return await axios.get(
-    `https://stage-api.projecthero.in/gateway/review-website/similar-profiles?root=${category}`
-  );
+  const url =
+    "https://stage-api.projecthero.in/gateway/review-website/similar-profiles";
+  const response = await axios.get(url, {
+    params: {
+      root: category,
+    },
+  });
+  return response;
+};
+
+export const postReview = async (data: any) => {
+  const url= "https://stage-api.projecthero.in/gateway/review-website/customer/review/create"
+  return await axios.post(url, data);
 };

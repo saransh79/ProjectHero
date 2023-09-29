@@ -21,6 +21,9 @@ export interface PersonalDetails {
   about?: string
   email?: string
   profilePicture?: string;
+  userType?: string
+  userId?: string
+  reviewsCount?: number
 }
 
 export interface TrustAndSafety {

@@ -1,0 +1,367 @@
+.similarProfiles {
+  position: absolute;
+  top: 49px;
+  left: 80px;
+}
+.viewAllContractors1 {
+  position: relative;
+  line-height: 150%;
+  width: fit-content;
+}
+.buttonMedium {
+  position: absolute;
+  top: 514px;
+  left: calc(50% - 98px);
+  background-color: #fff;
+  box-shadow: 0px 4px 8px rgba(139, 136, 136, 0.25);
+  border: 1px solid #eec41a;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  padding: 16px 32px;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+.image487Icon {
+  position: relative;
+  border-radius: 85.96px;
+  width: 76.41px;
+  height: 76.41px;
+  object-fit: cover;
+}
+.gold {
+  position: relative;
+  line-height: 12.23px;
+  text-transform: uppercase;
+}
+.goldWrapper {
+  border-radius: 38.2px;
+  background: linear-gradient(90deg, #efc41a, #ffeca1 52.6%, #efc41a);
+  width: 52.53px;
+  height: 19.1px;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  padding: 2.3877549171447754px 14.326530456542969px;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  margin-top: -19.1px;
+}
+.profilePhoto {
+  width: 76.41px;
+  height: 76.41px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  color: #3d3d3d;
+}
+.raviKishan {
+  position: relative;
+  line-height: 31.84px;
+}
+.fvIcon {
+  position: relative;
+  width: 25.47px;
+  height: 25.47px;
+  overflow: hidden;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+.raviKishanParent {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 4.78px;
+  color: #070707;
+}
+.raviConstruction {
+  position: relative;
+  font-size: 18px;
+  line-height: 22.29px;
+  font-weight: 500;
+}
+.generalContractor {
+  position: relative;
+  font-size: 16px;
+  line-height: 22.29px;
+  font-weight: 500;
+  word-break: break-all;
+}
+.mumbaiMaharashtra {
+  position: relative;
+  font-size: 14px;
+  /* line-height: 22.29px; */
+  font-weight: 500;
+  color: #5f5f5f;
+}
+.frameGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3.18px;
+  text-align: center;
+  font-size: 22px;
+  width: 210px;
+}
+.communicationPhone5 {
+  position: relative;
+  width: 25.47px;
+  height: 25.47px;
+  object-fit: cover;
+}
+.cta {
+  position: relative;
+  line-height: 18px;
+  font-weight: 500;
+}
+.primaryCta {
+  border-radius: 63.67px;
+  background: linear-gradient(25.54deg, #bf9900, #ffcf12);
+  width: 191.02px;
+  height: 57.31px;
+  display: flex;
+  flex-direction: row;
+  padding: 12.73469352722168px 0px;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  gap: 6.37px;
+  text-align: right;
+  font-size: 12px;
+}
+.profilePhotoParent {
+  border-radius: 12.73px;
+  background-color: #fff;
+  box-shadow: 0px 6.36734676361084px 6.37px rgba(0, 0, 0, 0.08);
+  border: 1.6px solid rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  width: 254.69px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.frameParent {
+  width: 1360px;
+  height: 317px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  gap: 28px;
+  font-size: 12.73px;
+  color: #000;
+  font-family: Karla;
+}
+.listings {
+  position: relative;
+  background-color: #f5e9c0;
+  width: 100%;
+  height: 615px;
+  text-align: left;
+  font-size: 32px;
+  color: #2a254b;
+  font-family: Roboto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.similarProfilesParent{
+    display: none;
+}
+
+
+@media only screen and (max-width: 440px) {
+  .listings {
+    width: 100%;
+    height: 300px;
+    padding: 13px 16px;
+    justify-content: center;
+  }
+  .similarProfile {
+    position: relative;
+    letter-spacing: 0.01em;
+    line-height: 28px;
+    font-weight: 600;
+  }
+  .similarProfiles, .buttonMedium{
+    display: none;
+  }
+  .fieldText1 {
+    position: relative;
+    text-decoration: underline;
+    line-height: 20px;
+    font-weight: 500;
+  }
+  .arrowChevronRight1 {
+    position: relative;
+    width: 20px;
+    height: 20px;
+  }
+  .similarProfilesParent {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    font-size: 18px;
+    color: #000;
+    font-family: Saira;
+    position: absolute;
+    top: 10px;
+  }
+  .similarProfilesParent .cta{
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+  }
+  .image487Icon {
+    position: relative;
+    border-radius: 54px;
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+}
+.gold {
+    position: relative;
+    line-height: 7.68px;
+    text-transform: uppercase;
+}
+.goldWrapper {
+    border-radius: 24px;
+    background: linear-gradient(90deg, #efc41a, #ffeca1 52.6%, #efc41a);
+    width: 33px;
+    height: 12px;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    padding: 1.5px 9px;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    margin-top: -12px;
+}
+.communicationPhone5{
+  height: 16px;
+  width: 16px;
+}
+.profilePhoto {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    color: #3d3d3d;
+}
+.raviKishan {
+  position: relative;
+  font-size: 14px;
+  line-height: 20px;
+  font-family: Karla;
+  color: #070707;
+  text-align: center;
+}
+.generalContractor{
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 14px;
+}
+
+.fvIcon {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.raviKishanParent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    font-size: 14px;
+    color: #070707;
+}
+.raviConstruction {
+    position: relative;
+    font-size: 10px;
+    line-height: 14px;
+    font-weight: 500;
+}
+.mumbaiMaharashtra {
+    font-size: 10px;
+}
+.frameGroup {
+    gap: 2px;
+    text-align: center;
+    font-size: 10px;
+}
+.communicationPhone4 {
+    position: relative;
+    width: 16px;
+    height: 16px;
+}
+.cta {
+    position: relative;
+    line-height: 18px;
+    font-weight: 500;
+}
+.primaryCta {
+    border-radius: 40px;
+    background: linear-gradient(25.54deg, #bf9900, #ffcf12);
+    width: 120px;
+    height: 36px;
+    display: flex;
+    flex-direction: row;
+    padding: 8px 0px;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    text-align: right;
+    font-size: 12px;
+}
+.profilePhotoParent {
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    width: 160px;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+.frameParent {
+    width: 100%;
+    height: fit-content;
+    overflow-x: scroll;
+    display: flex;
+    padding: 8px 16px;
+    box-sizing: border-box;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+    text-align: left;
+    font-size: 8px;
+    color: #000;
+}
+
+
+}
