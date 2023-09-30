@@ -13,6 +13,7 @@
 .card{
     height: 500px;
     width: 1000px;
+    position: relative;
 }
 .card img{
     height: 100%;
@@ -20,6 +21,13 @@
 }
 .vertical{
     display: none;
+}
+.cross{
+    position: absolute;
+    top: 17px;
+    right: 17px;
+    width: 40px;
+    height: 40px;
 }
 @media screen and (max-width: 440px){
     .card{
@@ -31,5 +39,12 @@
     }
     .vertical{
         display: block;
+    }
+    .cross{
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 30px;
+        height: 30px;
     }
 }

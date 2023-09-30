@@ -23,7 +23,7 @@ const SimilarProfiles: React.FC<Iprops> = ({ data }) => {
           <img
             className={styles.arrowChevronRight1}
             alt=""
-            src="assets/Chevron_Right.svg"
+            src="/assets/Chevron_Right.svg"
           />
         </div>
       </div>

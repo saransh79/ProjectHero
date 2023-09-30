@@ -15,12 +15,22 @@ const Overlay: React.FC<Iprops> = ({ isCardVisible, setCardVisibility }) => {
     <div className={styles.container} onClick={toggleCardVisibility}>
       <div className={styles.card}>
         {isCardVisible && (
-          <Link
-            href="https://play.google.com/store/apps/details?id=com.projecthero.contractor&hl=en_IN&gl=US"
-          >
-            <img src="/assets/overlay.jpeg" alt="overlay" className={styles.horizontal}/>
-            <img src="/assets/overlay2.jpeg" alt="overlay" className={styles.vertical}/>
-          </Link>
+          <div>
+            <div className={styles.cross}
+            onClick={toggleCardVisibility}></div>
+            <Link href="https://play.google.com/store/apps/details?id=com.projecthero.contractor&hl=en_IN&gl=US">
+              <img
+                src="/assets/overlay.jpeg"
+                alt="overlay"
+                className={styles.horizontal}
+              />
+              <img
+                src="/assets/overlay2.jpeg"
+                alt="overlay"
+                className={styles.vertical}
+              />
+            </Link>
+          </div>
         )}
       </div>
     </div>

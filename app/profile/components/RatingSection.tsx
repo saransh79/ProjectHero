@@ -97,13 +97,13 @@ const RatingSection: React.FC = () => {
           }}
         >
           <Pagination
-            // count={5}
+            size="small"
             page={pageNumber}
             onChange={handlePageChange}
             disabled={!hasMore}
-            color="primary"
+            // color="primary"
             variant="outlined"
-            shape="rounded"
+            // shape="rounded"
           />
         </div>
       </div>
