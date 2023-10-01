@@ -36,11 +36,11 @@ const UserCard: React.FC<Iprops> = ({ data }) => {
             {data?.companyName}{data?.designation && <span> | </span> }{data?.designation}
           </b>
           <div className={styles.navigationMapPinParent}>
-            <img
+            {data?.city && <img
               className={styles.navigationMapPin1}
               alt=""
               src="/assets/Map_Pin.svg"
-            />
+            />}
             <div className={styles.ajayVarma}>
               {data?.city}, {data?.state}
             </div>

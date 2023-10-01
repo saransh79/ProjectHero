@@ -4,31 +4,28 @@ import styles from "./navbar1.module.css";
 import SearchBox from "./SearchBox";
 import { Close, KeyboardArrowUp } from "@mui/icons-material";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 interface Iprops {
   showSearchBox?: boolean;
   handleSearchBox?: any;
 }
-const Navbar: React.FC<Iprops> = ({ showSearchBox, handleSearchBox }, {params}) => {
-  // const location = useNavigate();
-  // const currentURL = window.location.pathname;
-  // const segments = currentURL.split("/");
-  // const lastSegment = segments[segments.length - 1];
-  const lastSegment = "search";
-console.log(params);
+const Navbar: React.FC<Iprops> = ({ showSearchBox, handleSearchBox }) => {
+  const location = usePathname();
+  const segments = location.split("/");
+  const lastSegment = segments[segments.length - 1];
 
   const [activeLink, setActiveLink] = useState<string | null>("home");
-  const [showSidebar, setShowSidebar]= useState(false);
-  const handleSidebar=()=>{
-    setShowSidebar(prev=>!prev);
-  }
+  const [showSidebar, setShowSidebar] = useState(false);
+  const handleSidebar = () => {
+    setShowSidebar((prev) => !prev);
+  };
   const handleLinkClick = (id: string) => {
     setActiveLink(id);
   };
   return (
     <nav className={styles.navbar}>
-      <Link href='/' className={styles.logo} 
-      >
+      <Link href="/" className={styles.logo}>
         <img src="/assets/PH New Logo.svg" alt="logo" />
         <img
           src="/assets/Business.svg"
@@ -45,29 +42,31 @@ console.log(params);
           onClick={handleSearchBox}
         >
           <div className={styles.searchLink}>
-            <img src="/assets/Search_Magnifying_Glass.svg"/>
+            <img src="/assets/Search_Magnifying_Glass.svg" />
             <div>Search</div>
           </div>
         </div>
         <div className={styles.link}>
-          <Link href='/'
+          <div
+            
             className={activeLink === "home" ? styles.active : ""}
             onClick={() => {
               handleLinkClick("home");
             }}
           >
-            Home
-          </Link>
+            <Link href="/" className={styles.searchLink}>Home</Link>
+          </div>
         </div>
         <div className={styles.link}>
-          <Link href="/search"
+          <div
+            
             className={activeLink === "pro" ? styles.active : ""}
             onClick={() => {
               handleLinkClick("pro");
             }}
           >
-            Find Professionals
-          </Link>
+            <Link href="/search">Find Professionals</Link>
+          </div>
         </div>
       </div>
 
@@ -89,34 +88,38 @@ console.log(params);
         />
       </div>
 
-     {showSidebar && <div className={styles.sidebar}>
-        <div className={styles.items}>
-          <div className={styles.close} onClick={handleSidebar}>
-          <Close/>
-          </div>
-          <div className={styles.link}>
-            <Link href="/"
-              className={activeLink === "home" ? styles.active : ""}
-              onClick={() => {
-                handleLinkClick("home");
-              }}
-            >
-              Home
-            </Link>
-          </div>
-          <div className={styles.link}>
-            <Link href='/search'
-              className={activeLink === "pro" ? styles.active : ""}
-              onClick={() => {
-                handleLinkClick("pro");
-                // location("/search");
-              }}
-            >
-              Find Professionals
-            </Link>
+      {showSidebar && (
+        <div className={styles.sidebar}>
+          <div className={styles.items}>
+            <div className={styles.close} onClick={handleSidebar}>
+              <Close />
+            </div>
+            <div className={styles.link}>
+              <Link
+                href="/"
+                className={activeLink === "home" ? styles.active : ""}
+                onClick={() => {
+                  handleLinkClick("home");
+                }}
+              >
+                Home
+              </Link>
+            </div>
+            <div className={styles.link}>
+              <Link
+                href="/search"
+                className={activeLink === "pro" ? styles.active : ""}
+                onClick={() => {
+                  handleLinkClick("pro");
+                  // location("/search");
+                }}
+              >
+                Find Professionals
+              </Link>
+            </div>
           </div>
         </div>
-      </div>}
+      )}
 
       {/* Searchbox */}
       {showSearchBox && (

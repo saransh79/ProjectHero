@@ -91,20 +91,20 @@ const UserProfile: React.FC = () => {
               </div>
               <div className={styles.stroke}></div>
             </div>
-            {activeComponent === "" ? (
+            {activeComponent === ""  && userData?.payload.personalDetails?.about && (
               <AboutSection about={userData?.payload?.personalDetails?.about} />
-            ) : null}
+            )}
             <div className={styles.backgroundColor}>
               {userData && activeComponent === "" && (
                 <Trust_Safety data={userData?.payload.trustAndSafety} />
               )}
-              {activeComponent === "" || activeComponent === "business" ? (
+              {userData?.payload.businessCardDetails && (activeComponent === "" || activeComponent === "business" ? (
                 <BusinessCard data={userData?.payload} />
-              ) : null}
+              ) : null)}
 
-              {activeComponent === "" || activeComponent === "business" ? (
+              {userData?.payload.primarySpecializations && (activeComponent === "" || activeComponent === "business" ? (
                 <Services data={userData?.payload.primarySpecializations} />
-              ) : null}
+              ) : null)}
 
               {activeComponent === "" && <Gallery />}
               {activeComponent === "" && <Portfolio />}

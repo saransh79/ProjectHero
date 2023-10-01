@@ -22,12 +22,12 @@ const Services: React.FC<Iprops> = ({ data }) => {
               <div className={styles.workType1Parent}>
                 <div className={styles.mobileWorktype}>
                   <img src={i.icon} alt="" />
-                  <div className={styles.workType21}>{i.slug}</div>
+                  <div className={styles.workType21}>{i.label}</div>
                 </div>
                 <div className={styles.chipParent}>
-                  {i?.secondaryCategories?.map((category: string) => {
+                  {i?.secondaryCategories?.map((category: string, key) => {
                     return (
-                      <div className={styles.chip}>
+                      <div className={styles.chip} key={key}>
                         <div className={styles.labelWrapper}>
                           <div className={styles.label}>{category}</div>
                         </div>

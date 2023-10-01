@@ -20,11 +20,14 @@ const HeroSection: React.FC<Iprops> = ({personalDetails, activeComponent, setAct
   return (
     <div className={styles.frameParent}>
       <div className={styles.navigation}>
+        <Link href="/">
         <span>Home</span>
+        </Link>
 
         <img src="/assets/Right Arrow.svg" alt="" />
-
+      <Link href="/search">
         <span>Contractor Listing</span>
+      </Link>
 
         <img src="/assets/Right Arrow.svg" alt="" />
 
