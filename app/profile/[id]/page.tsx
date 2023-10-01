@@ -102,7 +102,7 @@ const UserProfile: React.FC = () => {
                 <BusinessCard data={userData?.payload} />
               ) : null)}
 
-              {userData?.payload.primarySpecializations && (activeComponent === "" || activeComponent === "business" ? (
+              {userData?.payload.primarySpecializations[0] && (activeComponent === "" || activeComponent === "business" ? (
                 <Services data={userData?.payload.primarySpecializations} />
               ) : null)}
 

@@ -1,7 +1,7 @@
 .card_location_container{
     display: flex;
     flex-wrap: wrap;
-    /* width: 100vw; */
+    width: 100vw;
     justify-content: flex-start;
     margin: 60px 0;
 }

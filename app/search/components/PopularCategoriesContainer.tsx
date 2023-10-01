@@ -88,13 +88,13 @@ const PopularCategoriesContainer: React.FC<Iprops> = ({
           {selectedPrimaryCategories.length ==0 && <div className={styles.popularCategories}>
             Top Building Contractors
           </div>}
-          {selectedPrimaryCategories.length && <div className={styles.popularCategories}>
+          {selectedPrimaryCategories.length > 0 && <div className={styles.popularCategories}>
             Showing {customers?.customers.length} results
           </div>}
         </div>
 
         <div className={styles.user_cards}>
-          {!showAll && (
+          {!showAll && customers?.customers.length && (
             <center >
               <ContractorCard data={customers?.customers[0]} />
               <div style={{
@@ -108,6 +108,7 @@ const PopularCategoriesContainer: React.FC<Iprops> = ({
             customers?.customers?.map((customer, key) => {
               if (key == 0) {
                 return (
+                  customer.personalDetails.userId &&
                   <center>
                     <ContractorCard data={customer} key={key} />
                     <div style={{
@@ -143,7 +144,11 @@ const PopularCategoriesContainer: React.FC<Iprops> = ({
             />
           </div>
         )}
-        <div onClick={() => setShowAll(true)}>{!showAll && <Viewmore />}</div>
+        <div
+        style={{
+          margin: "0 auto"
+        }}
+         onClick={() => setShowAll(true)}>{!showAll && <Viewmore />}</div>
       </div>
     </div>
   );
