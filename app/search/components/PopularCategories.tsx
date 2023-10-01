@@ -6,17 +6,16 @@ interface Iprops {
   setSelectedRootCategory: any;
 }
 const PopularCategories: React.FC<Iprops> = ({ selectedRootCategory, setSelectedRootCategory }) => {
-  const handleRootCategoryChange = (event: any) => {
-    setSelectedRootCategory(event.target.value);
+  const handleRootCategoryChange = (value: any) => {
+    setSelectedRootCategory(value);
   };
 
   return (
     <div className={styles.frameParent}>
       <div className={styles.popularCategories}>Popular Categories</div>
       <div className={styles.radioButtonParent}>
-        <button
-          value="SUB_CONTRACTOR"
-          onClick={handleRootCategoryChange}
+        <div
+          onClick={()=>handleRootCategoryChange("SUB_CONTRACTOR")}
           className={styles.radioButtonWrapper}
           style={{
             backgroundColor: selectedRootCategory === "SUB_CONTRACTOR"? 'lightgray': '#fff'
@@ -32,11 +31,10 @@ const PopularCategories: React.FC<Iprops> = ({ selectedRootCategory, setSelected
               Execute trade wise contracts mostly with materials
             </div>
           </div>
-        </button>
+        </div>
 
-        <button
-          value="GENERAL_CONTRACTOR"
-          onClick={handleRootCategoryChange}
+        <div
+          onClick={()=>handleRootCategoryChange("GENERAL_CONTRACTOR")}
           className={styles.radioButtonWrapper}
           style={{
             backgroundColor: selectedRootCategory === "GENERAL_CONTRACTOR"? 'lightgray': '#fff'
@@ -51,11 +49,10 @@ const PopularCategories: React.FC<Iprops> = ({ selectedRootCategory, setSelected
               Execute turnkey projects & work directly with the Client
             </div>
           </div>
-        </button>
+        </div>
 
-        <button
-          value="ARCHITECT_OR_INTERIOR_DESIGNER"
-          onClick={handleRootCategoryChange}
+        <div
+          onClick={()=>handleRootCategoryChange("ARCHITECT_OR_INTERIOR_DESIGNER")}
           className={styles.radioButtonWrapper}
           style={{
             backgroundColor: selectedRootCategory === "ARCHITECT_OR_INTERIOR_DESIGNER"? 'lightgray': '#fff'
@@ -73,10 +70,9 @@ const PopularCategories: React.FC<Iprops> = ({ selectedRootCategory, setSelected
               Offer Architectural & Interior designing services
             </div>
           </div>
-        </button>
-        <button
-          value="LABOUR_CONTRACTOR_OR_SUPPLIER"
-          onClick={handleRootCategoryChange}
+        </div>
+        <div
+          onClick={()=>handleRootCategoryChange("LABOUR_CONTRACTOR_OR_SUPPLIER")}
           className={styles.radioButtonWrapper}
           style={{
             backgroundColor: selectedRootCategory === "LABOUR_CONTRACTOR_OR_SUPPLIER"? 'lightgray': '#fff'
@@ -92,11 +88,10 @@ const PopularCategories: React.FC<Iprops> = ({ selectedRootCategory, setSelected
               Provide workers on measurement or daily wage basis
             </div>
           </div>
-        </button>
+        </div>
 
-        <button
-          value="PMC_OR_CONSULTANTS"
-          onClick={handleRootCategoryChange}
+        <div
+          onClick={()=>handleRootCategoryChange("PMC_OR_CONSULTANTS")}
           className={styles.radioButtonWrapper}
           style={{
             backgroundColor: selectedRootCategory === "PMC_OR_CONSULTANTS"? 'lightgray': '#fff'
@@ -112,11 +107,10 @@ const PopularCategories: React.FC<Iprops> = ({ selectedRootCategory, setSelected
               Provide Project Management Consultancy & other services
             </div>
           </div>
-        </button>
+        </div>
 
-        <button
-          value="CUSTOMER"
-          onClick={handleRootCategoryChange}
+        <div
+          onClick={()=>handleRootCategoryChange("CUSTOMER")}
           className={styles.radioButtonWrapper}
           style={{
             backgroundColor: selectedRootCategory === "CUSTOMER"? 'lightgray': '#fff'
@@ -132,7 +126,7 @@ const PopularCategories: React.FC<Iprops> = ({ selectedRootCategory, setSelected
               Want to get my project or work done
             </div>
           </div>
-        </button>
+        </div>
       </div>
     </div>
   );

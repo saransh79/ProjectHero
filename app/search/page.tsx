@@ -36,7 +36,7 @@ const Search = () => {
       </div>
       <Hero searchText={searchText} onSearchTextChange={onSearchTextChange} />
       <div className={styles.card_location_container}>
-        <div>
+        <div className={styles.filtercontainer}>
           <FilterContainer
             selectedRootCategory={selectedRootCategory}
             setSelectedRootCategory={setSelectedRootCategory}

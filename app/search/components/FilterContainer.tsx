@@ -164,7 +164,7 @@ const FilterContainer: React.FC<Iprops> = ({
             )}
           </div>
 
-          {show && (
+          {show || selectedRootCategory &&(
             <div className={styles.filters}>
               {rootCategories?.map((category, key) => (
                 <div className={styles.option} key={key}>
@@ -183,7 +183,7 @@ const FilterContainer: React.FC<Iprops> = ({
           )}
         </div>
 
-        {selectedRootCategory && show && (
+        {selectedRootCategory && !show && (
           <div className={styles.frameGroup}>
             <div className={styles.stroke}></div>
           </div>
@@ -191,7 +191,7 @@ const FilterContainer: React.FC<Iprops> = ({
 
         {/* Worktype filter */}
         <div className={styles.categoryFilter}>
-          {selectedRootCategory && (
+          {selectedRootCategory  &&(
             <div className={styles.categoryHeader}>
               <div className={styles.workType} onClick={handleWorktypeChange}>
                 Work Type

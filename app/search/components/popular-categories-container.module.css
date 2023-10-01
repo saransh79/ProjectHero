@@ -1,34 +1,50 @@
-.frameParent{
-    padding-right: 65px;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    align-items: center;
-    justify-content: center;
-    width: 980px;
+.frameParent {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+  margin-left: 5rem;
 }
 .frameGroup {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 24px;
-    }
-.topBuildingContractorsWrapper{
-    display: flex;
-    align-items: flex-start;
+  width: 100%;
 }
+.topBuildingContractorsWrapper {
+  display: flex;
+  align-items: flex-start;
+}
+.frameCards {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.user_cards {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+}
+.popularCategories {
+  font-weight: 500;
+}
+@media only screen and (max-width: 440px) {
+  .frameParent {
+    margin-left: 0;
+    width: 100vw;
+    /* padding: 0 16px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* padding: 0; */
+  }
+  .frameGroup {
+    width: 100vw;
+    padding-left: 20px;
+  }
+  .topBuildingContractorsWrapper {
+    padding-left: 20px;
+  }
 
-@media only screen and (max-width: 440px){
-    .frameParent{
-        width: 100%;
-        padding: 0 16px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        /* padding: 0; */
-    }
-    .frameGroup{
-        width: 330px;
-    }
 }

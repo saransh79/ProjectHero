@@ -9,7 +9,7 @@ interface Iprops{
 }
 const LocationContainer: React.FC<Iprops> = ({ location, onLocationChange}) => {
   
-  const [show, setShow]= useState(false);
+  const [show, setShow]= useState(true);
   const handleChange= ()=>{
     setShow(prev=>!prev);
   }

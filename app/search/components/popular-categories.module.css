@@ -1,6 +1,5 @@
 .frameParent {
   position: relative;
-  /* width: 980px; */
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -12,7 +11,6 @@
   color: var(--text-dark);
   font-family: var(--subtext-large);
   overflow: hidden;
-  /* margin-right: 50px; */
 }
 
 .popularCategories {
@@ -21,18 +19,11 @@
   font-family: Karla;
   font-size: 16px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   line-height: normal;
 }
-.popularCategoriesWrapper {
-  /* width: 980px; */
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-}
 .radioButtonParent {
-  width: 983px;
+  width: 980px;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
@@ -52,7 +43,7 @@
   border: 1px solid var(--border-medium, #d9d9d9);
   background: var(--background-light, #fff);
   box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.08);
-  scroll-behavior: smooth;
+  cursor: pointer;
 }
 
 .radioButton {
@@ -93,7 +84,18 @@
 }
 
 @media only screen and (max-width: 440px) {
-  .radioButtonParent{
-    width: 440px;
+  .frameParent, .radioButtonParent {
+    width: 100%;
+  }
+  .radioButtonWrapper{
+    height: 140px;
+    width: 156px;
+  }
+  .fieldText{
+    font-size: 14px;
+    line-height: normal;
+  }
+  .label{
+    font-size: 12px;
   }
 }

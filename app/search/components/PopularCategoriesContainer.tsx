@@ -22,19 +22,25 @@ const PopularCategoriesContainer: React.FC<Iprops> = ({
   setSelectedRootCategory,
   selectedPrimaryCategories,
   location,
-  searchText
+  searchText,
 }) => {
-
-  
   const [customers, setCustomers] = useState<Payload | null>(null);
-
+  const [showAll, setShowAll] = useState<boolean>(false);
   const [pageNumber, setPageNumber] = useState<number>(0);
   const [pageSize, setPageSize] = useState<number>(10);
   const [hasMore, setHasMore] = useState<boolean>(false);
   const [shouldRunEffect, setShouldRunEffect] = useState(false);
-  useEffect(()=>{
-    setShouldRunEffect(prev=>!prev);
-  },[selectedRootCategory, selectedPrimaryCategories, pageNumber, pageSize, location, searchText])
+
+  useEffect(() => {
+    setShouldRunEffect((prev) => !prev);
+  }, [
+    selectedRootCategory,
+    selectedPrimaryCategories,
+    pageNumber,
+    pageSize,
+    location,
+    searchText,
+  ]);
 
   useEffect(() => {
     // console.log(location);
@@ -42,8 +48,14 @@ const PopularCategoriesContainer: React.FC<Iprops> = ({
     // console.log(selectedRootCategory)
     // console.log(selectedPrimaryCategories);
 
-
-    fetchAllUsers(selectedRootCategory, selectedPrimaryCategories, pageSize, pageNumber, location, searchText)
+    fetchAllUsers(
+      selectedRootCategory,
+      selectedPrimaryCategories,
+      pageSize,
+      pageNumber,
+      location,
+      searchText
+    )
       .then((response: any) => {
         setCustomers(response.data.payload);
         setPageNumber(parseInt(response.data.payload.pageNumber));
@@ -64,48 +76,75 @@ const PopularCategoriesContainer: React.FC<Iprops> = ({
 
   return (
     <div className={styles.frameParent}>
-      <div className={`${styles.frameGroup}`}>
+      {!selectedRootCategory && <div className={`${styles.frameGroup}`}>
         <PopularCategories
           selectedRootCategory={selectedRootCategory}
           setSelectedRootCategory={setSelectedRootCategory}
         />
-      </div>
+      </div>}
 
-      <div className={styles.frameGroup}>
+      <div className={styles.frameCards}>
         <div className={styles.topBuildingContractorsWrapper}>
-          <div className={styles.popularCategories}>
+          {selectedPrimaryCategories.length ==0 && <div className={styles.popularCategories}>
             Top Building Contractors
+          </div>}
+          {selectedPrimaryCategories.length && <div className={styles.popularCategories}>
+            Showing {customers?.customers.length} results
+          </div>}
+        </div>
+
+        <div className={styles.user_cards}>
+          {!showAll && (
+            <center >
+              <ContractorCard data={customers?.customers[0]} />
+              <div style={{
+                marginTop: 30
+              }}>
+              <Download />
+              </div>
+            </center>
+          )}
+          {showAll &&
+            customers?.customers?.map((customer, key) => {
+              if (key == 0) {
+                return (
+                  <center>
+                    <ContractorCard data={customer} key={key} />
+                    <div style={{
+                      marginTop: 30,
+                    }}>
+                      </div>
+                    <Download />
+                  </center>
+                );
+              } else {
+                return <ContractorCard data={customer} key={key} />;
+              }
+            })}
+        </div>
+
+        {showAll && customers?.customers.length && (
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: "100%",
+            }}
+          >
+            <Pagination
+              count={5}
+              page={pageNumber}
+              onChange={handlePageChange}
+              disabled={!hasMore}
+              color="primary"
+              variant="outlined"
+              shape="rounded"
+            />
           </div>
-        </div>
-
-        {customers?.customers?.map((customer, key) => {
-          return <ContractorCard data={customer} key={key}/>;
-        })}
-
-<div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            width: "100%",
-          }}
-        >
-          <Pagination
-            count={5}
-            page={pageNumber}
-            onChange={handlePageChange}
-            disabled={!hasMore}
-            color="primary"
-            variant="outlined"
-            shape="rounded"
-          />
-        </div>
+        )}
+        <div onClick={() => setShowAll(true)}>{!showAll && <Viewmore />}</div>
       </div>
-      <div className={styles.frameGroup}>
-        <Download />
-      </div>
-
-      {/* <Viewmore /> */}
     </div>
   );
 };

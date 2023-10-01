@@ -63,7 +63,7 @@ const ContractorCard: React.FC<Iprops> = ({ data }) => {
                   </div>
                 </div>
                 <div className={styles.ceoowner}>{data?.personalDetails.designation}</div>
-               {data?.personalDetails?.city && <div className={styles.navigationMapPinParent}>
+               {!data?.personalDetails?.city && !data?.personalDetails?.state && <div className={styles.navigationMapPinParent}>
                   <img
                     className={styles.fvIcon}
                     alt=""
@@ -204,12 +204,8 @@ const ContractorCard: React.FC<Iprops> = ({ data }) => {
         onClick={shareProfile}
         className={styles.whatsapp1Parent}
       >
-        <img
-          className={styles.whatsapp1Icon1}
-          alt=""
-          src="/assets/Whatsapp.svg"
-        />
         <div className={styles.bangaloreKarnataka}>Share Profile</div>
+        <div className={styles.bangaloreKarnatakaMobile}>Share</div>
         <img
           className={styles.communicationShareAndroid1}
           alt=""
