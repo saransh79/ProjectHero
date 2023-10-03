@@ -9,6 +9,7 @@ import {
 import { fetchCategories } from "@/Api's";
 import styles from "./filter-container.module.css";
 import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
+import MobileFilters from "./MobileFilters";
 
 interface Iprops {
   selectedRootCategory?: string;
@@ -164,23 +165,24 @@ const FilterContainer: React.FC<Iprops> = ({
             )}
           </div>
 
-          {show || selectedRootCategory &&(
-            <div className={styles.filters}>
-              {rootCategories?.map((category, key) => (
-                <div className={styles.option} key={key}>
-                  <input
-                    type="radio"
-                    id={category?.slug}
-                    name="categories"
-                    value={category?.slug}
-                    checked={selectedRootCategory === category?.slug}
-                    onChange={() => handleRootCategoryChange(category?.slug)}
-                  />
-                  <label htmlFor={category.slug}>{category.label}</label>
-                </div>
-              ))}
-            </div>
-          )}
+          {show ||
+            (selectedRootCategory && (
+              <div className={styles.filters}>
+                {rootCategories?.map((category, key) => (
+                  <div className={styles.option} key={key}>
+                    <input
+                      type="radio"
+                      id={category?.slug}
+                      name="categories"
+                      value={category?.slug}
+                      checked={selectedRootCategory === category?.slug}
+                      onChange={() => handleRootCategoryChange(category?.slug)}
+                    />
+                    <label htmlFor={category.slug}>{category.label}</label>
+                  </div>
+                ))}
+              </div>
+            ))}
         </div>
 
         {selectedRootCategory && !show && (
@@ -191,7 +193,7 @@ const FilterContainer: React.FC<Iprops> = ({
 
         {/* Worktype filter */}
         <div className={styles.categoryFilter}>
-          {selectedRootCategory  &&(
+          {selectedRootCategory && (
             <div className={styles.categoryHeader}>
               <div className={styles.workType} onClick={handleWorktypeChange}>
                 Work Type
@@ -284,26 +286,14 @@ const FilterContainer: React.FC<Iprops> = ({
       </div>
 
       {/* for mobile screen */}
-      <div className={styles.frameParentMobile}>
-        <div className={styles.filtersParentMobile}>
-          <div className={styles.filtersMobile}>
-            <div className={styles.fieldText2}>Location</div>
-            <img
-              className={styles.arrowChevronRight2}
-              alt=""
-              src="assets/Chevron_Right.svg"
-            />
-          </div>
-          <div className={styles.filtersMobile}>
-            <div className={styles.fieldText2}>Categories</div>
-            <img
-              className={styles.arrowChevronRight2}
-              alt=""
-              src="assets/Chevron_Right.svg"
-            />
-          </div>
-        </div>
-      </div>
+      <MobileFilters
+        location={location}
+        onLocationChange={onLocationChange}
+        selectedRootCategory={selectedRootCategory}
+        selectedPrimaryCategories={selectedPrimaryCategories}
+        setSelectedRootCategory={setSelectedRootCategory}
+        setSelectedPrimaryCategories={setSelectedPrimaryCategories}
+      />
     </div>
   );
 };

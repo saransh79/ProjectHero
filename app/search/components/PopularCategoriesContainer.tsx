@@ -85,18 +85,18 @@ const PopularCategoriesContainer: React.FC<Iprops> = ({
 
       <div className={styles.frameCards}>
         <div className={styles.topBuildingContractorsWrapper}>
-          {selectedPrimaryCategories.length ==0 && <div className={styles.popularCategories}>
-            Top Building Contractors
+          {selectedRootCategory && <div className={styles.popularCategories}>
+          Showing {customers?.customers.length} results
           </div>}
-          {selectedPrimaryCategories.length > 0 && <div className={styles.popularCategories}>
-            Showing {customers?.customers.length} results
+          {!selectedRootCategory && <div className={styles.popularCategories}>
+          Top Building Contractors
           </div>}
         </div>
 
         <div className={styles.user_cards}>
-          {!showAll && customers?.customers.length && (
+          {!showAll && (
             <center >
-              <ContractorCard data={customers?.customers[0]} />
+             {customers?.customers.length ? <ContractorCard data={customers?.customers[0]} /> : null }
               <div style={{
                 marginTop: 30
               }}>
@@ -124,7 +124,7 @@ const PopularCategoriesContainer: React.FC<Iprops> = ({
             })}
         </div>
 
-        {showAll && customers?.customers.length && (
+        {showAll && customers?.customers.length ? (
           <div
             style={{
               display: "flex",
@@ -143,7 +143,7 @@ const PopularCategoriesContainer: React.FC<Iprops> = ({
               shape="rounded"
             />
           </div>
-        )}
+        ) : null}
         <div
         style={{
           margin: "0 auto"

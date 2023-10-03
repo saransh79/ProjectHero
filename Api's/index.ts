@@ -40,7 +40,7 @@ export const fetchAllUsers = async (
       pageSize: pageSize,
       pageNumber: pageNumber,
       searchText: searchText,
-      state: location,
+      state: location
     },
   });
   return response;
@@ -80,3 +80,11 @@ export const postReview = async (data: any) => {
   const url= "https://stage-api.projecthero.in/gateway/review-website/customer/review/create"
   return await axios.post(url, data);
 };
+
+export const fetchLocation= async (
+  latitude: number,
+  longitude: number
+)=>{
+  const url= `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`;
+  return await axios.get(url);
+}

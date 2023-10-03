@@ -63,7 +63,7 @@ const ContractorCard: React.FC<Iprops> = ({ data }) => {
                   </div>
                 </div>
                 <div className={styles.ceoowner}>{data?.personalDetails.designation}</div>
-               {!data?.personalDetails?.city && !data?.personalDetails?.state && <div className={styles.navigationMapPinParent}>
+               {data?.personalDetails?.state && <div className={styles.navigationMapPinParent}>
                   <img
                     className={styles.fvIcon}
                     alt=""
