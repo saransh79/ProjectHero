@@ -35,16 +35,16 @@ const UserCard: React.FC<Iprops> = ({ data }) => {
           <b className={styles.patagoniaConstructions1}>
             {data?.companyName}{data?.designation && <span> | </span> }{data?.designation}
           </b>
-          <div className={styles.navigationMapPinParent}>
-            {data?.city && <img
+        {data?.city && data?.state && <div className={styles.navigationMapPinParent}>
+            <img
               className={styles.navigationMapPin1}
               alt=""
               src="/assets/Map_Pin.svg"
-            />}
+            />
             <div className={styles.ajayVarma}>
-              {data?.city}, {data?.state}
+              {data?.city} , {data?.state}
             </div>
-          </div>
+          </div>}
         </div>
       </div>
       <div className={styles.frameDiv}>

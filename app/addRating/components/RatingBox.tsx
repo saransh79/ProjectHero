@@ -41,9 +41,9 @@ const RatingBox: React.FC<Iprops> = ({ data }) => {
         setIsSubmit(true);
       })
       .catch((err) => {
-        console.error("Error while posting review: ", err);
-        setError(err);
-        alert(err);
+        console.error("Error while posting review: ", err.response.data.developerInfo);
+        setError(err.response.data.developerInfo);
+        alert(error);
       });
   };
 
@@ -123,7 +123,7 @@ const RatingBox: React.FC<Iprops> = ({ data }) => {
                           value="Safety"
                           onClick={handleClick}
                         />
-                        <label htmlFor="Safety">Safety</label>
+                        <label htmlFor="Safety">Incomplete Work</label>
                       </div>
                       <div
                         className={styles.item}
@@ -143,7 +143,7 @@ const RatingBox: React.FC<Iprops> = ({ data }) => {
                           value="Communication"
                           onClick={handleClick}
                         />
-                        <label htmlFor="Communication">Communication</label>
+                        <label htmlFor="Communication">Late Delivery</label>
                       </div>
                       <div
                         className={styles.item}
@@ -163,7 +163,7 @@ const RatingBox: React.FC<Iprops> = ({ data }) => {
                           value="Food and Stay"
                           onClick={handleClick}
                         />
-                        <label htmlFor="Food">Food and Stay</label>
+                        <label htmlFor="Food">Extra Charges</label>
                       </div>
                       <div
                         className={styles.item}
@@ -185,7 +185,7 @@ const RatingBox: React.FC<Iprops> = ({ data }) => {
                           value="Professionalism"
                           onClick={handleClick}
                         />
-                        <label htmlFor="Professionalism">Professionalism</label>
+                        <label htmlFor="Professionalism">Not Professional</label>
                       </div>
                     </div>
                   </div>
@@ -296,7 +296,7 @@ const RatingBox: React.FC<Iprops> = ({ data }) => {
                   className={styles.ctaWrapper2}
                   onClick={() => setIsSubmit(false)}
                 >
-                  Add another review
+                  Edit your review
                 </button>
                 <div className={styles.gotohome}>
                   <a href={"/"}>Go to home</a>

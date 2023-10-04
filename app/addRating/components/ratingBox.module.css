@@ -150,14 +150,14 @@
 }
 .item {
   display: flex;
-  width: 156px;
+  flex: 0 0 calc(50% - 10px);
+    margin: 5px;
   padding: 12px;
   align-items: center;
   gap: 8px;
   justify-content: flex-start;
   border-radius: 8px;
   text-align: center;
-  margin: 8px;
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
@@ -284,4 +284,5 @@
   .submitted_content {
     height: 300px;
   }
+
 }

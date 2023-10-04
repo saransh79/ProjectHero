@@ -81,7 +81,7 @@
 }
 .raviConstruction {
   position: relative;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 22.29px;
   font-weight: 500;
 }
@@ -142,17 +142,24 @@
   border: 1.6px solid rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
   width: 254.69px;
-  height: 300px;
+  height: 330px;
   display: flex;
   flex-direction: column;
   padding: 24px;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 8px;
 }
+.item_container{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  height: inherit;
+}
 .frameParent {
-  width: 1360px;
-  height: 317px;
+  width: 100%;
+  height: inherit;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -184,7 +191,7 @@
 @media only screen and (max-width: 440px) {
   .listings {
     width: 100%;
-    height: 350px;
+    height: 330px;
     padding: 13px 16px;
     justify-content: center;
   }
@@ -296,6 +303,7 @@
     color: #070707;
 }
 .raviConstruction {
+  width: 100%;
     position: relative;
     font-size: 10px;
     line-height: 14px;
@@ -308,6 +316,7 @@
     gap: 2px;
     text-align: center;
     font-size: 10px;
+    width: 100%;
 }
 .communicationPhone4 {
     position: relative;
@@ -321,33 +330,19 @@
 }
 .primaryCta {
     border-radius: 40px;
-    background: linear-gradient(25.54deg, #bf9900, #ffcf12);
     width: 120px;
     height: 36px;
-    display: flex;
-    flex-direction: row;
     padding: 8px 0px;
-    box-sizing: border-box;
-    align-items: center;
-    justify-content: center;
     gap: 4px;
-    text-align: right;
     font-size: 12px;
 }
 .profilePhotoParent {
     border-radius: 8px;
-    background-color: #fff;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.08);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
     width: 180px;
-    height: 220px;
-    display: flex;
-    flex-direction: column;
+    height: 210px;
+    justify-content: flex-start;
+    gap: 8px;
     padding: 16px;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
 }
 .frameParent {
     width: 100%;

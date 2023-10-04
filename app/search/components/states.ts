@@ -1,4 +1,5 @@
 export const states = [
+  "Anywhere in India",
   "Andhra Pradesh",
   "Arunachal Pradesh",
   "Assam",

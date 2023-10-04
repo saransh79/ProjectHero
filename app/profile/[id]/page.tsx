@@ -22,10 +22,10 @@ import { usePathname } from "next/navigation";
 
 const UserProfile: React.FC = () => {
   const url = usePathname();
-  const segments = url ? url.split('/') : [];
+  const segments = url ? url.split("/") : [];
   const lastSegment = segments.length > 0 ? segments[segments.length - 1] : "";
   // console.log(lastSegment);
-  
+
   const [activeComponent, setActiveComponent] = useState<string | null>("");
   const [showSearchBox, setShowSearchBox] = useState<boolean>(false);
   const [userData, setUserData] = useState<Root | null>(null);
@@ -53,27 +53,27 @@ const UserProfile: React.FC = () => {
 
   return (
     <div>
-      <div>
-        <div className={styles.navbar_wrapper}>
-          <Navbar showSearchBox={showSearchBox} />
-        </div>
-        <HeroSection
-          personalDetails={userData?.payload.personalDetails}
-          activeComponent={activeComponent}
-          setActiveComponent={setActiveComponent}
-        />
+      <div className={styles.navbar_wrapper}>
+        <Navbar showSearchBox={showSearchBox} />
+      </div>
+      <HeroSection
+        personalDetails={userData?.payload.personalDetails}
+        activeComponent={activeComponent}
+        setActiveComponent={setActiveComponent}
+      />
 
-        <div className={styles.contentWrapper}>
-          <div className={styles.mainContainer}>
-            <div className={styles.sectionnameContainer}>
-              <div className={styles.sectionNames}>
-                <button
-                  value=""
-                  onClick={toggleActiveComponent}
-                  className={activeComponent === "" ? styles.bold : ""}
-                >
-                  Summary
-                </button>
+      <div className={styles.contentWrapper}>
+        <div className={styles.mainContainer}>
+          <div className={styles.sectionnameContainer}>
+            <div className={styles.sectionNames}>
+              <button
+                value=""
+                onClick={toggleActiveComponent}
+                className={activeComponent === "" ? styles.bold : ""}
+              >
+                Summary
+              </button>
+              {userData?.payload.personalDetails.userType !== "customer" && (
                 <button
                   value="business"
                   onClick={toggleActiveComponent}
@@ -81,51 +81,66 @@ const UserProfile: React.FC = () => {
                 >
                   Business
                 </button>
-                <button
-                  value="reviews"
-                  onClick={toggleActiveComponent}
-                  className={activeComponent === "reviews" ? styles.bold : ""}
-                >
-                  Reviews
-                </button>
-              </div>
-              <div className={styles.stroke}></div>
-            </div>
-            {activeComponent === ""  && userData?.payload.personalDetails?.about && (
-              <AboutSection about={userData?.payload?.personalDetails?.about} />
-            )}
-            <div className={styles.backgroundColor}>
-              {userData && activeComponent === "" && (
-                <Trust_Safety data={userData?.payload.trustAndSafety} />
               )}
-              {userData?.payload.businessCardDetails && (activeComponent === "" || activeComponent === "business" ? (
-                <BusinessCard data={userData?.payload} />
-              ) : null)}
-
-              {userData?.payload.primarySpecializations[0] && (activeComponent === "" || activeComponent === "business" ? (
-                <Services data={userData?.payload.primarySpecializations} />
-              ) : null)}
-
-              {activeComponent === "" && <Gallery />}
-              {activeComponent === "" && <Portfolio />}
-              {activeComponent === "" || activeComponent === "reviews" ? (
-                <RatingSection />
-              ) : null}
+              <button
+                value="reviews"
+                onClick={toggleActiveComponent}
+                className={activeComponent === "reviews" ? styles.bold : ""}
+              >
+                Reviews
+              </button>
             </div>
+            <div className={styles.stroke}></div>
           </div>
-          <div className={styles.advertiseWrapper}>
-            <RatingCard userId= {userData?.payload.personalDetails.userId}/>
-            <Download />
-          </div>
-        </div>
+          {activeComponent === "" &&
+            userData?.payload.personalDetails?.about && (
+              <div className={styles.about}>
+                <AboutSection
+                  about={userData?.payload?.personalDetails?.about}
+                />
+              </div>
+            )}
+          <div className={styles.backgroundColor}>
+            {userData && activeComponent === "" && (
+              <div>
+                <Trust_Safety data={userData?.payload.trustAndSafety} />
+              </div>
+            )}
 
-        <SimilarProfiles data={similarProfiles?.customers} />
-        <div className={styles.download}>
-          <DownloadApp />
+            {userData?.payload.businessCardDetails &&
+              (activeComponent === "" || activeComponent === "business" ? (
+                <div>
+                  <BusinessCard data={userData?.payload} />
+                </div>
+              ) : null)}
+
+            {userData?.payload.primarySpecializations[0] &&
+              (activeComponent === "" || activeComponent === "business" ? (
+                <div>
+                  <Services data={userData?.payload.primarySpecializations} />
+                </div>
+              ) : null)}
+
+            {/* {activeComponent === "" && <Gallery />}
+              {activeComponent === "" && <Portfolio />} */}
+            {activeComponent === "" || activeComponent === "reviews" ? (
+              <div>
+                <RatingSection />
+              </div>
+            ) : null}
+          </div>
         </div>
-        <Footer />
+        <div className={styles.advertiseWrapper}>
+          <RatingCard userId={userData?.payload.personalDetails.userId} />
+          <Download />
+        </div>
       </div>
-      ;
+
+      <SimilarProfiles data={similarProfiles?.customers} />
+      <div className={styles.download}>
+        <DownloadApp />
+      </div>
+      <Footer />
     </div>
   );
 };

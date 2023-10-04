@@ -17,7 +17,9 @@ const Overlay: React.FC<Iprops> = ({ isCardVisible, setCardVisibility }) => {
         {isCardVisible && (
           <div>
             <div className={styles.cross}
-            onClick={toggleCardVisibility}></div>
+            onClick={toggleCardVisibility}>
+              <img src="/assets/Group 37078.svg" alt=""/>
+            </div>
             <Link href="https://play.google.com/store/apps/details?id=com.projecthero.contractor&hl=en_IN&gl=US">
               <img
                 src="/assets/overlay.jpeg"
@@ -25,7 +27,7 @@ const Overlay: React.FC<Iprops> = ({ isCardVisible, setCardVisibility }) => {
                 className={styles.horizontal}
               />
               <img
-                src="/assets/overlay2.jpeg"
+                src="/assets/GI(M).svg"
                 alt="overlay"
                 className={styles.vertical}
               />

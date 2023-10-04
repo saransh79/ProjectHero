@@ -286,6 +286,7 @@ const FilterContainer: React.FC<Iprops> = ({
       </div>
 
       {/* for mobile screen */}
+      <div className={styles.mobile_filters}>
       <MobileFilters
         location={location}
         onLocationChange={onLocationChange}
@@ -294,6 +295,8 @@ const FilterContainer: React.FC<Iprops> = ({
         setSelectedRootCategory={setSelectedRootCategory}
         setSelectedPrimaryCategories={setSelectedPrimaryCategories}
       />
+      </div>
+      
     </div>
   );
 };

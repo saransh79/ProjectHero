@@ -8,7 +8,7 @@ const Download = () => {
       target="_blank"
       className={styles.download}
     >
-      <img src="/assets/Container.png" alt="download" />
+      <img src="/assets/Container.svg" alt="download" />
     </Link>
   );
 };

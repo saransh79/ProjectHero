@@ -51,18 +51,16 @@ const RatingSection: React.FC = () => {
             <div className={styles.frameDiv}>
               <div className={styles.frameWrapper1}>
                 <div className={styles.interfaceStarParent}>
-                  {averageRating && (
-                    <Rating
-                      name="half-rating-read"
-                      defaultValue={avgRating}
-                      precision={0.5}
-                      readOnly
-                    />
-                  )}
+                  <Rating
+                    name="half-rating-read"
+                    value={avgRating}
+                    precision={0.5}
+                    readOnly
+                  />
                 </div>
               </div>
               <div className={styles.wrapper}>
-                <div className={styles.div}>{averageRating}</div>
+                <div className={styles.div}>{averageRating ? averageRating: "0.0"}</div>
               </div>
             </div>
             <div className={styles.globalRatings}>out of 5</div>
@@ -72,82 +70,101 @@ const RatingSection: React.FC = () => {
           {reviews.length} global ratings
         </div>
       </div>
-      <div className={styles.frameParent1}>
-        {!showAllReviews && reviews.length <=3 && reviews.map((review, key) => {
-          return (
-            <div key={key}>
-              <div className={styles.woremIpsumDolorSitAmetCoParent}>
-                <div className={styles.irfanKhan}>{review.reviewerName}</div>
+      {reviews.length > 0 && (
+        <div className={styles.frameParent1}>
+          {
+            // reviews.length <= 3 &&
+            reviews.slice(0,3).map((review, key) => {
+              return (
+                <div key={key}>
+                  <div className={styles.woremIpsumDolorSitAmetCoParent}>
+                    <div className={styles.irfanKhan}>
+                      {review.reviewerName}
+                    </div>
 
-                <div className={styles.frameWrapper1}>
-                  <div className={styles.interfaceStarParent}>
-                    <Rating name="read-only" value={review.rating} readOnly />
+                    <div className={styles.frameWrapper1}>
+                      <div className={styles.interfaceStarParent}>
+                        <Rating
+                          name="read-only"
+                          value={review.rating}
+                          readOnly
+                        />
+                      </div>
+                    </div>
+                    <div className={styles.woremIpsumDolor3}>
+                      {review.description}
+                    </div>
+                    <div className={styles.postedOn123}>
+                      Posted on: {review.createdAt}
+                    </div>
                   </div>
+                  <div className={styles.lineDiv} />
                 </div>
-                <div className={styles.woremIpsumDolor3}>
-                  {review.description}
-                </div>
-                <div className={styles.postedOn123}>
-                  Posted on: {review.createdAt}
-                </div>
-              </div>
-              <div className={styles.lineDiv} />
-            </div>
-          );
-        })}
-        {showAllReviews && reviews.length > 3 && reviews.map((review, key) => {
-          return (
-            <div key={key}>
-              <div className={styles.woremIpsumDolorSitAmetCoParent}>
-                <div className={styles.irfanKhan}>{review.reviewerName}</div>
+              );
+            })}
+          {showAllReviews &&
+            reviews.slice(3).map((review, key) => {
+              return (
+                <div key={key}>
+                  <div className={styles.woremIpsumDolorSitAmetCoParent}>
+                    <div className={styles.irfanKhan}>
+                      {review.reviewerName}
+                    </div>
 
-                <div className={styles.frameWrapper1}>
-                  <div className={styles.interfaceStarParent}>
-                    <Rating name="read-only" value={review.rating} readOnly />
+                    <div className={styles.frameWrapper1}>
+                      <div className={styles.interfaceStarParent}>
+                        <Rating
+                          name="read-only"
+                          value={review.rating}
+                          readOnly
+                        />
+                      </div>
+                    </div>
+                    <div className={styles.woremIpsumDolor3}>
+                      {review.description}
+                    </div>
+                    <div className={styles.postedOn123}>
+                      Posted on: {review.createdAt}
+                    </div>
                   </div>
+                  <div className={styles.lineDiv} />
                 </div>
-                <div className={styles.woremIpsumDolor3}>
-                  {review.description}
-                </div>
-                <div className={styles.postedOn123}>
-                  Posted on: {review.createdAt}
-                </div>
-              </div>
-              <div className={styles.lineDiv} />
+              );
+            })}
+
+          {showAllReviews && (
+            <center
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: "100%",
+              }}
+            >
+              <Pagination
+                size="small"
+                page={pageNumber}
+                onChange={handlePageChange}
+                disabled={!hasMore}
+                // color="primary"
+                variant="outlined"
+                // shape="rounded"
+              />
+            </center>
+          )}
+
+          {reviews.length > 3 && !showAllReviews &&(
+            <div
+              style={{
+                margin: "0 auto",
+              }}
+              onClick={() => setShowAllReviews(true)}
+            >
+              <Viewmore />
             </div>
-          );
-        })}
-
-        {showAllReviews && (
-          <center
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              width: "100%",
-            }}
-          >
-            <Pagination
-              size="small"
-              page={pageNumber}
-              onChange={handlePageChange}
-              disabled={!hasMore}
-              // color="primary"
-              variant="outlined"
-              // shape="rounded"
-            />
-          </center>
-        )}
-
-        {!showAllReviews && reviews.length >3 && (
-          <div style={{
-            margin: "0 auto",
-          }} 
-          onClick={()=>setShowAllReviews(true)}>
-            <Viewmore />
-          </div>
-        )}
-      </div>
+          )}
+        </div>
+      )}
     </div>
   );
 };

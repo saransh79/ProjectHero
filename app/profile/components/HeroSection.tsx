@@ -74,10 +74,10 @@ const HeroSection: React.FC<Iprops> = ({personalDetails, activeComponent, setAct
         value=''
         onClick={(e: any)=> setActiveComponent(e.target.value)}
         className={activeComponent === ''? styles.personal: ""}>Personal</button>
-        <button
+      {personalDetails?.userType !== 'customer' && <button
         value='business' 
         onClick={(e: any)=> setActiveComponent(e.target.value)}
-        className={activeComponent === 'business' ? styles.personal: ""}>Business</button>
+        className={activeComponent === 'business' ? styles.personal: ""}>Business</button>}
         <button
         value="reviews"
         onClick={(e:any)=> setActiveComponent(e.target.value)}

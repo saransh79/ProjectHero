@@ -38,15 +38,15 @@ const Trust_Safety: React.FC<Iprops> = ({ data }) => {
                       />
                     ) : (
                       <img
-                        src="/assets/cross.png"
+                        src="/assets/Circle_Warning.svg"
                         alt=""
                         className={styles.warningCircleCheck5}
                       />
                     )}
                     <div className={styles.verificationStatusTags5}>
-                      {item.isVerified && (
+                      {item.isVerified ? (
                         <div className={styles.userIdentity}>{`Verified `}</div>
-                      )}
+                      ): <div className={styles.unverified}>Unverified</div>}
                     </div>
                   </div>
                 </div>

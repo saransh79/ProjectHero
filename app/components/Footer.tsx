@@ -1,5 +1,7 @@
 import React from "react";
 import styles from "./footer.module.css";
+import { Facebook, Instagram, LinkedIn, YouTube } from "@mui/icons-material";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -15,38 +17,39 @@ const Footer = () => {
             />
           </div>
           <div className={styles.logoDesc}>
-            Masters of consistency and quality
+          "Your ProjectHeroes are Ready"
           </div>
         </div>
         <div className={styles.p2}>
           <div className={styles.footerHeading}>USEFUL LINKS</div>
           <small>
-            <a>Find Professionals</a>
+            <Link href={"/search"}>Find Professionals</Link>
           </small>
           <small>
             <a>Contact Us</a>
           </small>
           <div className={styles.footerIcons}>
-            <div>
-              <a href="#">
-                <img src="/assets/Linkedin.svg" alt="linkedin" />
-              </a>
-            </div>
-            <div>
-              <a href="#">
-                <img src="/assets/Twitter.svg" alt="Twitter" />
-              </a>
-            </div>
-            <div>
-              <a href="#">
-                <img src="/assets/Facebook.svg" alt="linkedin" />
-              </a>
-            </div>
-            <div>
-              <a href="#">
-                <img src="/assets/Instagram.svg" alt="Instagram" />
-              </a>
-            </div>
+            <Link href={"https://www.instagram.com/projectheroapp/?hl=en"} target="_blank">
+              <div className={styles.icon}>
+                <Instagram/>
+              </div>
+            </Link>
+            <Link href={"https://www.linkedin.com/company/projectheroes/"} target="_blank">
+              <div className={styles.icon}>
+                <LinkedIn/>
+              </div>
+            </Link>
+            <Link href={"https://www.youtube.com/@ProjectHeroconstruction1021"} target="_blank">
+              <div className={styles.icon}>
+                <YouTube/>
+              </div>
+            </Link>
+            <Link href={"https://www.facebook.com/ondemandlabour"} target="_blank">
+              <div className={styles.icon}>
+                <img src="/assets/Facebook.svg" alt=""/>
+              </div>
+            </Link>
+            
           </div>
         </div>
         <div className={styles.p3}>
@@ -57,15 +60,19 @@ const Footer = () => {
           <small>Indira Nagar 1st Stage, Bengaluru, Karnataka 560038</small>
           <div className={styles.p3_heading}>
             <div className={styles.contactTypes}>Helpline:</div>
-            <small>3456789009</small>
+            <Link href={"tel:08061174206"} target="_blank"
+            className={styles.small}>08061174206</Link>
           </div>
           <div className={styles.p3_heading}>
             <div className={styles.contactTypes}>Email:</div>
-            <small>infocontractor@gmail.com</small>
+            <Link href={"mailto:help@projecthero.in"}
+            target="_blank"
+            className={styles.small}>help@projecthero.in</Link>
           </div>
           <div className={styles.p3_heading}>
             <div className={styles.contactTypes}>Web:</div>
-            <small>www.infocontractor.com</small>
+            <Link href={"www.projecthero.in"} target="_blank"
+            className={styles.small}>www.projecthero.in</Link>
           </div>
         </div>
       </div>

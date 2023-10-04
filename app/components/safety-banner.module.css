@@ -213,16 +213,18 @@
 
 @media only screen and (max-width: 440px){
     .koremIpsumDolor3{
-        font-size: 14px;
+        font-size: 12px;
         line-height: 18px;
+        font-weight: 400;
     }
 
     .verifiedStampIcon {
-        width: 145px;
-        height: 145px;
+        width: 130px;
+        height: 130px;
   }
   .adhaarVerification{
-    width: fit-content;
+    width: 100%;
+    line-height: normal;
   }
   .projectheroTrust {
         position: relative;

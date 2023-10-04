@@ -12,7 +12,7 @@
   justify-content: space-evenly;
   flex-direction: column;
 }
-.footer small {
+.footer small , .footer .small{
   color: #ccc;
   font-family: Open Sans;
   font-size: 12px;
@@ -20,6 +20,7 @@
   font-weight: 400;
   /* line-height: 20px; */
 }
+
 .footerHeading {
   color: var(--Color, #fff);
   font-family: Dosis;
@@ -96,8 +97,15 @@
     width: 84px;
     height: 15px;
 }
-
-
+.icon{
+  width: 28px;
+  height: 28px;
+  background-color: #E1BC5F;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 /* Media query */
 @media only screen and (max-width: 440px){
   .footer{

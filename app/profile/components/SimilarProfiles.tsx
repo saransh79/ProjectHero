@@ -36,44 +36,64 @@ const SimilarProfiles: React.FC<Iprops> = ({ data }) => {
         {data?.slice(0, 5).map((profile: Customer, key) => {
           return (
             <div className={styles.profilePhotoParent} key={key}>
-              <Link href={`/profile/${profile.userId}`} className={styles.profilePhoto}
+              <Link
+                href={`/profile/${profile.userId}`}
+                className={styles.profilePhoto}
               >
                 <img
                   className={styles.image487Icon}
                   alt=""
-                  src={profile.profilePicture ? profile.profilePicture : "/assets/image 487.png"}
+                  src={
+                    profile.profilePicture
+                      ? profile.profilePicture
+                      : "/assets/image 487.png"
+                  }
                 />
               </Link>
-              <div className={styles.frameGroup}>
-                <div className={styles.raviKishanParent}>
-                  <b className={styles.raviKishan}>{profile.name}</b>
-                  {profile.isVerified && <img className={styles.fvIcon} alt="" src="/assets/FV.svg" />}
+              <div className={styles.item_container}>
+                <div className={styles.frameGroup}>
+                  <div className={styles.raviKishanParent}>
+                    <b className={styles.raviKishan}>{profile.name}</b>
+                    {profile.isVerified && (
+                      <img
+                        className={styles.fvIcon}
+                        alt=""
+                        src="/assets/FV.svg"
+                      />
+                    )}
+                  </div>
+                  <div className={styles.raviConstruction}>
+                    {profile.companyName}
+                  </div>
+                  <div className={styles.generalContractor}>
+                    {profile.rootPersona}
+                  </div>
+                  <div className={styles.mumbaiMaharashtra}>
+                    {profile.city}, {profile.state}
+                  </div>
                 </div>
-                <div className={styles.raviConstruction}>{profile.companyName}</div>
-                <div className={styles.generalContractor}>
-                  {profile.rootPersona}
+                <div
+                  className={styles.primaryCta}
+                  onClick={toggleCardVisibility}
+                >
+                  <img
+                    className={styles.communicationPhone5}
+                    alt=""
+                    src="/assets/Phone.svg"
+                  />
+                  <div className={styles.cta}>Contact</div>
                 </div>
-                <div className={styles.mumbaiMaharashtra}>
-                  {profile.city}, {profile.state}
-                </div>
-              </div>
-              <div className={styles.primaryCta}
-              onClick={toggleCardVisibility}>
-                <img
-                  className={styles.communicationPhone5}
-                  alt=""
-                  src="/assets/Phone.svg"
-                />
-                <div className={styles.cta}
-                >Contact</div>
               </div>
             </div>
           );
         })}
       </div>
-      {isCardVisible && <Overlay
-      isCardVisible={isCardVisible}
-      setCardVisibility={setCardVisibility}/>}
+      {isCardVisible && (
+        <Overlay
+          isCardVisible={isCardVisible}
+          setCardVisibility={setCardVisibility}
+        />
+      )}
     </div>
   );
 };

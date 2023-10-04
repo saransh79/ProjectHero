@@ -36,50 +36,33 @@ const SafetyBanner: React.FC<Iprops> = ({
                   </b>
                   <div
                     className={styles.koremIpsumDolor3}
-                  >{`Korem ipsum dolor sit amet, consectetur piscing elit. Nunc vulputate `}</div>
+                  >{`Contact Details for the profile have been verified via Otp / Truecaller Profile.`}</div>
                 </div>
               </div>
             </div>
             <div className={styles.frameWrapper}>
               <div className={styles.parent}>
-                <div className={styles.groupWrapper}>
-                  <div className={styles.group}>
-                    <img
-                      className={styles.icon1}
-                      alt=""
-                      src="/assets/17802 1.png"
-                    />
-                    <img
-                      className={styles.image28267Icon1}
-                      alt=""
-                      src="/assets/image 28267.png"
-                    />
-                    <img
-                      className={styles.securityCheckIcon1}
-                      alt=""
-                      src="/assets/Security Check.png"
-                    />
-                  </div>
-                </div>
+             <img src="/assets/adhaar.png" alt=""
+             className={styles.icon}/>
                 <div className={styles.phoneNumberVerificationParent}>
                   <b className={styles.adhaarVerification}>
                     Aadhar Verification
                   </b>
                   <div
                     className={styles.koremIpsumDolor3}
-                  >{`Korem ipsum dolor sit amet, consectetur piscing elit. Nunc vulputate `}</div>
+                  >{`The profile’s identity has been verified through e-KYC of their Aadhar on UIDAI government website.`}</div>
                 </div>
               </div>
             </div>
 
             <div className={styles.frameWrapper}>
               <div className={styles.parent}>
-                <img className={styles.icon} alt="" src="/assets/17802 1.png" />
+                <img className={styles.icon} alt="" src="/assets/510797-PITQPM-244 1.png" />
                 <div className={styles.phoneNumberVerificationParent}>
-                  <b className={styles.adhaarVerification}>GST Verification</b>
+                  <b className={styles.adhaarVerification}>Business & Turnover Verification</b>
                   <div
                     className={styles.koremIpsumDolor3}
-                  >{`Korem ipsum dolor sit amet, consectetur piscing elit. Nunc vulputate `}</div>
+                  >{`The profile’s registered business name and annual turnover has been verified by their registered GSTIN.`}</div>
                 </div>
               </div>
             </div>

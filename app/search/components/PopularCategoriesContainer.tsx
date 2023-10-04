@@ -96,7 +96,7 @@ const PopularCategoriesContainer: React.FC<Iprops> = ({
         <div className={styles.user_cards}>
           {!showAll && (
             <center >
-             {customers?.customers.length ? <ContractorCard data={customers?.customers[0]} /> : null }
+             {customers?.customers.length ? <ContractorCard data={customers?.customers[0]} rootCategory={selectedRootCategory}/> : null }
               <div style={{
                 marginTop: 30
               }}>
@@ -109,8 +109,8 @@ const PopularCategoriesContainer: React.FC<Iprops> = ({
               if (key == 0) {
                 return (
                   customer.personalDetails.userId &&
-                  <center>
-                    <ContractorCard data={customer} key={key} />
+                  <center key={key}>
+                    <ContractorCard data={customer} rootCategory= {selectedRootCategory} key={key} />
                     <div style={{
                       marginTop: 30,
                     }}>

@@ -6,10 +6,6 @@
   font-family: Roboto;
   color: #2a254b;
   text-align: left;
-  margin-bottom: 24px;
-}
-.businessWrapper{
-  margin: 24px 0;
 }
 .userPicIcon {
   position: relative;
@@ -285,14 +281,19 @@
 .divParent img{
   display: none;
 }
-
+.businessWrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 44px;
+}
 
 @media only screen and (max-width: 440px) {
   .businessCard {
     display: none;
   }
   .businessWrapper{
-    margin: 0;
+    gap: 24px;
   }
   .personalDetailsParent {
     width: 100%;
@@ -301,7 +302,6 @@
     justify-content: flex-start;
     gap: 8px;
     text-align: left;
-    margin: 24px 0;
   }
   .personalDetails {
     position: relative;
