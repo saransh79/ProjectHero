@@ -74,16 +74,25 @@
     .sectionnameContainer {
       display: none;
     }
+    .contentWrapper{
+      margin-bottom: 0;
+      width: 100vw;
+    }
     .mainContainer {
       width: 100%;
+      align-items: center;
+      justify-content: center;
       gap: 24px;
     }
     .sectionnameContainer, .about{
       padding: 16px;
     }
     .backgroundColor {
-      padding: 16px;
+      width: 100%;
+      padding: 16px 0;
       background-color: #fcfaf4;
+      display: flex;
+      align-items: center;
       gap: 24px;
     }
     .advertiseWrapper {

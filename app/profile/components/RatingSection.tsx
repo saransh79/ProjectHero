@@ -35,10 +35,11 @@ const RatingSection: React.FC = () => {
     setPageNumber(newPage);
   };
 
-  const totalRating = reviews.reduce((sum, review) => sum + review.rating, 0);
-  var averageRating = reviews.length ? totalRating / reviews.length : 0;
+  const totalRating: number = reviews.reduce((sum: number, review) => sum + review.rating, 0);
+  var averageRating : number = reviews.length ? totalRating / reviews.length : 0;
+
   const avgRating =
-    averageRating != 0 ? parseFloat(averageRating.toFixed(2)) : 0;
+    averageRating != 0 ? averageRating.toFixed(2): "0";
 
   return (
     <div className={styles.frameParent}>
@@ -53,14 +54,14 @@ const RatingSection: React.FC = () => {
                 <div className={styles.interfaceStarParent}>
                   <Rating
                     name="half-rating-read"
-                    value={avgRating}
+                    value={parseFloat(avgRating)}
                     precision={0.5}
                     readOnly
                   />
                 </div>
               </div>
               <div className={styles.wrapper}>
-                <div className={styles.div}>{averageRating ? averageRating: "0.0"}</div>
+                <div className={styles.div}>{avgRating ? avgRating: "0.0"}</div>
               </div>
             </div>
             <div className={styles.globalRatings}>out of 5</div>
@@ -155,9 +156,7 @@ const RatingSection: React.FC = () => {
 
           {reviews.length > 3 && !showAllReviews &&(
             <div
-              style={{
-                margin: "0 auto",
-              }}
+              className={styles.viewmore}
               onClick={() => setShowAllReviews(true)}
             >
               <Viewmore />

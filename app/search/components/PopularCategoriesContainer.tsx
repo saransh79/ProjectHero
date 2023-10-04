@@ -145,9 +145,7 @@ const PopularCategoriesContainer: React.FC<Iprops> = ({
           </div>
         ) : null}
         <div
-        style={{
-          margin: "0 auto"
-        }}
+        className={styles.viewmore}
          onClick={() => setShowAll(true)}>{!showAll && <Viewmore />}</div>
       </div>
     </div>

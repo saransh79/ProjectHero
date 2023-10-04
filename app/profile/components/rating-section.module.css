@@ -144,7 +144,7 @@
     height: 1px;
     margin-top: 10px;
 }
-.Viewmore {
+.viewmore {
   margin: 0 auto;
 }
 
@@ -192,8 +192,8 @@
     font-weight: 600;
   }
  
-.Viewmore{
-    font-size: 14px;
+.viewmore{
+  font-size: 14px;
 }
 
 }
