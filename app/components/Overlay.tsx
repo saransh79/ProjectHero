@@ -22,7 +22,7 @@ const Overlay: React.FC<Iprops> = ({ isCardVisible, setCardVisibility }) => {
             </div>
             <Link href="https://play.google.com/store/apps/details?id=com.projecthero.contractor&hl=en_IN&gl=US">
               <img
-                src="/assets/overlay.jpeg"
+                src="/assets/PH pop-up.png"
                 alt="overlay"
                 className={styles.horizontal}
               />

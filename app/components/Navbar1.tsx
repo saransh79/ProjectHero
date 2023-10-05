@@ -10,13 +10,14 @@ interface Iprops {
   showSearchBox?: boolean;
   handleSearchBox?: any;
 }
-const Navbar: React.FC<Iprops> = ({ showSearchBox, handleSearchBox }) => {
+const Navbar: React.FC<Iprops> = () => {
   const location = usePathname();
   const segments = location.split("/");
-  const lastSegment = segments[segments.length - 1];
-
-  const [activeLink, setActiveLink] = useState<string | null>("home");
+  const lastSegment = segments[segments.length - 2];
+  const [showSearchBox, setShowSearchBox] = useState<boolean>(false);
+  const [activeLink, setActiveLink] = useState<string | null>("pro");
   const [showSidebar, setShowSidebar] = useState(false);
+
   const handleSidebar = () => {
     setShowSidebar((prev) => !prev);
   };
@@ -37,9 +38,9 @@ const Navbar: React.FC<Iprops> = ({ showSearchBox, handleSearchBox }) => {
         <div
           className={styles.link}
           style={{
-            display: lastSegment === "search" ? "none" : "inline-block",
+            display: lastSegment === "profile" ? "inline-block" : "none",
           }}
-          onClick={handleSearchBox}
+          onClick={() => setShowSearchBox(true)}
         >
           <div className={styles.searchLink}>
             <img src="/assets/Search_Magnifying_Glass.svg" />
@@ -48,24 +49,24 @@ const Navbar: React.FC<Iprops> = ({ showSearchBox, handleSearchBox }) => {
         </div>
         <div className={styles.link}>
           <div
-            
             className={activeLink === "home" ? styles.active : ""}
             onClick={() => {
               handleLinkClick("home");
             }}
           >
-            <Link href="/" className={styles.searchLink}>Home</Link>
+            <Link href="/" className={styles.searchLink}>
+              Home
+            </Link>
           </div>
         </div>
         <div className={styles.link}>
           <div
-            
             className={activeLink === "pro" ? styles.active : ""}
             onClick={() => {
               handleLinkClick("pro");
             }}
           >
-            <Link href="/search">Find Professionals</Link>
+            <Link href="/">Find Professionals</Link>
           </div>
         </div>
       </div>
@@ -75,9 +76,9 @@ const Navbar: React.FC<Iprops> = ({ showSearchBox, handleSearchBox }) => {
           className={styles.interfaceSearchMagnifying1}
           alt=""
           src="/assets/Search_Magnifying_Glass.svg"
-          onClick={handleSearchBox}
+          onClick={() => setShowSearchBox(true)}
           style={{
-            display: lastSegment === "search" ? "none" : "inline-block",
+            display: lastSegment === "profile" ? "inline-block" : "none",
           }}
         />
         <img
@@ -107,11 +108,10 @@ const Navbar: React.FC<Iprops> = ({ showSearchBox, handleSearchBox }) => {
             </div>
             <div className={styles.link}>
               <Link
-                href="/search"
+                href="/"
                 className={activeLink === "pro" ? styles.active : ""}
                 onClick={() => {
                   handleLinkClick("pro");
-                  // location("/search");
                 }}
               >
                 Find Professionals
@@ -124,10 +124,13 @@ const Navbar: React.FC<Iprops> = ({ showSearchBox, handleSearchBox }) => {
       {/* Searchbox */}
       {showSearchBox && (
         <div className={styles.searchboxWrapper}>
-          <div className={styles.searchbox_container}>
-            <SearchBox />
-            <div className={styles.toggler} onClick={handleSearchBox}>
-              <KeyboardArrowUp />
+          <div className={styles.navSearchBar}>
+            <div className={styles.search_more}>Search more contractors</div>
+            <div  className={styles.searchbox_container}>
+              <SearchBox />
+              <div className={styles.toggler} onClick={() => setShowSearchBox(false)}>
+                <KeyboardArrowUp />
+              </div>
             </div>
           </div>
         </div>

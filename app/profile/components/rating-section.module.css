@@ -85,25 +85,31 @@
   gap: 6px;
 }
 .woremIpsumDolor3 {
-  position: relative;
-  line-height: 28px;
+  color: #3d3d3d;
+  font-family: Karla;
+  font-size: 18px;
+  font-style: normal;
   font-weight: 500;
-  text-align: left;
-  display: flex;
-  align-items: center;
+  line-height: 28px; /* 155.556% */
   width: 806px;
 }
 .irfanKhan {
-  position: relative;
-  font-size: 24px;
-  font-weight: 500;
   color: #000;
+  text-align: center;
+  font-family: Karla;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
 .postedOn123 {
-  position: relative;
-  font-size: 16px;
-  font-weight: 500;
   color: #808080;
+  text-align: center;
+  font-family: Karla;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
 .woremIpsumDolorSitAmetCoParent {
   width: 806px;
@@ -131,18 +137,18 @@
   align-items: flex-start;
   justify-content: flex-start;
   gap: 24px;
-  text-align: center;
+  text-align: left;
   font-size: 24px;
   color: #2a254b;
   font-family: Karla;
 }
 .lineDiv {
-    position: relative;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
-    width: 100%;
-    height: 1px;
-    margin-top: 10px;
+  position: relative;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  width: 100%;
+  height: 1px;
+  margin-top: 10px;
 }
 .viewmore {
   margin: 0 auto;
@@ -159,7 +165,23 @@
     color: #000;
     text-align: left;
   }
+  .frameWrapper1{
+    padding: 0;
+  }
+  .postedOn123 {
+    color: #808080;
+    text-align: center;
+    font-family: Karla;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .detailsParent {
+    width: 100%;
+  }
   .frameParent {
+    align-items: center;
     font-size: 14px;
   }
   .frameParent1 {
@@ -176,24 +198,28 @@
     flex-wrap: wrap;
   }
   .woremIpsumDolor3 {
-    width: 100%;
-    line-height: 20px;
+    color: #3d3d3d;
+    font-family: Karla;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; /* 166.667% */
   }
   .interfaceStar21 {
     width: 16px;
     height: 16px;
   }
   .irfanKhan {
-    position: relative;
-    font-size: 14px;
-    font-family: Karla;
     color: #000;
     text-align: center;
-    font-weight: 600;
+    font-family: Karla;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
   }
- 
-.viewmore{
-  font-size: 14px;
-}
 
+  .viewmore {
+    font-size: 14px;
+  }
 }

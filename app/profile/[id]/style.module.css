@@ -93,6 +93,7 @@
       background-color: #fcfaf4;
       display: flex;
       align-items: center;
+      justify-content: flex-start;
       gap: 24px;
     }
     .advertiseWrapper {
@@ -100,9 +101,11 @@
     }
     .download {
       display: flex;
-      align-items: center;
+      align-items:  center;
       justify-content: center;
-      margin: 10px 0;
+      text-align: center;
+      padding: 16px 0;
+      object-fit: cover;
     }
   }
   

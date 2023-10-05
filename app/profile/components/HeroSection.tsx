@@ -2,6 +2,8 @@ import { PersonalDetails } from "@/Api's/interface/PersonDetails";
 import styles from "./hero-section.module.css";
 import UserCard from "./UserCard";
 import Link from "next/link";
+import { useState } from "react";
+import Overlay from "@/app/components/Overlay";
 
 
 interface Iprops {
@@ -11,7 +13,7 @@ interface Iprops {
 }
 
 const HeroSection: React.FC<Iprops> = ({personalDetails, activeComponent, setActiveComponent}) => {
-  
+  const [isCardVisible, setCardVisibility]= useState<boolean>(false);
   const shareProfile = () => {
     const currentURL = window.location.href; 
     const whatsappURL = `https://wa.me/?text=${encodeURIComponent(currentURL)}`;
@@ -44,14 +46,14 @@ const HeroSection: React.FC<Iprops> = ({personalDetails, activeComponent, setAct
       {/* for mobile screen */}
       <div className={styles.ctawrapper}>
         <div className={styles.ctaParent}>
-          <div className={styles.cta}>
+          <div onClick={()=>setCardVisibility(true)} className={styles.cta}>
             <img
               className={styles.communicationPhone1}
               alt=""
               src="/assets/Phone.svg"
             />
           </div>
-          <div className={styles.cta2}>
+          <div onClick={()=>setCardVisibility(true)} className={styles.cta2}>
             <img
               className={styles.whatsappIcon1}
               alt=""
@@ -59,15 +61,22 @@ const HeroSection: React.FC<Iprops> = ({personalDetails, activeComponent, setAct
             />
           </div>
         </div>
-        <div className={styles.cta1}>
-          <Link href={`/addRating/${personalDetails?.userId}`} className={styles.cta2}>Rate this Company</Link>
+        <Link href={`/addRating/${personalDetails?.userId}`}  className={styles.cta1}>
+          <div className={styles.cta2}>Rate this Company</div>
           <img
             className={styles.arrowChevronRight1}
             alt=""
             src="/assets/rightarrow.svg"
           />
-        </div>
+        </Link>
       </div>
+
+      {isCardVisible && (
+        <Overlay
+          isCardVisible={isCardVisible}
+          setCardVisibility={setCardVisibility}
+        />
+      )}
 
       <div className={styles.personalParent}>
         <button

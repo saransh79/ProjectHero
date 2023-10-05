@@ -11,7 +11,8 @@ const SimilarProfiles: React.FC<Iprops> = ({ data }) => {
 
   const [isCardVisible, setCardVisibility] = useState(false);
 
-  const toggleCardVisibility = () => {
+  const toggleCardVisibility = (e: any) => {
+    e.stopPropagation();
     setCardVisibility(!isCardVisible);
   };
   return (
@@ -35,55 +36,62 @@ const SimilarProfiles: React.FC<Iprops> = ({ data }) => {
       <div className={styles.frameParent}>
         {data?.slice(0, 5).map((profile: Customer, key) => {
           return (
-            <div className={styles.profilePhotoParent} key={key}>
-              <Link
-                href={`/profile/${profile.userId}`}
-                className={styles.profilePhoto}
-              >
-                <img
-                  className={styles.image487Icon}
-                  alt=""
-                  src={
-                    profile.profilePicture
-                      ? profile.profilePicture
-                      : "/assets/image 487.png"
+            <div>
+              <a
+                onClick={() => {
+                  if (!isCardVisible) {
+                    window.location.href = `/profile/${profile.userId}`;
                   }
-                />
-              </Link>
-              <div className={styles.item_container}>
-                <div className={styles.frameGroup}>
-                  <div className={styles.raviKishanParent}>
-                    <b className={styles.raviKishan}>{profile.name}</b>
-                    {profile.isVerified && (
-                      <img
-                        className={styles.fvIcon}
-                        alt=""
-                        src="/assets/FV.svg"
-                      />
-                    )}
-                  </div>
-                  <div className={styles.raviConstruction}>
-                    {profile.companyName}
-                  </div>
-                  <div className={styles.generalContractor}>
-                    {profile.rootPersona}
-                  </div>
-                  <div className={styles.mumbaiMaharashtra}>
-                    {profile.city}, {profile.state}
-                  </div>
-                </div>
-                <div
-                  className={styles.primaryCta}
-                  onClick={toggleCardVisibility}
-                >
+                }}
+                className={styles.profilePhotoParent}
+                key={key}
+              >
+                <div className={styles.profilePhoto}>
                   <img
-                    className={styles.communicationPhone5}
+                    className={styles.image487Icon}
                     alt=""
-                    src="/assets/Phone.svg"
+                    src={
+                      profile.profilePicture
+                        ? profile.profilePicture
+                        : "/assets/image 487.png"
+                    }
                   />
-                  <div className={styles.cta}>Contact</div>
                 </div>
-              </div>
+                <div className={styles.item_container}>
+                  <div className={styles.frameGroup}>
+                    <div className={styles.raviKishanParent}>
+                      <b className={styles.raviKishan}>{profile.name}</b>
+                      {profile.isVerified && (
+                        <img
+                          className={styles.fvIcon}
+                          alt=""
+                          src="/assets/FV.svg"
+                        />
+                      )}
+                    </div>
+                    <div className={styles.raviConstruction}>
+                      {profile.companyName}
+                    </div>
+                    <div className={styles.generalContractor}>
+                      {profile.rootPersona}
+                    </div>
+                    <div className={styles.mumbaiMaharashtra}>
+                      {profile.city}, {profile.state}
+                    </div>
+                  </div>
+                  <div
+                    className={styles.primaryCta}
+                    onClick={toggleCardVisibility}
+                  >
+                    <img
+                      className={styles.communicationPhone5}
+                      alt=""
+                      src="/assets/Phone.svg"
+                    />
+                    <div className={styles.cta}>Contact</div>
+                  </div>
+                </div>
+              </a>
             </div>
           );
         })}

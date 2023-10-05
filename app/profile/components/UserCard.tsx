@@ -1,11 +1,15 @@
 import Link from "next/link";
 import styles from "./user-card.module.css";
 import { PersonalDetails } from "@/Api's/interface/PersonDetails";
+import { useState } from "react";
+import Overlay from "@/app/components/Overlay";
 
 interface Iprops {
   data?: PersonalDetails;
 }
 const UserCard: React.FC<Iprops> = ({ data }) => {
+  const [isCardVisible, setCardVisibility] = useState<boolean>(false);
+
   return (
     <div className={styles.frameParent}>
       <div className={styles.rectangleParent}>
@@ -33,23 +37,27 @@ const UserCard: React.FC<Iprops> = ({ data }) => {
             </div>
           </div>
           <b className={styles.patagoniaConstructions1}>
-            {data?.companyName}{data?.designation && <span> | </span> }{data?.designation}
+            {data?.companyName}
+            {data?.designation && <span> | </span>}
+            {data?.designation}
           </b>
-        {data?.city && data?.state && <div className={styles.navigationMapPinParent}>
-            <img
-              className={styles.navigationMapPin1}
-              alt=""
-              src="/assets/Map_Pin.svg"
-            />
-            <div className={styles.ajayVarma}>
-              {data?.city} , {data?.state}
+          {data?.city && data?.state && (
+            <div className={styles.navigationMapPinParent}>
+              <img
+                className={styles.navigationMapPin1}
+                alt=""
+                src="/assets/Map_Pin.svg"
+              />
+              <div className={styles.ajayVarma}>
+                {data?.city} , {data?.state}
+              </div>
             </div>
-          </div>}
+          )}
         </div>
       </div>
       <div className={styles.frameDiv}>
         <div className={styles.ctaParent}>
-          <Link href="https://play.google.com/store/apps/details?id=com.projecthero.contractor&hl=en_IN&gl=US" target="_blank" >  
+          <div onClick={() => setCardVisibility(true)}>
             <div className={styles.cta}>
               <img
                 className={styles.communicationPhone1}
@@ -58,11 +66,9 @@ const UserCard: React.FC<Iprops> = ({ data }) => {
               />
               <div className={styles.whatsapp}>Call</div>
             </div>
-          </Link>
+          </div>
 
-          <Link
-            href="https://play.google.com/store/apps/details?id=com.projecthero.contractor&hl=en_IN&gl=US" target="_blank" 
-          >
+          <div onClick={() => setCardVisibility(true)}>
             <div className={styles.cta2}>
               <img
                 className={styles.whatsappIcon1}
@@ -71,9 +77,16 @@ const UserCard: React.FC<Iprops> = ({ data }) => {
               />
               <div className={styles.whatsapp}>Whatsapp</div>
             </div>
-          </Link>
+          </div>
         </div>
       </div>
+
+      {isCardVisible && (
+        <Overlay
+          isCardVisible={isCardVisible}
+          setCardVisibility={setCardVisibility}
+        />
+      )}
     </div>
   );
 };

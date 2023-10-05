@@ -77,7 +77,7 @@ const Footer = () => {
         </div>
       </div>
       <div className={styles.copyright}>
-        <small>© Copyright 2023 - Logoipsum Contractor Designed by</small>
+        <small>© Copyright 2023 - Designed by</small>
         <img src="/assets/PH New Logo (2).svg" alt="logo" />
       </div>
     </div>

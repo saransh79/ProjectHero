@@ -41,7 +41,10 @@ const RatingBox: React.FC<Iprops> = ({ data }) => {
         setIsSubmit(true);
       })
       .catch((err) => {
-        console.error("Error while posting review: ", err.response.data.developerInfo);
+        console.error(
+          "Error while posting review: ",
+          err.response.data.developerInfo
+        );
         setError(err.response.data.developerInfo);
         alert(error);
       });
@@ -111,7 +114,7 @@ const RatingBox: React.FC<Iprops> = ({ data }) => {
                           border:
                             suggestion === "Safety"
                               ? "1px solid var(--Primary, #efc41a)"
-                              : "none",
+                              : "1px solid #d9d9d9",
                           background:
                             suggestion === "Safety" ? "#fffbea" : "none",
                         }}
@@ -131,7 +134,7 @@ const RatingBox: React.FC<Iprops> = ({ data }) => {
                           border:
                             suggestion === "Communication"
                               ? "1px solid var(--Primary, #efc41a)"
-                              : "none",
+                              : "1px solid #d9d9d9",
                           background:
                             suggestion === "Communication" ? "#fffbea" : "none",
                         }}
@@ -151,7 +154,7 @@ const RatingBox: React.FC<Iprops> = ({ data }) => {
                           border:
                             suggestion === "Food and Stay"
                               ? "1px solid var(--Primary, #efc41a)"
-                              : "none",
+                              : "1px solid #d9d9d9",
                           background:
                             suggestion === "Food and Stay" ? "#fffbea" : "none",
                         }}
@@ -171,7 +174,7 @@ const RatingBox: React.FC<Iprops> = ({ data }) => {
                           border:
                             suggestion === "Professionalism"
                               ? "1px solid var(--Primary, #efc41a)"
-                              : "none",
+                              : "1px solid #d9d9d9",
                           background:
                             suggestion === "Professionalism"
                               ? "#fffbea"
@@ -185,7 +188,9 @@ const RatingBox: React.FC<Iprops> = ({ data }) => {
                           value="Professionalism"
                           onClick={handleClick}
                         />
-                        <label htmlFor="Professionalism">Not Professional</label>
+                        <label htmlFor="Professionalism">
+                          Not Professional
+                        </label>
                       </div>
                     </div>
                   </div>
@@ -206,9 +211,8 @@ const RatingBox: React.FC<Iprops> = ({ data }) => {
                   </div>
                 </div>
                 <TextField
-                  required
                   id="outlined-required"
-                  label="Required"
+                  // label="Required"
                   placeholder="Kindly share details about their payment speed, paper work,  professionalism etc"
                   multiline
                   fullWidth
@@ -278,6 +282,9 @@ const RatingBox: React.FC<Iprops> = ({ data }) => {
           <div className={styles.submitted_card}>
             <div className={styles.submitted_content}>
               <div className={styles.component}>
+                <div className={styles.submitted_image}>
+                  <img src="/assets/Submitted.png" alt="" />
+                </div>
                 <div className={styles.heading}>
                   Rating Submitted Successfully!
                 </div>

@@ -12,9 +12,15 @@ interface Iprops {
 const ContractorCard: React.FC<Iprops> = ({ data, rootCategory }) => {
   const [isCardVisible, setCardVisibility] = useState(false);
 
-  const toggleCardVisibility = () => {
+  const toggleCardVisibility = (e: any) => {
+    e.stopPropagation();
     setCardVisibility(!isCardVisible);
   };
+  const handleCardClick= ()=>{
+    if (!isCardVisible) {
+      window.location.href = `/profile/${data?.personalDetails.userId}`;
+    }
+  }
   const shareProfile = () => {
     const currentURL = window.location.href;
     const whatsappURL = `https://wa.me/?text=${encodeURIComponent(currentURL)}`;
@@ -22,8 +28,10 @@ const ContractorCard: React.FC<Iprops> = ({ data, rootCategory }) => {
   };
   return (
     <div className={styles.frameParent}>
-      <div className={styles.rectangleParent}>
-        <Link href={`/profile/${data?.personalDetails.userId}`}>
+      <a 
+      onClick={handleCardClick}
+      >
+        <div className={styles.rectangleParent}>
           <img
             className={styles.frameChild}
             alt=""
@@ -33,162 +41,163 @@ const ContractorCard: React.FC<Iprops> = ({ data, rootCategory }) => {
                 : "/assets/Rectangle 5660.png"
             }
           />
-        </Link>
 
-        <div className={styles.frameWrapper}>
-          <div className={styles.frameDiv}>
-            <div className={styles.patagoniaConstructionsGeneParent}>
-              <div className={styles.patagoniaConstructions1}>
-                {data?.personalDetails?.companyName}
-                {rootCategory && <span> | </span>}
-                {rootCategory}
-              </div>
-              <div className={styles.ajayVarmaParent}>
-                <div
-                  className={`${styles.ajayVarma} ${
-                    data?.personalDetails.userType === "customer" &&
-                    !data.personalDetails.companyName
-                      ? styles.customer_name
-                      : ""
-                  }`}
-                >
-                  {data?.personalDetails?.name}
+          <div className={styles.frameWrapper}>
+            <div className={styles.frameDiv}>
+              <div className={styles.patagoniaConstructionsGeneParent}>
+                <div className={styles.patagoniaConstructions1}>
+                  {data?.personalDetails?.companyName}
+                  {rootCategory && <span> | </span>}
+                  {rootCategory}
                 </div>
-                <div className={styles.fvParent}>
-                  {data?.personalDetails?.isVerified && (
-                    <img
-                      className={styles.fvIcon}
-                      alt=""
-                      src="/assets/FV.svg"
-                    />
-                  )}
-                  {data?.personalDetails.isMember && (
-                    <img
-                      className={styles.fvIcon}
-                      alt=""
-                      src="/assets/mdi_crown-circle-outline.svg"
-                    />
-                  )}
-                </div>
-              </div>
-              <div className={`${styles.ceoowner}`}>
-                {data?.personalDetails.designation}
-              </div>
-              {data?.personalDetails.state && (
-                <div className={styles.navigationMapPinParent}>
-                  <img
-                    className={styles.fvIcon}
-                    alt=""
-                    src="/assets/Map_Pin.svg"
-                  />
-                  <div className={styles.location}>
-                    {data?.personalDetails.city}, {data?.personalDetails.state}
+                <div className={styles.ajayVarmaParent}>
+                  <div
+                    className={`${styles.ajayVarma} ${
+                      data?.personalDetails.userType === "customer" &&
+                      !data.personalDetails.companyName
+                        ? styles.customer_name
+                        : ""
+                    }`}
+                  >
+                    {data?.personalDetails?.name}
                   </div>
-                </div>
-              )}
-              <div className={styles.frameWrapper1}>
-                <div className={styles.div}>
-                  {data?.personalDetails?.rating
-                    ? data?.personalDetails?.rating
-                    : "0.0"}
-                </div>
-                <div className={styles.interfaceStarParent}>
-                  <Rating
-                    name="half-rating-read"
-                    value={Math.ceil(parseInt(data?.personalDetails?.rating))}
-                    precision={0.5}
-                    readOnly
-                  />
-                </div>
-                <div className={styles.ratings}>
-                  {data?.personalDetails?.reviewsCount} Ratings
-                </div>
-              </div>
-            </div>
-
-            <div className={styles.frameParent3}>
-              {data?.businessCardDetails?.GSTIN && (
-                <div className={styles.frameParent5}>
-                  <div className={styles.groupParent}>
-                    <div className={styles.ellipseParent}>
+                  <div className={styles.fvParent}>
+                    {data?.personalDetails?.isVerified && (
                       <img
-                        className={styles.taxPercentageIcon1}
+                        className={styles.fvIcon}
                         alt=""
-                        src="/assets/Tax Percentage.png"
+                        src="/assets/FV.svg"
                       />
-                    </div>
-                    <div>GSTIN No:</div>
-                  </div>
-                  <div className={styles.bold}>
-                    {data?.businessCardDetails?.GSTIN}
+                    )}
+                    {data?.personalDetails.isMember && (
+                      <img
+                        className={styles.fvIcon}
+                        alt=""
+                        src="/assets/mdi_crown-circle-outline.svg"
+                      />
+                    )}
                   </div>
                 </div>
-              )}
+                <div className={`${styles.ceoowner}`}>
+                  {data?.personalDetails.designation}
+                </div>
+                {data?.personalDetails.state && (
+                  <div className={styles.navigationMapPinParent}>
+                    <img
+                      className={styles.fvIcon}
+                      alt=""
+                      src="/assets/Map_Pin.svg"
+                    />
+                    <div className={styles.location}>
+                      {data?.personalDetails.city},{" "}
+                      {data?.personalDetails.state}
+                    </div>
+                  </div>
+                )}
+                <div className={styles.frameWrapper1}>
+                  <div className={styles.div}>
+                    {data?.personalDetails?.rating
+                      ? data?.personalDetails?.rating
+                      : "0.0"}
+                  </div>
+                  <div className={styles.interfaceStarParent}>
+                    <Rating
+                      name="half-rating-read"
+                      value={Math.ceil(parseInt(data?.personalDetails?.rating))}
+                      precision={0.5}
+                      readOnly
+                    />
+                  </div>
+                  <div className={styles.ratings}>
+                    {data?.personalDetails?.reviewsCount} Ratings
+                  </div>
+                </div>
+              </div>
 
-              {data?.businessCardDetails?.companyType && (
-                <div className={styles.frameParent5}>
-                  <div className={styles.groupParent}>
-                    <div className={styles.ellipseParent}>
-                      <img alt="" src="/assets/Company Building.png" />
+              <div className={styles.frameParent3}>
+                {data?.businessCardDetails?.GSTIN && (
+                  <div className={styles.frameParent5}>
+                    <div className={styles.groupParent}>
+                      <div className={styles.ellipseParent}>
+                        <img
+                          className={styles.taxPercentageIcon1}
+                          alt=""
+                          src="/assets/Tax Percentage.png"
+                        />
+                      </div>
+                      <div>GSTIN No:</div>
                     </div>
-                    <div>Company Type:</div>
+                    <div className={styles.bold}>
+                      {data?.businessCardDetails?.GSTIN}
+                    </div>
                   </div>
-                  <div className={styles.bold}>
-                    {data?.businessCardDetails?.companyType}
-                  </div>
-                </div>
-              )}
+                )}
 
-              {data?.businessCardDetails?.turnover && (
-                <div className={styles.frameParent5}>
-                  <div className={styles.groupParent}>
-                    <div className={styles.ellipseParent}>
-                      <img alt="" src="/assets/Tax Percentage.png" />
+                {data?.businessCardDetails?.companyType && (
+                  <div className={styles.frameParent5}>
+                    <div className={styles.groupParent}>
+                      <div className={styles.ellipseParent}>
+                        <img alt="" src="/assets/Company Building.png" />
+                      </div>
+                      <div>Company Type:</div>
                     </div>
-                    <div>Turnover:</div>
+                    <div className={styles.bold}>
+                      {data?.businessCardDetails?.companyType}
+                    </div>
                   </div>
-                  <div className={styles.bold}>
-                    {data?.businessCardDetails?.turnover}
-                  </div>
-                </div>
-              )}
+                )}
 
-              {data?.businessCardDetails?.financialYear && (
-                <div className={styles.frameParent5}>
-                  <div className={styles.groupParent}>
-                    <div className={styles.ellipseParent}>
-                      <img alt="" src="/assets/Tax Percentage.png" />
+                {data?.businessCardDetails?.turnover && (
+                  <div className={styles.frameParent5}>
+                    <div className={styles.groupParent}>
+                      <div className={styles.ellipseParent}>
+                        <img alt="" src="/assets/Tax Percentage.png" />
+                      </div>
+                      <div>Turnover:</div>
                     </div>
-                    <div>Year of Operation:</div>
+                    <div className={styles.bold}>
+                      {data?.businessCardDetails?.turnover}
+                    </div>
                   </div>
-                  <div className={styles.bold}>
-                    {data?.businessCardDetails?.financialYear}
+                )}
+
+                {data?.businessCardDetails?.financialYear && (
+                  <div className={styles.frameParent5}>
+                    <div className={styles.groupParent}>
+                      <div className={styles.ellipseParent}>
+                        <img alt="" src="/assets/Tax Percentage.png" />
+                      </div>
+                      <div>Year of Operation:</div>
+                    </div>
+                    <div className={styles.bold}>
+                      {data?.businessCardDetails?.financialYear}
+                    </div>
                   </div>
-                </div>
-              )}
+                )}
+              </div>
             </div>
-          </div>
 
-          <div className={styles.ctaParent}>
-            <button onClick={toggleCardVisibility} className={styles.cta}>
-              <img
-                className={styles.communicationPhone1}
-                alt=""
-                src="/assets/Phone.svg"
-              />
-              <div className={styles.whatsapp}>Call</div>
-            </button>
-            <button onClick={toggleCardVisibility} className={styles.cta2}>
-              <img
-                className={styles.fvIcon}
-                alt=""
-                src="/assets/Whatsapp.svg"
-              />
-              <div className={styles.whatsapp}>Whatsapp</div>
-            </button>
+            <div className={styles.ctaParent}>
+              <button onClick={toggleCardVisibility} className={styles.cta}>
+                <img
+                  className={styles.communicationPhone1}
+                  alt=""
+                  src="/assets/Phone.svg"
+                />
+                <div className={styles.whatsapp}>Call</div>
+              </button>
+              <button onClick={toggleCardVisibility} className={styles.cta2}>
+                <img
+                  className={styles.fvIcon}
+                  alt=""
+                  src="/assets/Whatsapp.svg"
+                />
+                <div className={styles.whatsapp}>Whatsapp</div>
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+      </a>
       <div onClick={shareProfile} className={styles.whatsapp1Parent}>
         <div className={styles.bangaloreKarnataka}>Share Profile</div>
         <div className={styles.bangaloreKarnatakaMobile}>Share</div>
