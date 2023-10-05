@@ -125,11 +125,16 @@ const Navbar: React.FC<Iprops> = () => {
       {showSearchBox && (
         <div className={styles.searchboxWrapper}>
           <div className={styles.navSearchBar}>
-            <div className={styles.search_more}>Search more contractors</div>
-            <div  className={styles.searchbox_container}>
-              <SearchBox />
-              <div className={styles.toggler} onClick={() => setShowSearchBox(false)}>
-                <KeyboardArrowUp />
+            <div className={styles.content_wrapper}>
+              <div className={styles.search_more}>Search more contractors</div>
+              <div className={styles.searchbox_container}>
+                <SearchBox />
+                <div
+                  className={styles.toggler}
+                  onClick={() => setShowSearchBox(false)}
+                >
+                  <KeyboardArrowUp />
+                </div>
               </div>
             </div>
           </div>

@@ -175,6 +175,7 @@
   
   .detailsParent{
     gap: 16px;
+    width: 350px;
   }
   .frameParent{
     flex-direction: column;
