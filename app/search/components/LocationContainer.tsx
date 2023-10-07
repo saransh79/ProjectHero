@@ -21,7 +21,6 @@ const LocationContainer: React.FC<Iprops> = ({
   const handleLocChange = (e: any, newValue: string | null) => {
     setLoc(newValue);
   };
-  console.log(loc);
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
@@ -57,21 +56,11 @@ const LocationContainer: React.FC<Iprops> = ({
                   sx={{
                     width: "300px",
                   }}
-                  options={states}
+                  options={states.map((option) => option)}
                   value={loc}
                   onChange={handleLocChange}
                   renderInput={(params) => (
                     <TextField {...params} label="Search by State" />
-                  )}
-                  PopperComponent={({ children, anchorEl, key }) => (
-                    <Popper
-                      key={key}
-                      anchorEl={anchorEl}
-                      open={Boolean(anchorEl)}
-                      placement="bottom-start"
-                    >
-                      {children}
-                    </Popper>
                   )}
                 />
 

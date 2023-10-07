@@ -36,7 +36,7 @@ const Search = () => {
           handleSearchBox={handleSearchBox}
         />
       </div>
-      <Hero searchText={searchText} onSearchTextChange={onSearchTextChange} />
+      <Hero />
       <div className={styles.card_location_container}>
         <div className={styles.filtercontainer}>
           <FilterContainer

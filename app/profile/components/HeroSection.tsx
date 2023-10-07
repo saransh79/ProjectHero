@@ -92,7 +92,7 @@ const HeroSection: React.FC<Iprops> = ({
         >
           Personal
         </button>
-        {userData?.businessCardDetails.isVerified === 'REGISTERED' && (
+        {userData?.businessCardDetails?.isVerified === 'REGISTERED' && (
           <button
             value="business"
             onClick={(e: any) => setActiveComponent(e.target.value)}

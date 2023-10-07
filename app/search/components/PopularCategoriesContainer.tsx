@@ -8,6 +8,7 @@ import Viewmore from "../../components/Viewmore";
 import { Customer, Payload } from "@/Api's/interface/Users";
 import { fetchAllUsers } from "@/Api's";
 import { Pagination } from "@mui/material";
+import { useRouter, useSearchParams } from "next/navigation";
 
 interface Iprops {
   selectedRootCategory?: string;
@@ -22,40 +23,26 @@ const PopularCategoriesContainer: React.FC<Iprops> = ({
   setSelectedRootCategory,
   selectedPrimaryCategories,
   location,
-  searchText,
 }) => {
+  const router= useRouter();
   const [customers, setCustomers] = useState<Payload | null>(null);
   const [showAll, setShowAll] = useState<boolean>(false);
   const [pageNumber, setPageNumber] = useState<number>(0);
   const [pageSize, setPageSize] = useState<number>(10);
   const [hasMore, setHasMore] = useState<boolean>(false);
-  const [shouldRunEffect, setShouldRunEffect] = useState(false);
 
-  // const queryParams = new URLSearchParams(window.location.search);
-  // const dataParam = queryParams.get('query') ? queryParams.get('query'): "";
+  const searchParams = useSearchParams()
+ 
+  const search = searchParams.get('query')
 
-  // console.log(dataParam);
-  
   useEffect(() => {
-      setShouldRunEffect(prev=>!prev);
-  }, [
-    selectedRootCategory,
-    selectedPrimaryCategories,
-    pageNumber,
-    pageSize,
-    location,
-    searchText
-  ]);
-  
-  useEffect(() => {
-
     fetchAllUsers(
       selectedRootCategory,
       selectedPrimaryCategories,
       pageSize,
       pageNumber,
       location,
-      searchText
+      search
     )
       .then((response: any) => {
         setCustomers(response.data.payload);
@@ -66,7 +53,14 @@ const PopularCategoriesContainer: React.FC<Iprops> = ({
       .catch((error: string) => {
         console.error("error while fetching customers: ", error);
       });
-  }, [shouldRunEffect]);
+  }, [
+    selectedRootCategory,
+    selectedPrimaryCategories,
+    pageNumber,
+    pageSize,
+    location,
+    search
+  ]);
 
   const handlePageChange = (
     event: React.ChangeEvent<unknown>,
@@ -77,41 +71,73 @@ const PopularCategoriesContainer: React.FC<Iprops> = ({
 
   return (
     <div className={styles.frameParent}>
-      {!selectedRootCategory && <div className={`${styles.frameGroup}`}>
-        <PopularCategories
-          setSelectedRootCategory={setSelectedRootCategory}
-        />
-      </div>}
+      {!selectedRootCategory && (
+        <div className={`${styles.frameGroup}`}>
+          <PopularCategories
+            setSelectedRootCategory={setSelectedRootCategory}
+          />
+        </div>
+      )}
 
       <div className={styles.frameCards}>
         <div className={styles.topBuildingContractorsWrapper}>
-          {selectedRootCategory && <div className={styles.popularCategories}>
-          Showing {customers?.customers.length} results
-          </div>}
-          {!selectedRootCategory && <div className={styles.popularCategories}>
-          Top Building Contractors
-          </div>}
+          {selectedRootCategory && (
+            <div className={styles.popularCategories}>
+              Showing {customers?.customers.length} results
+            </div>
+          )}
+          {!selectedRootCategory && (
+            <div className={styles.popularCategories}>
+              Top Building Contractors
+            </div>
+          )}
         </div>
 
         <div className={styles.user_cards}>
-
-            {showAll === false ? (
-              !selectedRootCategory ? <center >
-              {customers?.customers.length ? <ContractorCard data={customers?.customers[0]} /> : null }
-               <div style={{
-                 marginTop: 30
-               }}>
-               <Download />
-               </div>
-             </center> : customers?.customers?.slice(0,3).map((customer, key) => {
+          {showAll === false ? (
+            !selectedRootCategory ? (
+              <center>
+                {customers?.customers.length ? (
+                  <ContractorCard data={customers?.customers[0]} />
+                ) : null}
+                <div
+                  style={{
+                    marginTop: 30,
+                  }}
+                >
+                  <Download />
+                </div>
+              </center>
+            ) : (
+              customers?.customers?.slice(0, 3).map((customer, key) => {
+                if (key == 0) {
+                  return (
+                    <center key={key}>
+                      <ContractorCard data={customer} key={key} />
+                      <div
+                        style={{
+                          marginTop: 30,
+                        }}
+                      ></div>
+                      <Download />
+                    </center>
+                  );
+                } else {
+                  return <ContractorCard data={customer} key={key} />;
+                }
+              })
+            )
+          ) : (
+            customers?.customers?.map((customer, key) => {
               if (key == 0) {
                 return (
                   <center key={key}>
                     <ContractorCard data={customer} key={key} />
-                    <div style={{
-                      marginTop: 30,
-                    }}>
-                      </div>
+                    <div
+                      style={{
+                        marginTop: 30,
+                      }}
+                    ></div>
                     <Download />
                   </center>
                 );
@@ -119,22 +145,7 @@ const PopularCategoriesContainer: React.FC<Iprops> = ({
                 return <ContractorCard data={customer} key={key} />;
               }
             })
-            ): customers?.customers?.map((customer, key) => {
-              if (key == 0) {
-                return (
-                  <center key={key}>
-                    <ContractorCard data={customer} key={key} />
-                    <div style={{
-                      marginTop: 30,
-                    }}>
-                      </div>
-                    <Download />
-                  </center>
-                );
-              } else {
-                return <ContractorCard data={customer} key={key} />;
-              }
-            })}
+          )}
         </div>
 
         {showAll && customers?.customers.length ? (
@@ -158,9 +169,9 @@ const PopularCategoriesContainer: React.FC<Iprops> = ({
           </div>
         ) : null}
 
-        <div
-        className={styles.viewmore}
-         onClick={() => setShowAll(true)}>{!showAll && customers?.customers.length ? <Viewmore />: null}</div>
+        <div className={styles.viewmore} onClick={() => setShowAll(true)}>
+          {!showAll && customers?.customers.length ? <Viewmore /> : null}
+        </div>
       </div>
     </div>
   );

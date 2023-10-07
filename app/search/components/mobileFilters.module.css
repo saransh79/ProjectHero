@@ -155,7 +155,7 @@
   align-items: center;
   justify-content: flex-start;
 }
-.option input[type="checkbox"] {
+.checkbox[type="checkbox"] {
   appearance: none;
   margin: 0;
   margin-right: 10px;
@@ -163,7 +163,31 @@
   height: 16px;
   border: 1px solid #d9d9d9;
 }
-.option input[type="checkbox"]:checked {
+.checkbox[type="checkbox"]:checked {
   background: url("/assets/Check.png");
   background-color: #efc41a;
+}
+
+.searchWrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+.button_wrapper{
+  width: 100%;
+}
+.search_box{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 5px;
+}
+.popper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* margin: 20px; */
+  height: 100%;
 }

@@ -72,15 +72,17 @@ const Navbar: React.FC<Iprops> = () => {
       </div>
 
       <div className={styles.navIcons}>
-        <img
-          className={styles.interfaceSearchMagnifying1}
-          alt=""
-          src="/assets/Search_Magnifying_Glass.svg"
-          onClick={() => setShowSearchBox(true)}
-          style={{
-            display: lastSegment === "profile" ? "inline-block" : "none",
-          }}
-        />
+        {!showSearchBox && (
+          <img
+            className={styles.interfaceSearchMagnifying1}
+            alt=""
+            src="/assets/Search_Magnifying_Glass.svg"
+            onClick={() => setShowSearchBox(true)}
+            style={{
+              display: lastSegment === "profile" ? "inline-block" : "none",
+            }}
+          />
+        )}
         <img
           className={styles.interfaceSearchMagnifying1}
           alt=""
@@ -124,17 +126,17 @@ const Navbar: React.FC<Iprops> = () => {
       {/* Searchbox */}
       {showSearchBox && (
         <div className={styles.searchboxWrapper}>
-          <div className={styles.navSearchBar}>
-            <div className={styles.content_wrapper}>
-              <div className={styles.search_more}>Search more contractors</div>
-              <div className={styles.searchbox_container}>
+          <div className={styles.content_wrapper}>
+            <div className={styles.search_more}>Search more contractors</div>
+            <div className={styles.searchbox_container}>
+              <div className={styles.searchBox}>
                 <SearchBox />
-                <div
-                  className={styles.toggler}
-                  onClick={() => setShowSearchBox(false)}
-                >
-                  <KeyboardArrowUp />
-                </div>
+              </div>
+              <div
+                className={styles.toggler}
+                onClick={() => setShowSearchBox(false)}
+              >
+                <KeyboardArrowUp />
               </div>
             </div>
           </div>
