@@ -57,7 +57,7 @@ const UserProfile: React.FC = () => {
         <Navbar showSearchBox={showSearchBox} />
       </div>
       <HeroSection
-        personalDetails={userData?.payload.personalDetails}
+        userData={userData?.payload}
         activeComponent={activeComponent}
         setActiveComponent={setActiveComponent}
       />
@@ -73,7 +73,7 @@ const UserProfile: React.FC = () => {
               >
                 Summary
               </button>
-              {userData?.payload.personalDetails.userType !== "customer" && (
+              {userData?.payload.businessCardDetails && (
                 <button
                   value="business"
                   onClick={toggleActiveComponent}

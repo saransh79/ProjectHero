@@ -36,7 +36,7 @@ const SimilarProfiles: React.FC<Iprops> = ({ data }) => {
       <div className={styles.frameParent}>
         {data?.slice(0, 5).map((profile: Customer, key) => {
           return (
-            <div>
+            <div key={key}>
               <a
                 onClick={() => {
                   if (!isCardVisible) {

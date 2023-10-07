@@ -1,4 +1,4 @@
-import {  Payload } from "@/Api's/interface/PersonDetails";
+import { Payload } from "@/Api's/interface/PersonDetails";
 import styles from "./business-card.module.css";
 interface Iprops {
   data?: Payload;
@@ -23,44 +23,54 @@ const BusinessCard: React.FC<Iprops> = ({ data }) => {
                 <img
                   className={styles.userPicIcon}
                   alt=""
-                  src={data?.personalDetails.profilePicture || "/assets/UserProfile.png"}
+                  src={
+                    data?.personalDetails.profilePicture ||
+                    "/assets/UserProfile.png"
+                  }
                 />
                 <div className={styles.frameParent1}>
                   <div className={styles.patagoniaConstructionsParent}>
                     <b className={styles.patagoniaConstructions}>
                       {data?.personalDetails?.companyName}
                     </b>
-                    {data?.personalDetails.isVerified && <div className={styles.fvWrapper}>
-                      <img
-                        className={styles.fvIcon}
-                        alt=""
-                        src="/assets/FV.svg"
-                      />
-                    </div>}
+                    {data?.personalDetails.isVerified && (
+                      <div className={styles.fvWrapper}>
+                        <img
+                          className={styles.fvIcon}
+                          alt=""
+                          src="/assets/FV.svg"
+                        />
+                      </div>
+                    )}
                   </div>
                   <div className={styles.patagoniaPrivateLimitedWrapper}>
                     <div className={styles.patagoniaPrivateLimited1}>
-                      {data?.businessCardDetails?.gstCompanyName}
+                      {data?.businessCardDetails?.companyName}
                     </div>
                   </div>
                   <div className={styles.generalContractorWrapper}>
                     <div className={styles.generalContractor}>
-                      {data?.businessCardDetails?.organisationSpecializationDetails?.root}
+                      {data?.businessCardDetails?.rootPersona}
                     </div>
                   </div>
                   <div className={styles.bangaloreKarnatakaWrapper}>
                     <div className={styles.generalContractor}>
-                      {data?.personalDetails?.city}, {data?.personalDetails?.state}
+                      {data?.personalDetails?.city},{" "}
+                      {data?.personalDetails?.state}
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <img className={styles.frameChild} alt="" src="/assets/Dividers.png" />
+          <img
+            className={styles.frameChild}
+            alt=""
+            src="/assets/Dividers.png"
+          />
 
           <div className={styles.frameParent2}>
-            <div className={styles.frameParent3}>
+            {data?.businessCardDetails?.GSTIN && (
               <div className={styles.frameParent4}>
                 <div className={styles.groupParent}>
                   <div className={styles.ellipseParent}>
@@ -77,10 +87,14 @@ const BusinessCard: React.FC<Iprops> = ({ data }) => {
                   </div>
                 </div>
                 <div className={styles.divParent}>
-                  <div className={styles.div}>{data?.businessCardDetails?.GSTIN}</div>
-                  <img src="/assets/FV.svg" alt="" />
+                  <div className={styles.div}>
+                    {data?.businessCardDetails?.GSTIN}
+                  </div>
+                {data.businessCardDetails.isVerified &&  <img src="/assets/FV.svg" alt="" />}
                 </div>
               </div>
+            )}
+            {data?.businessCardDetails?.turnOver && (
               <div className={styles.frameParent4}>
                 <div className={styles.groupParent}>
                   <div className={styles.ellipseParent}>
@@ -88,7 +102,7 @@ const BusinessCard: React.FC<Iprops> = ({ data }) => {
                     <img
                       className={styles.rupeeWallet111}
                       alt=""
-                      src="/assets/rupee-wallet (1) 1.png"
+                      src="/assets/rupee-wallet.png"
                     />
                   </div>
                   <div className={styles.gstinNo}>
@@ -97,17 +111,14 @@ const BusinessCard: React.FC<Iprops> = ({ data }) => {
                   </div>
                 </div>
                 <div className={styles.divParent}>
-                  <div className={styles.div}>{data?.businessCardDetails?.turnover}</div>
-                  <img src="/assets/FV.svg" alt="" />
+                  <div className={styles.div}>
+                    {data?.businessCardDetails?.turnOver}
+                  </div>
+                {data.businessCardDetails.isVerified &&  <img src="/assets/FV.svg" alt="" />}
                 </div>
               </div>
-            </div>
-            <img
-              className={styles.frameChild}
-              alt=""
-              src="/assets/Vector 96.svg"
-            />
-            <div className={styles.frameParent3}>
+            )}
+            {data?.businessCardDetails?.companyType && (
               <div className={styles.frameParent4}>
                 <div className={styles.groupParent}>
                   <div className={styles.ellipseParent}>
@@ -124,10 +135,14 @@ const BusinessCard: React.FC<Iprops> = ({ data }) => {
                   </div>
                 </div>
                 <div className={styles.divParent}>
-                  <div className={styles.div}>{data?.businessCardDetails?.companyType}</div>
-                  <img src="/assets/FV.svg" alt="" />
+                  <div className={styles.div}>
+                    {data?.businessCardDetails?.companyType}
+                  </div>
+                {data.businessCardDetails.isVerified &&  <img src="/assets/FV.svg" alt="" />}
                 </div>
               </div>
+            )}
+            {data?.businessCardDetails?.financialYear && (
               <div className={styles.frameParent4}>
                 <div className={styles.groupParent}>
                   <div className={styles.ellipseParent}>
@@ -135,20 +150,22 @@ const BusinessCard: React.FC<Iprops> = ({ data }) => {
                     <img
                       className={styles.badgeCalendar111}
                       alt=""
-                      src="/assets/badge-calendar (1) 1.png"
+                      src="/assets/badge-calendar.png"
                     />
                   </div>
                   <div className={styles.gstinNo}>
-                    <span>Year of Operation</span>
+                    <span>Year of Establishment</span>
                     <span className={styles.span}>{`: `}</span>
                   </div>
                 </div>
                 <div className={styles.divParent}>
-                  <div className={styles.div}>{data?.businessCardDetails?.financialYear}</div>
-                  <img src="/assets/FV.svg" alt="" />
+                  <div className={styles.div}>
+                    {data?.businessCardDetails?.financialYear}
+                  </div>
+                {data.businessCardDetails.isVerified &&  <img src="/assets/FV.svg" alt="" />}
                 </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>

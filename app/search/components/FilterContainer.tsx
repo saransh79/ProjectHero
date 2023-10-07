@@ -10,6 +10,7 @@ import { fetchCategories } from "@/Api's";
 import styles from "./filter-container.module.css";
 import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
 import MobileFilters from "./MobileFilters";
+import Viewmore from "@/app/components/Viewmore";
 
 interface Iprops {
   selectedRootCategory?: string;
@@ -27,9 +28,21 @@ const FilterContainer: React.FC<Iprops> = ({
   location,
   onLocationChange,
 }) => {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
   const [showWorktype, setShowWorktype] = useState(false);
   const [showSpecialization, setShowSpecialization] = useState(false);
+  const [viewAllWorktype, setViewAllWorkType] = useState<boolean>(false);
+  const [viewAllSpecialization, setViewAllSpecialization] =
+    useState<boolean>(false);
+  const [rootCategories, setRootCategories] = useState<RootCategory[]>([]);
+  const [primaryCategories, setPrimaryCategories] = useState<PrimaryCategory[]>(
+    []
+  );
+  const [secondaryCategories, setSecondaryCategories] = useState<
+    SecondaryCategory[]
+  >([]);
+  const [selectedSecondaryCategories, setSelectedSecondaryCategories] =
+    useState<string[]>([]);
 
   const handleChange = () => {
     setShow((prev) => !prev);
@@ -40,15 +53,6 @@ const FilterContainer: React.FC<Iprops> = ({
   const handleSpecialChange = () => {
     setShowSpecialization((prev) => !prev);
   };
-  const [rootCategories, setRootCategories] = useState<RootCategory[]>([]);
-  const [primaryCategories, setPrimaryCategories] = useState<PrimaryCategory[]>(
-    []
-  );
-  const [secondaryCategories, setSecondaryCategories] = useState<
-    SecondaryCategory[]
-  >([]);
-  const [selectedSecondaryCategories, setSelectedSecondaryCategories] =
-    useState<string[]>([]);
 
   useEffect(() => {
     // Fetch root categories
@@ -165,8 +169,7 @@ const FilterContainer: React.FC<Iprops> = ({
             )}
           </div>
 
-          {show ||
-            (selectedRootCategory && (
+          {show && (
               <div className={styles.filters}>
                 {rootCategories?.map((category, key) => (
                   <div className={styles.option} key={key}>
@@ -182,7 +185,7 @@ const FilterContainer: React.FC<Iprops> = ({
                   </div>
                 ))}
               </div>
-            ))}
+            )}
         </div>
 
         {selectedRootCategory && !show && (
@@ -213,25 +216,48 @@ const FilterContainer: React.FC<Iprops> = ({
 
           {showWorktype && (
             <div className={styles.filters}>
-              {primaryCategories.map((category, key) => {
-                return (
-                  <div className={styles.workOption} key={key}>
-                    <input
-                      type="checkbox"
-                      id={category.slug}
-                      name={category.slug}
-                      value={category.slug}
-                      //   checked= {true}
-                      onChange={handlePrimaryCategoryChange}
-                    />
-                    <label htmlFor={category.slug}>{category.label}</label>
-                  </div>
-                );
-              })}
+              {!viewAllWorktype
+                ? primaryCategories.slice(0, 4).map((category, key) => {
+                    return (
+                      <div className={styles.workOption} key={key}>
+                        <input
+                          type="checkbox"
+                          id={category.slug}
+                          name={category.slug}
+                          value={category.slug}
+                          //   checked= {true}
+                          onChange={handlePrimaryCategoryChange}
+                        />
+                        <label htmlFor={category.slug}>{category.label}</label>
+                      </div>
+                    );
+                  })
+                : primaryCategories.map((category, key) => {
+                    return (
+                      <div className={styles.workOption} key={key}>
+                        <input
+                          type="checkbox"
+                          id={category.slug}
+                          name={category.slug}
+                          value={category.slug}
+                          //   checked= {true}
+                          onChange={handlePrimaryCategoryChange}
+                        />
+                        <label htmlFor={category.slug}>{category.label}</label>
+                      </div>
+                    );
+                  })}
             </div>
           )}
 
-          {/* {selectedRootCategory && <Viewmore />} */}
+          {selectedRootCategory && showWorktype && !viewAllWorktype && (
+            <div
+              className={styles.viewmore}
+              onClick={() => setViewAllWorkType(true)}
+            >
+              <Viewmore />
+            </div>
+          )}
         </div>
 
         {selectedRootCategory && showWorktype && (
@@ -287,16 +313,15 @@ const FilterContainer: React.FC<Iprops> = ({
 
       {/* for mobile screen */}
       <div className={styles.mobile_filters}>
-      <MobileFilters
-        location={location}
-        onLocationChange={onLocationChange}
-        selectedRootCategory={selectedRootCategory}
-        selectedPrimaryCategories={selectedPrimaryCategories}
-        setSelectedRootCategory={setSelectedRootCategory}
-        setSelectedPrimaryCategories={setSelectedPrimaryCategories}
-      />
+        <MobileFilters
+          location={location}
+          onLocationChange={onLocationChange}
+          selectedRootCategory={selectedRootCategory}
+          selectedPrimaryCategories={selectedPrimaryCategories}
+          setSelectedRootCategory={setSelectedRootCategory}
+          setSelectedPrimaryCategories={setSelectedPrimaryCategories}
+        />
       </div>
-      
     </div>
   );
 };

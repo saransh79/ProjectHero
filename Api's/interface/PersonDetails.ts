@@ -38,9 +38,10 @@ export interface BusinessCardDetails {
   gstCompanyName?: string
   organisationSpecializationDetails?: OrganisationSpecializationDetails
   companyType?: string
-  turnover?: string
+  turnOver?: string
   financialYear?: string
   GSTIN?: number
+  rootPersona?: string
 }
 
 export interface OrganisationSpecializationDetails {

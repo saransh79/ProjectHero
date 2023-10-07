@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState } from "react";
 import Footer from "@/app/components/Footer";
 import Hero from "@/app/search/components/Hero";
@@ -8,6 +8,8 @@ import FilterContainer from "@/app/search/components/FilterContainer";
 import PopularCategoriesContainer from "@/app/search/components/PopularCategoriesContainer";
 
 const Search = () => {
+
+
   const [selectedRootCategory, setSelectedRootCategory] = useState<string>("");
   const [selectedPrimaryCategories, setSelectedPrimaryCategories] = useState<
     string[]
@@ -25,7 +27,7 @@ const Search = () => {
   const handleSearchBox = () => {
     setShowSearchBox((prev) => !prev);
   };
-  
+
   return (
     <div>
       <div className={styles.navbar_wrapper}>

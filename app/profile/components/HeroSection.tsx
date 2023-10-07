@@ -1,4 +1,4 @@
-import { PersonalDetails } from "@/Api's/interface/PersonDetails";
+import { Payload } from "@/Api's/interface/PersonDetails";
 import styles from "./hero-section.module.css";
 import UserCard from "./UserCard";
 import Link from "next/link";
@@ -6,13 +6,13 @@ import { useState } from "react";
 import Overlay from "@/app/components/Overlay";
 
 interface Iprops {
-  personalDetails?: PersonalDetails;
+  userData?: Payload;
   activeComponent: string | null;
   setActiveComponent: any;
 }
 
 const HeroSection: React.FC<Iprops> = ({
-  personalDetails,
+  userData,
   activeComponent,
   setActiveComponent,
 }) => {
@@ -36,10 +36,10 @@ const HeroSection: React.FC<Iprops> = ({
 
         <img src="/assets/Right Arrow.svg" alt="" />
 
-        <span className={styles.userName}>{personalDetails?.name}</span>
+        <span className={styles.userName}>{userData?.personalDetails?.name}</span>
       </div>
       <div className={styles.UserCard}>
-        <UserCard data={personalDetails} />
+        <UserCard data={userData?.personalDetails} />
       </div>
       <div className={styles.shareprofile} onClick={shareProfile}>
         <div>Share Profile</div>
@@ -65,7 +65,7 @@ const HeroSection: React.FC<Iprops> = ({
           </div>
         </div>
         <Link
-          href={`/addRating/${personalDetails?.userId}`}
+          href={`/addRating/${userData?.personalDetails?.userId}`}
           className={styles.cta1}
         >
           <div className={styles.cta2}>Rate this Company</div>
@@ -92,7 +92,7 @@ const HeroSection: React.FC<Iprops> = ({
         >
           Personal
         </button>
-        {personalDetails?.userType !== "customer" && (
+        {userData?.businessCardDetails && (
           <button
             value="business"
             onClick={(e: any) => setActiveComponent(e.target.value)}

@@ -26,7 +26,7 @@ export const fetchAllUsers = async (
   pageSize?: number,
   pageNumber?: number,
   location?: string,
-  searchText?: string
+  searchText?: string | null
 ) => {
   const searchUrl =
     "https://stage-api.projecthero.in/gateway/review-website/customer/search";

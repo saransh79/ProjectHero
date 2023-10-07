@@ -82,6 +82,11 @@
 .mobile_filters{
   display: none;
 }
+.viewmore{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 @media only screen and (max-width: 440px) {
   .frameParent{
     display: none;

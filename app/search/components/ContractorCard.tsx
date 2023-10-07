@@ -7,20 +7,19 @@ import Overlay from "../../components/Overlay";
 
 interface Iprops {
   data: any;
-  rootCategory?: string;
 }
-const ContractorCard: React.FC<Iprops> = ({ data, rootCategory }) => {
+const ContractorCard: React.FC<Iprops> = ({ data }) => {
   const [isCardVisible, setCardVisibility] = useState(false);
 
   const toggleCardVisibility = (e: any) => {
     e.stopPropagation();
     setCardVisibility(!isCardVisible);
   };
-  const handleCardClick= ()=>{
+  const handleCardClick = () => {
     if (!isCardVisible) {
       window.location.href = `/profile/${data?.personalDetails.userId}`;
     }
-  }
+  };
   const shareProfile = () => {
     const currentURL = window.location.href;
     const whatsappURL = `https://wa.me/?text=${encodeURIComponent(currentURL)}`;
@@ -28,9 +27,7 @@ const ContractorCard: React.FC<Iprops> = ({ data, rootCategory }) => {
   };
   return (
     <div className={styles.frameParent}>
-      <a 
-      onClick={handleCardClick}
-      >
+      <a onClick={handleCardClick}>
         <div className={styles.rectangleParent}>
           <img
             className={styles.frameChild}
@@ -47,16 +44,13 @@ const ContractorCard: React.FC<Iprops> = ({ data, rootCategory }) => {
               <div className={styles.patagoniaConstructionsGeneParent}>
                 <div className={styles.patagoniaConstructions1}>
                   {data?.personalDetails?.companyName}
-                  {rootCategory && <span> | </span>}
-                  {rootCategory}
+                  {data?.businessCardDetails?.rootPersona && <span> | </span>}
+                  {data?.businessCardDetails?.rootPersona}
                 </div>
                 <div className={styles.ajayVarmaParent}>
                   <div
                     className={`${styles.ajayVarma} ${
-                      data?.personalDetails.userType === "customer" &&
-                      !data.personalDetails.companyName
-                        ? styles.customer_name
-                        : ""
+                      !data.personalDetails.companyName && styles.customer_name
                     }`}
                   >
                     {data?.personalDetails?.name}
@@ -118,7 +112,7 @@ const ContractorCard: React.FC<Iprops> = ({ data, rootCategory }) => {
                 {data?.businessCardDetails?.GSTIN && (
                   <div className={styles.frameParent5}>
                     <div className={styles.groupParent}>
-                      <div className={styles.ellipseParent}>
+                      <div className={`${styles.ellipseParent} ${styles.gst}`}>
                         <img
                           className={styles.taxPercentageIcon1}
                           alt=""
@@ -136,7 +130,9 @@ const ContractorCard: React.FC<Iprops> = ({ data, rootCategory }) => {
                 {data?.businessCardDetails?.companyType && (
                   <div className={styles.frameParent5}>
                     <div className={styles.groupParent}>
-                      <div className={styles.ellipseParent}>
+                      <div
+                        className={`${styles.ellipseParent} ${styles.company}`}
+                      >
                         <img alt="" src="/assets/Company Building.png" />
                       </div>
                       <div>Company Type:</div>
@@ -150,13 +146,15 @@ const ContractorCard: React.FC<Iprops> = ({ data, rootCategory }) => {
                 {data?.businessCardDetails?.turnover && (
                   <div className={styles.frameParent5}>
                     <div className={styles.groupParent}>
-                      <div className={styles.ellipseParent}>
-                        <img alt="" src="/assets/Tax Percentage.png" />
+                      <div
+                        className={`${styles.ellipseParent} ${styles.turnover}`}
+                      >
+                        <img alt="" src="/assets/rupee-wallet.png" />
                       </div>
                       <div>Turnover:</div>
                     </div>
                     <div className={styles.bold}>
-                      {data?.businessCardDetails?.turnover}
+                      {data?.businessCardDetails?.turnOver}
                     </div>
                   </div>
                 )}
@@ -164,10 +162,10 @@ const ContractorCard: React.FC<Iprops> = ({ data, rootCategory }) => {
                 {data?.businessCardDetails?.financialYear && (
                   <div className={styles.frameParent5}>
                     <div className={styles.groupParent}>
-                      <div className={styles.ellipseParent}>
-                        <img alt="" src="/assets/Tax Percentage.png" />
+                      <div className={`${styles.ellipseParent} ${styles.year}`}>
+                        <img alt="" src="/assets/badge-calendar.png" />
                       </div>
-                      <div>Year of Operation:</div>
+                      <div>Year of Establishment:</div>
                     </div>
                     <div className={styles.bold}>
                       {data?.businessCardDetails?.financialYear}

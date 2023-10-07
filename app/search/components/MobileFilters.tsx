@@ -6,7 +6,7 @@ import {
   KeyboardArrowUp,
   Search,
 } from "@mui/icons-material";
-import { states } from "./states";
+import { states } from "../data/states";
 import { useState } from "react";
 interface Iprops {
   location?: string;

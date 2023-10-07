@@ -2,6 +2,8 @@ import { useState } from "react";
 import styles from "./location-container.module.css";
 import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
 import { fetchLocation } from "@/Api's";
+import { Autocomplete, Popper, TextField } from "@mui/material";
+import { states } from "../data/states";
 
 interface Iprops {
   location?: string;
@@ -11,40 +13,22 @@ const LocationContainer: React.FC<Iprops> = ({
   location,
   onLocationChange,
 }) => {
-  const [loc, setLoc] = useState<string>("");
+  const [loc, setLoc] = useState<string | null>("");
   const [show, setShow] = useState(true);
   const handleChange = () => {
     setShow((prev) => !prev);
   };
-
-  const getLocation = () => {
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(
-        async (position) => {
-          const { latitude, longitude } = position.coords;
-
-          try {
-            const response = await fetchLocation(latitude, longitude);
-
-            const stateName = response.data.address.state;
-            setLoc(stateName);
-          } catch (error) {
-            alert("Error fetching location data.");
-          }
-        },
-        (error) => {
-          alert(`Error: ${error.message}`);
-        }
-      );
-    } else {
-      alert("Geolocation is not available in your browser.");
-    }
+  const handleLocChange = (e: any, newValue: string | null) => {
+    setLoc(newValue);
   };
+  console.log(loc);
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
     onLocationChange(loc);
   };
+  if (loc == null) onLocationChange("");
+  
   return (
     <div className={styles.frameGroup}>
       <div className={styles.locationParent}>
@@ -67,36 +51,41 @@ const LocationContainer: React.FC<Iprops> = ({
           <div className={styles.searchContainer}>
             <form onSubmit={handleSubmit}>
               <div className={styles.searchbox}>
-                <input
-                  type="text"
-                  placeholder="Search by State's Name"
-                  name="location"
+                <Autocomplete
+                  id="free-solo-demo"
+                  freeSolo
+                  sx={{
+                    width: "300px",
+                  }}
+                  options={states}
                   value={loc}
-                  onChange={(e) => setLoc(e.target.value)}
+                  onChange={handleLocChange}
+                  renderInput={(params) => (
+                    <TextField {...params} label="Search by State" />
+                  )}
+                  PopperComponent={({ children, anchorEl, key }) => (
+                    <Popper
+                      key={key}
+                      anchorEl={anchorEl}
+                      open={Boolean(anchorEl)}
+                      placement="bottom-start"
+                    >
+                      {children}
+                    </Popper>
+                  )}
                 />
+
                 <button
                   type="submit"
                   className={styles.go}
                   style={{
-                    background: loc && "#EFC41A",
+                    background: loc ? "#EFC41A" : "",
                   }}
                 >
                   <img src="/assets/rightarrow.svg" alt="rightarrow" />
                 </button>
               </div>
             </form>
-
-            <div className={styles.location}>
-              <img src="/assets/Map_Pin_yellow.svg" alt="locationIcon" />
-              <p
-                style={{
-                  cursor: "pointer",
-                }}
-                onClick={getLocation}
-              >
-                Use my current GPS
-              </p>
-            </div>
           </div>
         )}
       </div>
