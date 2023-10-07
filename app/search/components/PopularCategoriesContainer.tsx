@@ -15,7 +15,7 @@ interface Iprops {
   setSelectedRootCategory: any;
   selectedPrimaryCategories: string[];
   setSelectedPrimaryCategories: any;
-  location?: string;
+  location?: string[];
   searchText?: string;
 }
 const PopularCategoriesContainer: React.FC<Iprops> = ({

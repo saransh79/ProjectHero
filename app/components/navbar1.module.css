@@ -23,7 +23,6 @@
 .searchLink {
   display: flex;
   align-items: center;
-  gap: 5px;
 }
 .link div {
   color: #726e8d;
@@ -133,7 +132,7 @@
   .toggler {
     background-color: transparent;
     color: #000;
-    padding: 10px 0 10px 10px;
+    padding: 0;
   }
   .search_more{
     display: none;

@@ -9,22 +9,28 @@ import {
 } from "@mui/icons-material";
 import { states } from "../data/states";
 import { useState } from "react";
-import { Autocomplete, Checkbox,  TextField } from "@mui/material";
+import { Autocomplete, Checkbox, TextField } from "@mui/material";
+import { PrimaryCategory, RootCategory } from "@/Api's/interface/Filters";
 
 const icon = <CheckBoxOutlineBlank fontSize="small" />;
 const checkedIcon = <CheckBox fontSize="small" />;
 
 interface Iprops {
-  location?: string;
+  location?: string[];
   onLocationChange?: any;
   selectedRootCategory?: string;
   selectedPrimaryCategories?: string[];
   setSelectedRootCategory?: any;
   setSelectedPrimaryCategories?: any;
+  rootCategories?: RootCategory[];
+  primaryCategories?: PrimaryCategory[];
 }
+
 const MobileFilters: React.FC<Iprops> = ({
   location,
   onLocationChange,
+  rootCategories,
+  primaryCategories,
   selectedPrimaryCategories,
   selectedRootCategory,
   setSelectedPrimaryCategories,
@@ -34,10 +40,15 @@ const MobileFilters: React.FC<Iprops> = ({
   const [showCategories, setShowCategories] = useState<boolean>(false);
   const [showWorkType, setShowWorktype] = useState<boolean>(false);
   const [selectedLocations, setSelectedLocations] = useState([]);
-  console.log(selectedLocations);
-  
+
+  // console.log(selectedLocations);
+
   const handleLocationChange = (event: any, newSelectedLocations: any) => {
     setSelectedLocations(newSelectedLocations);
+  };
+  const handleLocationSubmit = (e: any) => {
+    e.preventDefault();
+    onLocationChange(selectedLocations);
   };
   return (
     <div className={styles.filter_parent}>
@@ -72,7 +83,10 @@ const MobileFilters: React.FC<Iprops> = ({
             </div>
 
             <div className={styles.hr}></div>
-            <div className={styles.searchWrapper}>
+            <form
+              onSubmit={handleLocationSubmit}
+              className={styles.searchWrapper}
+            >
               <div className={styles.search_box}>
                 <Search className={styles.searchIcon} />
 
@@ -80,30 +94,31 @@ const MobileFilters: React.FC<Iprops> = ({
                   multiple
                   id="checkboxes-tags-demo"
                   size="small"
-                  // id="free-solo-demo"
-                  // freeSolo
+                  freeSolo
                   disableCloseOnSelect
                   value={selectedLocations}
-        onChange={handleLocationChange}
+                  onChange={handleLocationChange}
                   style={{
                     width: "300px",
+                    // border: "1px solid"
                   }}
                   options={states}
                   getOptionLabel={(option) => option}
                   renderOption={(props, option, { selected }) => {
-                    return(
-                    <li {...props} key={option}>
-                      <Checkbox
-                        icon={icon}
-                        checkedIcon={checkedIcon}
-                        style={{ marginRight: 8 }}
-                        checked={selected}
-                      />
-                      {option}
-                    </li>
-                  )}}
+                    return (
+                      <li {...props} key={option}>
+                        <Checkbox
+                          icon={icon}
+                          checkedIcon={checkedIcon}
+                          style={{ marginRight: 8 }}
+                          checked={selected}
+                        />
+                        {option}
+                      </li>
+                    );
+                  }}
                   renderInput={(params) => (
-                    <TextField {...params} label="Search by States"  />
+                    <TextField {...params} label="Search by States" />
                   )}
                 />
               </div>
@@ -112,25 +127,7 @@ const MobileFilters: React.FC<Iprops> = ({
                   Confirm
                 </button>
               </div>
-            </div>
-
-            {/* <div className={styles.options_container}>
-              {states.map((item, key) => {
-                return (
-                  <div className={styles.option}>
-                    <input
-                      type="checkbox"
-                      id={item}
-                      name={item}
-                      value={item}
-                      //   checked= {true}
-                      // onChange={handlePrimaryCategoryChange}
-                    />
-                    <label htmlFor={item}>{item}</label>
-                  </div>
-                );
-              })}
-            </div> */}
+            </form>
           </div>
         </div>
       )}

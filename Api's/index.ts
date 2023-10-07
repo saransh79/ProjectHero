@@ -25,13 +25,14 @@ export const fetchAllUsers = async (
   primaryCategories?: string[],
   pageSize?: number,
   pageNumber?: number,
-  location?: string,
+  location?: string[],
   searchText?: string | null
 ) => {
   const searchUrl =
     "https://stage-api.projecthero.in/gateway/review-website/customer/search";
 
   const joinedPrimaryCategories = primaryCategories?.join(",");
+  const joinedLocations = location?.join(",");
 
   const response = await axios.get(searchUrl, {
     params: {
@@ -40,7 +41,7 @@ export const fetchAllUsers = async (
       pageSize: pageSize,
       pageNumber: pageNumber,
       searchText: searchText,
-      state: location
+      state: joinedLocations
     },
   });
   return response;

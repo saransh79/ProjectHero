@@ -6,11 +6,9 @@ import { Autocomplete, Popper, TextField } from "@mui/material";
 import { states } from "../data/states";
 
 interface Iprops {
-  location?: string;
   onLocationChange?: any;
 }
 const LocationContainer: React.FC<Iprops> = ({
-  location,
   onLocationChange,
 }) => {
   const [loc, setLoc] = useState<string | null>("");

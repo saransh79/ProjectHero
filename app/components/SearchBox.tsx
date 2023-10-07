@@ -3,22 +3,25 @@ import styles from "./searchBox.module.css";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 const SearchBox: React.FC = () => {
-const router= useRouter();
-const searchParams = useSearchParams()
- 
-  const search = searchParams.get('query')
+  const router = useRouter();
+  const searchParams = useSearchParams();
 
-  const [text, setText] = useState<string| null>(search);
+  const search = searchParams.get("query");
+
+  const [text, setText] = useState<string | null>(search);
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-      if(text)
-      router.push(`/search?query=${encodeURIComponent(text)}`);
+    if (text) router.push(`/search?query=${encodeURIComponent(text)}`);
   };
   return (
     <form onSubmit={handleSubmit} className={styles.searchbox}>
-      <div className={styles.searchbar}>
+      {/* <div className={styles.searchbar}>
+        
+      </div> */}
         <img src="/assets/Search_Magnifying_Glass.svg" alt="search" />
+
+      <div className={styles.input_wrapper}>
         <input
           type="text"
           value={text || ""}
@@ -26,7 +29,7 @@ const searchParams = useSearchParams()
           placeholder="Search by Name"
         />
       </div>
-        <button type="submit">Search</button>
+      <button type="submit">Search</button>
     </form>
   );
 };

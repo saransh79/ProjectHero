@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import styles from "./navbar1.module.css";
 import SearchBox from "./SearchBox";
-import { Close, KeyboardArrowUp } from "@mui/icons-material";
+import { Close, KeyboardArrowUp, Search } from "@mui/icons-material";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -43,7 +43,7 @@ const Navbar: React.FC<Iprops> = () => {
           onClick={() => setShowSearchBox(true)}
         >
           <div className={styles.searchLink}>
-            <img src="/assets/Search_Magnifying_Glass.svg" />
+            <Search/>
             <div>Search</div>
           </div>
         </div>

@@ -14,7 +14,7 @@ const Search = () => {
   const [selectedPrimaryCategories, setSelectedPrimaryCategories] = useState<
     string[]
   >([]);
-  const [location, setLocation] = useState<string>("");
+  const [location, setLocation] = useState<string[]>([]);
   const [searchText, setSearchText] = useState<string>("");
   const [showSearchBox, setShowSearchBox] = useState<boolean>(false);
 

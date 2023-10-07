@@ -17,7 +17,7 @@ interface Iprops {
   setSelectedRootCategory: any;
   selectedPrimaryCategories: string[];
   setSelectedPrimaryCategories: any;
-  location?: string;
+  location?: string[];
   onLocationChange?: any;
 }
 const FilterContainer: React.FC<Iprops> = ({
@@ -143,7 +143,6 @@ const FilterContainer: React.FC<Iprops> = ({
     <div>
       <div className={styles.frameParent}>
         <LocationContainer
-          location={location}
           onLocationChange={onLocationChange}
         />
 
@@ -320,6 +319,8 @@ const FilterContainer: React.FC<Iprops> = ({
           selectedPrimaryCategories={selectedPrimaryCategories}
           setSelectedRootCategory={setSelectedRootCategory}
           setSelectedPrimaryCategories={setSelectedPrimaryCategories}
+          rootCategories= {rootCategories}
+          primaryCategories= {primaryCategories}
         />
       </div>
     </div>
