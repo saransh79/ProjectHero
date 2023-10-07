@@ -73,7 +73,7 @@ const UserProfile: React.FC = () => {
               >
                 Summary
               </button>
-              {userData?.payload.businessCardDetails && (
+              {userData?.payload.businessCardDetails.isVerified === 'REGISTERED' && (
                 <button
                   value="business"
                   onClick={toggleActiveComponent}
@@ -107,7 +107,7 @@ const UserProfile: React.FC = () => {
               </div>
             )}
 
-            {userData?.payload.businessCardDetails &&
+            {userData?.payload.businessCardDetails.isVerified === 'REGISTERED' &&
               (activeComponent === "" || activeComponent === "business" ? (
                 <div>
                   <BusinessCard data={userData?.payload} />
