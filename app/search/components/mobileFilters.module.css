@@ -98,7 +98,7 @@
 .searchbox {
   display: flex;
   height: fit-content;
-  padding: 8px 12px;
+  padding: 0 8px;
   align-items: center;
   gap: 12px;
   border-radius: 8px;
