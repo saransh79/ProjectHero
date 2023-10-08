@@ -15,7 +15,7 @@ interface Iprops {
   setSelectedRootCategory: any;
   selectedPrimaryCategories: string[];
   setSelectedPrimaryCategories: any;
-  location?: string[];
+  location?: string;
   searchText?: string;
 }
 const PopularCategoriesContainer: React.FC<Iprops> = ({
@@ -24,7 +24,6 @@ const PopularCategoriesContainer: React.FC<Iprops> = ({
   selectedPrimaryCategories,
   location,
 }) => {
-  const router= useRouter();
   const [customers, setCustomers] = useState<Payload | null>(null);
   const [showAll, setShowAll] = useState<boolean>(false);
   const [pageNumber, setPageNumber] = useState<number>(0);

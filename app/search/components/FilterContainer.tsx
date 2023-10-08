@@ -17,7 +17,7 @@ interface Iprops {
   setSelectedRootCategory: any;
   selectedPrimaryCategories: string[];
   setSelectedPrimaryCategories: any;
-  location?: string[];
+  location?: string;
   onLocationChange?: any;
 }
 const FilterContainer: React.FC<Iprops> = ({
@@ -32,8 +32,7 @@ const FilterContainer: React.FC<Iprops> = ({
   const [showWorktype, setShowWorktype] = useState(false);
   const [showSpecialization, setShowSpecialization] = useState(false);
   const [viewAllWorktype, setViewAllWorkType] = useState<boolean>(false);
-  const [viewAllSpecialization, setViewAllSpecialization] =
-    useState<boolean>(false);
+
   const [rootCategories, setRootCategories] = useState<RootCategory[]>([]);
   const [primaryCategories, setPrimaryCategories] = useState<PrimaryCategory[]>(
     []
@@ -95,10 +94,7 @@ const FilterContainer: React.FC<Iprops> = ({
   }, [selectedRootCategory, selectedPrimaryCategories]);
 
   const handleRootCategoryChange = (value: any) => {
-    if (selectedRootCategory === value) setSelectedRootCategory(null);
-    else {
       setSelectedRootCategory(value);
-    }
   };
 
   const handlePrimaryCategoryChange = (event: any) => {
@@ -313,12 +309,16 @@ const FilterContainer: React.FC<Iprops> = ({
       {/* for mobile screen */}
       <div className={styles.mobile_filters}>
         <MobileFilters
-          location={location}
+        location={location}
           onLocationChange={onLocationChange}
-          selectedRootCategory={selectedRootCategory}
+          selectedRootCategory= {selectedRootCategory}
           selectedPrimaryCategories={selectedPrimaryCategories}
-          setSelectedRootCategory={setSelectedRootCategory}
-          setSelectedPrimaryCategories={setSelectedPrimaryCategories}
+          setSelectedRootCategory= {setSelectedRootCategory}
+          setSelectedPrimaryCategories={
+            setSelectedPrimaryCategories
+          }
+          handleRootCategoryChange= {handleRootCategoryChange}
+          handlePrimaryCategoryChange={handlePrimaryCategoryChange}
           rootCategories= {rootCategories}
           primaryCategories= {primaryCategories}
         />

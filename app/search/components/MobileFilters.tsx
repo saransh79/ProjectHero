@@ -1,74 +1,121 @@
 import { ArrowDownIcon } from "@heroicons/react/20/solid";
 import styles from "./mobileFilters.module.css";
-import {
-  CheckBox,
-  CheckBoxOutlineBlank,
-  Close,
-  KeyboardArrowDown,
-  Search,
-} from "@mui/icons-material";
+import { Close, KeyboardArrowDown, Search } from "@mui/icons-material";
 import { states } from "../data/states";
 import { useState } from "react";
-import { Autocomplete, Checkbox, TextField } from "@mui/material";
+import { Autocomplete, Box, Checkbox, TextField } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import { PrimaryCategory, RootCategory } from "@/Api's/interface/Filters";
+import { useRouter, useSearchParams } from "next/navigation";
 
-const icon = <CheckBoxOutlineBlank fontSize="small" />;
-const checkedIcon = <CheckBox fontSize="small" />;
+const CustomTextField = styled(TextField)`
+  & .MuiOutlinedInput-root {
+    &:hover fieldset {
+      border: none; // Remove border on hover
+    }
+    &.Mui-focused fieldset {
+      border: none; // Remove border when focused
+    }
+    fieldset {
+      border: none; // Remove default border
+    }
+  }
+`;
 
 interface Iprops {
-  location?: string[];
+  location?: string;
   onLocationChange?: any;
   selectedRootCategory?: string;
   selectedPrimaryCategories?: string[];
+  handlePrimaryCategoryChange?: any;
+  handleRootCategoryChange?: any;
   setSelectedRootCategory?: any;
   setSelectedPrimaryCategories?: any;
-  rootCategories?: RootCategory[];
-  primaryCategories?: PrimaryCategory[];
+  rootCategories: RootCategory[];
+  primaryCategories: PrimaryCategory[];
 }
 
 const MobileFilters: React.FC<Iprops> = ({
-  location,
   onLocationChange,
-  rootCategories,
-  primaryCategories,
+  location,
   selectedPrimaryCategories,
   selectedRootCategory,
-  setSelectedPrimaryCategories,
   setSelectedRootCategory,
+  setSelectedPrimaryCategories,
+  handlePrimaryCategoryChange,
+  handleRootCategoryChange,
+  rootCategories,
+  primaryCategories,
 }) => {
   const [showLocation, setShowLocation] = useState<boolean>(false);
   const [showCategories, setShowCategories] = useState<boolean>(false);
   const [showWorkType, setShowWorktype] = useState<boolean>(false);
-  const [selectedLocations, setSelectedLocations] = useState([]);
+  const [selectedLocation, setSelectedLocation]= useState("");
+  const [category, setCategory] = useState(selectedRootCategory);
+  const [worktype, setWorktype] = useState([]);
 
-  // console.log(selectedLocations);
+  // console.log(location);
+  // console.log("selectedRoot",selectedRootCategory);
+  
+  console.log(worktype);
+  console.log("selectedPrimary",selectedPrimaryCategories);
 
-  const handleLocationChange = (event: any, newSelectedLocations: any) => {
-    setSelectedLocations(newSelectedLocations);
-  };
   const handleLocationSubmit = (e: any) => {
     e.preventDefault();
-    onLocationChange(selectedLocations);
+    setShowLocation(false);
+    onLocationChange(selectedLocation)
   };
+  const handleCategorySubmit = (e: any) => {
+    e.preventDefault();
+    setShowCategories(false);
+  };
+  const handleWorktypeSubmit = (e: any) => {
+    e.preventDefault();
+    setShowWorktype(false);
+  };
+
   return (
     <div className={styles.filter_parent}>
       <div className={styles.filter_type_parent}>
         <div className={styles.filtersParent}>
-          <div className={styles.filters} onClick={() => setShowLocation(true)}>
-            {/* <div className={styles.wrapper}>
-                <b className={styles.b}>3</b>
-              </div> */}
-            <div className={styles.fieldText2}>Location</div>
+          <div
+            className={`${styles.filters} ${
+              location && styles.active_category
+            }`}
+            onClick={() => setShowLocation(true)}
+          >
+            <div className={styles.fieldText2}>
+              {location || "Location"}
+            </div>
             <KeyboardArrowDown />
           </div>
-          <div className={styles.filters}>
-            <div className={styles.fieldText2}>Categories</div>
+
+          <div
+            className={`${styles.filters} ${
+              category && styles.active_category
+            }`}
+            onClick={() => setShowCategories(true)}
+          >
+            <div className={styles.fieldText2}>{category || "Categories"}</div>
             <KeyboardArrowDown />
           </div>
-          <div className={styles.filters}>
-            <div className={styles.fieldText2}>WorkType</div>
-            <KeyboardArrowDown />
-          </div>
+
+          {category && (
+            <div
+              className={`${styles.filters} ${
+                styles.active_category
+              }`}
+              onClick={() => setShowWorktype(true)}
+            >
+             
+                {/* <div className={styles.wrapper}>
+                  <b className={styles.b}>{worktype.length}</b>
+                </div> */}
+              
+              <div className={styles.fieldText2}>WorkType</div>
+              <KeyboardArrowDown />
+            </div>
+          )}
         </div>
       </div>
 
@@ -91,39 +138,46 @@ const MobileFilters: React.FC<Iprops> = ({
                 <Search className={styles.searchIcon} />
 
                 <Autocomplete
-                  multiple
                   id="checkboxes-tags-demo"
                   size="small"
                   freeSolo
-                  disableCloseOnSelect
-                  value={selectedLocations}
-                  onChange={handleLocationChange}
+                  // disableCloseOnSelect
+                  options={states}
+                  // autoHighlight
+                  getOptionLabel={(option) => option}
                   style={{
                     width: "300px",
-                    // border: "1px solid"
                   }}
-                  options={states}
-                  getOptionLabel={(option) => option}
-                  renderOption={(props, option, { selected }) => {
-                    return (
-                      <li {...props} key={option}>
-                        <Checkbox
-                          icon={icon}
-                          checkedIcon={checkedIcon}
-                          style={{ marginRight: 8 }}
-                          checked={selected}
-                        />
-                        {option}
-                      </li>
-                    );
+                  renderOption={(props, option, state) => (
+                    <li {...props} className={styles.option}>
+                      <input
+                        type="radio"
+                        checked={state.selected}
+                        onChange={() => {}}
+                      />
+                      {option}
+                    </li>
+                  )}
+                  value={selectedLocation}
+                  onChange={(_, newValue: any) => {
+                    setSelectedLocation(newValue);
                   }}
                   renderInput={(params) => (
-                    <TextField {...params} label="Search by States" />
+                    <CustomTextField
+                      {...params}
+                      placeholder="Search by States"
+                      variant="outlined"
+                    />
                   )}
                 />
               </div>
               <div className={styles.button_wrapper}>
-                <button type="submit" className={styles.button}>
+                <button
+                  type="submit"
+                  className={`${styles.button} ${
+                    location && styles.active_button
+                  }`}
+                >
                   Confirm
                 </button>
               </div>
@@ -132,49 +186,158 @@ const MobileFilters: React.FC<Iprops> = ({
         </div>
       )}
 
-      {/* {showCategories && (
+      {showCategories && (
         <div className={styles.container}>
           <div className={styles.filter_container}>
             <div className={styles.heading_container}>
-              <div className={styles.heading}>Location</div>
-              <div onClick={() => setShowLocation(false)}>
+              <div className={styles.heading}>You are looking for</div>
+              <div onClick={() => setShowCategories(false)}>
                 <Close />
               </div>
             </div>
 
             <div className={styles.hr}></div>
-            <div className={styles.searchbox}>
-              <Search className={styles.searchIcon} />
-              <div className={styles.seperator}></div>
-              <div className={styles.search_input}>
-                <input type="text" placeholder="Search location" />
+            <form
+              onSubmit={handleCategorySubmit}
+              className={styles.searchWrapper}
+            >
+              <div className={styles.searchbox}>
+                <Search className={styles.searchIcon} />
+
+                <Autocomplete
+                  id="checkboxes-tags-demo"
+                  size="small"
+                  freeSolo
+                  // disableCloseOnSelect
+                  options={rootCategories}
+                  // autoHighlight
+                  // getOptionLabel={(option) => option}
+                  style={{
+                    width: "300px",
+                  }}
+                  renderOption={(props, option, state) => (
+                    <li
+                      {...props}
+                      className={`${styles.option} ${
+                        category == option.label && styles.active_li
+                      }`}
+                    >
+                      <input
+                        type="checkbox"
+                        checked={state.selected}
+                        onChange={() => {}}
+                      />
+                      <div className={styles.icon_wrapper}>
+                        <img src={option?.icon} alt="" />
+                      </div>
+                      {option?.label}
+                    </li>
+                  )}
+                  value={category}
+                  onChange={(_, newValue: any) => {
+                    setCategory(newValue.label)
+                    handleRootCategoryChange(newValue.slug);
+                  }}
+                  renderInput={(params) => (
+                    <CustomTextField
+                      {...params}
+                      placeholder="Search for specializations"
+                      variant="outlined"
+                    />
+                  )}
+                />
+              </div>
+
+              <div className={styles.button_wrapper}>
+                <button
+                  type="submit"
+                  className={`${styles.button} ${
+                    category && styles.active_button
+                  }`}
+                >
+                  Confirm
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {showWorkType && category && (
+        <div className={styles.container}>
+          <div className={styles.filter_container}>
+            <div className={styles.heading_container}>
+              <div className={styles.heading}>Work Type</div>
+              <div onClick={() => setShowWorktype(false)}>
+                <Close />
               </div>
             </div>
 
-            <div className={styles.options_container}>
-              {states.map((item, key) => {
-                return (
-                  <div className={styles.option}>
-                    <input
-                      type="checkbox"
-                      id={item}
-                      name={item}
-                      value={item}
-                      //   checked= {true}
-                      // onChange={handlePrimaryCategoryChange}
-                    />
-                    <label htmlFor={item}>{item}</label>
-                  </div>
-                );
-              })}
-            </div>
+            <div className={styles.hr}></div>
+            <form
+              onSubmit={handleWorktypeSubmit}
+              className={styles.searchWrapper}
+            >
+              <div className={styles.searchbox}>
+                <Search className={styles.searchIcon} />
 
-            <button type="submit" className={styles.button}>
-              Confirm
-            </button>
+                <Autocomplete
+                  multiple
+                  id="checkboxes-tags-demo"
+                  size="small"
+                  freeSolo
+                  // disableCloseOnSelect
+                  options={primaryCategories}
+                  autoHighlight
+                  // getOptionLabel={(option) => option.label}
+                  style={{
+                    width: "300px",
+                  }}
+                  renderOption={(props, option, {selected}) => (
+                    <li
+                      {...props}
+                      className={`${styles.option} ${styles.active_li
+                      }`}
+                    >
+                      <input
+                        type="checkbox"
+                        checked={selected}
+                        value={option.slug}
+                        onChange={handlePrimaryCategoryChange}
+                      />
+                      <div className={styles.icon_wrapper}>
+                        <img src={option?.icon} alt="" />
+                      </div>
+                      {option?.label}
+                    </li>
+                  )}
+                  value={worktype}
+                  onChange={(_, newValue: any) => {
+                    setWorktype(newValue.label);
+                  }}
+                  renderInput={(params) => (
+                    <CustomTextField
+                      {...params}
+                      placeholder="Search for worktype"
+                      variant="outlined"
+                    />
+                  )}
+                />
+              </div>
+
+              <div className={styles.button_wrapper}>
+                <button
+                  type="submit"
+                  className={`${styles.button} ${styles.active_button
+                  }`}
+                >
+                  Confirm
+                </button>
+              </div>
+            </form>
           </div>
         </div>
-      )} */}
+      )}
     </div>
   );
 };

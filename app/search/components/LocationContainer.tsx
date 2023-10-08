@@ -1,18 +1,33 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./location-container.module.css";
 import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
-import { fetchLocation } from "@/Api's";
-import { Autocomplete, Popper, TextField } from "@mui/material";
+import { Autocomplete, TextField } from "@mui/material";
 import { states } from "../data/states";
+import { styled } from "@mui/material/styles";
+import { useRouter, useSearchParams } from "next/navigation";
+
+const CustomTextField = styled(TextField)`
+  & .MuiOutlinedInput-root {
+    &:hover fieldset {
+      border: none; // Remove border on hover
+    }
+    &.Mui-focused fieldset {
+      border: none; // Remove border when focused
+    }
+    fieldset {
+      border: none; // Remove default border
+    }
+  }
+`;
 
 interface Iprops {
   onLocationChange?: any;
 }
-const LocationContainer: React.FC<Iprops> = ({
-  onLocationChange,
-}) => {
+const LocationContainer: React.FC<Iprops> = ({ onLocationChange }) => {
+
   const [loc, setLoc] = useState<string | null>("");
   const [show, setShow] = useState(true);
+
   const handleChange = () => {
     setShow((prev) => !prev);
   };
@@ -20,11 +35,14 @@ const LocationContainer: React.FC<Iprops> = ({
     setLoc(newValue);
   };
 
+  console.log("loc" ,loc);
+
   const handleSubmit = (e: any) => {
     e.preventDefault();
     onLocationChange(loc);
   };
-  if (loc == null) onLocationChange("");
+
+  if (loc === null) onLocationChange("");
   
   return (
     <div className={styles.frameGroup}>
@@ -58,7 +76,10 @@ const LocationContainer: React.FC<Iprops> = ({
                   value={loc}
                   onChange={handleLocChange}
                   renderInput={(params) => (
-                    <TextField {...params} label="Search by State" />
+                    <CustomTextField
+                      {...params}
+                      placeholder="Search by State"
+                    />
                   )}
                 />
 

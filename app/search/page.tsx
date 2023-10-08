@@ -14,16 +14,18 @@ const Search = () => {
   const [selectedPrimaryCategories, setSelectedPrimaryCategories] = useState<
     string[]
   >([]);
-  const [location, setLocation] = useState<string[]>([]);
+  const [location, setLocation] = useState<string>("");
   const [searchText, setSearchText] = useState<string>("");
   const [showSearchBox, setShowSearchBox] = useState<boolean>(false);
 
   const onLocationChange = (value: any) => {
     setLocation(value);
   };
-  const onSearchTextChange = (value: any) => {
-    setSearchText(value);
-  };
+  console.log(location);
+  
+  // const onSearchTextChange = (value: any) => {
+  //   setSearchText(value);
+  // };
   const handleSearchBox = () => {
     setShowSearchBox((prev) => !prev);
   };
