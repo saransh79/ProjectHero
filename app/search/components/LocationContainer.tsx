@@ -35,14 +35,10 @@ const LocationContainer: React.FC<Iprops> = ({ onLocationChange }) => {
     setLoc(newValue);
   };
 
-  console.log("loc" ,loc);
-
   const handleSubmit = (e: any) => {
     e.preventDefault();
     onLocationChange(loc);
   };
-
-  if (loc === null) onLocationChange("");
   
   return (
     <div className={styles.frameGroup}>

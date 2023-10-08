@@ -8,8 +8,6 @@ import FilterContainer from "@/app/search/components/FilterContainer";
 import PopularCategoriesContainer from "@/app/search/components/PopularCategoriesContainer";
 
 const Search = () => {
-
-
   const [selectedRootCategory, setSelectedRootCategory] = useState<string>("");
   const [selectedPrimaryCategories, setSelectedPrimaryCategories] = useState<
     string[]
@@ -21,15 +19,9 @@ const Search = () => {
   const onLocationChange = (value: any) => {
     setLocation(value);
   };
-  console.log(location);
-  
-  // const onSearchTextChange = (value: any) => {
-  //   setSearchText(value);
-  // };
   const handleSearchBox = () => {
     setShowSearchBox((prev) => !prev);
   };
-
   return (
     <div>
       <div className={styles.navbar_wrapper}>

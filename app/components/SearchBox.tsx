@@ -7,9 +7,7 @@ const SearchBox: React.FC = () => {
   const searchParams = useSearchParams();
 
   const search = searchParams.get("query");
-  const loc = searchParams.get("loc");
   
-  console.log(search, loc);
   const [text, setText] = useState<string | null>(search);
 
   const handleSubmit = (e: any) => {

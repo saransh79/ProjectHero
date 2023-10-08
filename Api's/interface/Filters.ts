@@ -21,7 +21,7 @@ export interface Root {
     label: string
     nodeType: string
     description: any
-    icon?: string
+    icon: string
   }
   
   export interface SecondaryCategory {

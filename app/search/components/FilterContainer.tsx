@@ -94,11 +94,14 @@ const FilterContainer: React.FC<Iprops> = ({
   }, [selectedRootCategory, selectedPrimaryCategories]);
 
   const handleRootCategoryChange = (value: any) => {
-      setSelectedRootCategory(value);
+    setSelectedRootCategory(value);
+    setSelectedPrimaryCategories([]);
   };
 
-  const handlePrimaryCategoryChange = (event: any) => {
-    const selectedValue = event.target.value;
+  console.log(selectedPrimaryCategories);
+
+  const handlePrimaryCategoryChange = (value: string) => {
+    const selectedValue = value;
 
     // Check if the selected value is already in the array
     if (selectedPrimaryCategories.includes(selectedValue)) {
@@ -138,9 +141,7 @@ const FilterContainer: React.FC<Iprops> = ({
   return (
     <div>
       <div className={styles.frameParent}>
-        <LocationContainer
-          onLocationChange={onLocationChange}
-        />
+        <LocationContainer onLocationChange={onLocationChange} />
 
         <div className={styles.frameGroup}>
           <div className={styles.stroke}></div>
@@ -165,22 +166,22 @@ const FilterContainer: React.FC<Iprops> = ({
           </div>
 
           {show && (
-              <div className={styles.filters}>
-                {rootCategories?.map((category, key) => (
-                  <div className={styles.option} key={key}>
-                    <input
-                      type="radio"
-                      id={category?.slug}
-                      name="categories"
-                      value={category?.slug}
-                      checked={selectedRootCategory === category?.slug}
-                      onChange={() => handleRootCategoryChange(category?.slug)}
-                    />
-                    <label htmlFor={category.slug}>{category.label}</label>
-                  </div>
-                ))}
-              </div>
-            )}
+            <div className={styles.filters}>
+              {rootCategories?.map((category, key) => (
+                <div className={styles.option} key={key}>
+                  <input
+                    type="radio"
+                    id={category?.slug}
+                    name="categories"
+                    value={category?.slug}
+                    checked={selectedRootCategory === category?.slug}
+                    onChange={() => handleRootCategoryChange(category?.slug)}
+                  />
+                  <label htmlFor={category.slug}>{category.label}</label>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
         {selectedRootCategory && !show && (
@@ -220,8 +221,12 @@ const FilterContainer: React.FC<Iprops> = ({
                           id={category.slug}
                           name={category.slug}
                           value={category.slug}
-                          //   checked= {true}
-                          onChange={handlePrimaryCategoryChange}
+                          checked={selectedPrimaryCategories.includes(
+                            category.slug
+                          )}
+                          onChange={() =>
+                            handlePrimaryCategoryChange(category.slug)
+                          }
                         />
                         <label htmlFor={category.slug}>{category.label}</label>
                       </div>
@@ -235,8 +240,12 @@ const FilterContainer: React.FC<Iprops> = ({
                           id={category.slug}
                           name={category.slug}
                           value={category.slug}
-                          //   checked= {true}
-                          onChange={handlePrimaryCategoryChange}
+                          checked={selectedPrimaryCategories.includes(
+                            category.slug
+                          )}
+                          onChange={() =>
+                            handlePrimaryCategoryChange(category.slug)
+                          }
                         />
                         <label htmlFor={category.slug}>{category.label}</label>
                       </div>
@@ -263,7 +272,7 @@ const FilterContainer: React.FC<Iprops> = ({
 
         {/* Specialization filter */}
 
-        <div className={styles.categoryFilter}>
+        {/* <div className={styles.categoryFilter}>
           {selectedPrimaryCategories.length > 0 && (
             <div className={styles.categoryHeader}>
               <div className={styles.workType} onClick={handleSpecialChange}>
@@ -302,25 +311,23 @@ const FilterContainer: React.FC<Iprops> = ({
             </div>
           )}
 
-          {/* {selectedPrimaryCategories && <Viewmore />} */}
-        </div>
+          {selectedPrimaryCategories && <Viewmore />}
+        </div> */}
       </div>
 
       {/* for mobile screen */}
       <div className={styles.mobile_filters}>
         <MobileFilters
-        location={location}
+          location={location}
           onLocationChange={onLocationChange}
-          selectedRootCategory= {selectedRootCategory}
+          selectedRootCategory={selectedRootCategory}
           selectedPrimaryCategories={selectedPrimaryCategories}
-          setSelectedRootCategory= {setSelectedRootCategory}
-          setSelectedPrimaryCategories={
-            setSelectedPrimaryCategories
-          }
-          handleRootCategoryChange= {handleRootCategoryChange}
+          setSelectedRootCategory={setSelectedRootCategory}
+          setSelectedPrimaryCategories={setSelectedPrimaryCategories}
+          handleRootCategoryChange={handleRootCategoryChange}
           handlePrimaryCategoryChange={handlePrimaryCategoryChange}
-          rootCategories= {rootCategories}
-          primaryCategories= {primaryCategories}
+          rootCategories={rootCategories}
+          primaryCategories={primaryCategories}
         />
       </div>
     </div>

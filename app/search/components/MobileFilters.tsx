@@ -1,12 +1,10 @@
-import { ArrowDownIcon } from "@heroicons/react/20/solid";
 import styles from "./mobileFilters.module.css";
 import { Close, KeyboardArrowDown, Search } from "@mui/icons-material";
 import { states } from "../data/states";
 import { useState } from "react";
-import { Autocomplete, Box, Checkbox, TextField } from "@mui/material";
+import { Autocomplete, TextField } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { PrimaryCategory, RootCategory } from "@/Api's/interface/Filters";
-import { useRouter, useSearchParams } from "next/navigation";
 
 const CustomTextField = styled(TextField)`
   & .MuiOutlinedInput-root {
@@ -50,29 +48,44 @@ const MobileFilters: React.FC<Iprops> = ({
   const [showLocation, setShowLocation] = useState<boolean>(false);
   const [showCategories, setShowCategories] = useState<boolean>(false);
   const [showWorkType, setShowWorktype] = useState<boolean>(false);
-  const [selectedLocation, setSelectedLocation]= useState("");
-  const [category, setCategory] = useState(selectedRootCategory);
-  const [worktype, setWorktype] = useState([]);
+  const [selectedLocation, setSelectedLocation] = useState("");
+  const [category, setCategory] = useState("");
+  const [worktype, setWorktype] = useState<PrimaryCategory[]>([]);
 
-  // console.log(location);
-  // console.log("selectedRoot",selectedRootCategory);
-  
-  console.log(worktype);
-  console.log("selectedPrimary",selectedPrimaryCategories);
+  // console.log("category :", category);
+  // console.log("location :", location);
+  // console.log("selectedLocation :", selectedLocation);
+  // console.log("selectedRootCategory :", selectedRootCategory);
+  // console.log("worktype :", worktype);
+  // console.log("selectedPrimary :", selectedPrimaryCategories);
 
   const handleLocationSubmit = (e: any) => {
     e.preventDefault();
+    onLocationChange(selectedLocation);
     setShowLocation(false);
-    onLocationChange(selectedLocation)
   };
   const handleCategorySubmit = (e: any) => {
     e.preventDefault();
+    if(!category && worktype.length>0){
+      setSelectedPrimaryCategories([]);
+      setWorktype([]);
+    }
     setShowCategories(false);
   };
   const handleWorktypeSubmit = (e: any) => {
     e.preventDefault();
+
+    const values= worktype.map((option)=>option.slug);
+    setSelectedPrimaryCategories(values)
+    
     setShowWorktype(false);
   };
+
+  // if (selectedLocation === null) onLocationChange("");
+  // if (!category) {
+  //   handleRootCategoryChange("");
+  //   setSelectedPrimaryCategories([]);
+  // }
 
   return (
     <div className={styles.filter_parent}>
@@ -84,9 +97,7 @@ const MobileFilters: React.FC<Iprops> = ({
             }`}
             onClick={() => setShowLocation(true)}
           >
-            <div className={styles.fieldText2}>
-              {location || "Location"}
-            </div>
+            <div className={styles.fieldText2}>{location || "Location"}</div>
             <KeyboardArrowDown />
           </div>
 
@@ -103,15 +114,16 @@ const MobileFilters: React.FC<Iprops> = ({
           {category && (
             <div
               className={`${styles.filters} ${
-                styles.active_category
+                worktype?.length > 0 && styles.active_category
               }`}
               onClick={() => setShowWorktype(true)}
             >
-             
-                {/* <div className={styles.wrapper}>
-                  <b className={styles.b}>{worktype.length}</b>
-                </div> */}
-              
+              {worktype?.length > 0 && (
+                <div className={styles.wrapper}>
+                  <b className={styles.b}>{worktype?.length}</b>
+                </div>
+              )}
+
               <div className={styles.fieldText2}>WorkType</div>
               <KeyboardArrowDown />
             </div>
@@ -148,16 +160,18 @@ const MobileFilters: React.FC<Iprops> = ({
                   style={{
                     width: "300px",
                   }}
-                  renderOption={(props, option, state) => (
-                    <li {...props} className={styles.option}>
-                      <input
-                        type="radio"
-                        checked={state.selected}
-                        onChange={() => {}}
-                      />
-                      {option}
-                    </li>
-                  )}
+                  renderOption={(props, option, state) => {
+                    return (
+                      <li key={option} {...props} className={styles.option}>
+                        <input
+                          type="radio"
+                          checked={state.selected}
+                          onChange={() => {}}
+                        />
+                        {option}
+                      </li>
+                    );
+                  }}
                   value={selectedLocation}
                   onChange={(_, newValue: any) => {
                     setSelectedLocation(newValue);
@@ -175,7 +189,7 @@ const MobileFilters: React.FC<Iprops> = ({
                 <button
                   type="submit"
                   className={`${styles.button} ${
-                    location && styles.active_button
+                    selectedLocation && styles.active_button
                   }`}
                 >
                   Confirm
@@ -208,21 +222,23 @@ const MobileFilters: React.FC<Iprops> = ({
                   id="checkboxes-tags-demo"
                   size="small"
                   freeSolo
-                  // disableCloseOnSelect
+                  disableCloseOnSelect
                   options={rootCategories}
-                  // autoHighlight
+                  autoHighlight
                   // getOptionLabel={(option) => option}
                   style={{
                     width: "300px",
                   }}
                   renderOption={(props, option, state) => (
                     <li
+                      key={option.slug}
                       {...props}
                       className={`${styles.option} ${
                         category == option.label && styles.active_li
                       }`}
                     >
                       <input
+                        key={option.slug}
                         type="checkbox"
                         checked={state.selected}
                         onChange={() => {}}
@@ -233,10 +249,10 @@ const MobileFilters: React.FC<Iprops> = ({
                       {option?.label}
                     </li>
                   )}
-                  value={category}
+                  value={category || ""}
                   onChange={(_, newValue: any) => {
-                    setCategory(newValue.label)
-                    handleRootCategoryChange(newValue.slug);
+                    setCategory(newValue?.label);
+                    setSelectedRootCategory(newValue?.slug)
                   }}
                   renderInput={(params) => (
                     <CustomTextField
@@ -263,7 +279,7 @@ const MobileFilters: React.FC<Iprops> = ({
         </div>
       )}
 
-      {showWorkType && category && (
+      {showWorkType && (
         <div className={styles.container}>
           <div className={styles.filter_container}>
             <div className={styles.heading_container}>
@@ -286,24 +302,26 @@ const MobileFilters: React.FC<Iprops> = ({
                   id="checkboxes-tags-demo"
                   size="small"
                   freeSolo
-                  // disableCloseOnSelect
+                  disableCloseOnSelect
                   options={primaryCategories}
                   autoHighlight
-                  // getOptionLabel={(option) => option.label}
+                  // getOptionLabel={(option) => option.slug}
                   style={{
                     width: "300px",
                   }}
-                  renderOption={(props, option, {selected}) => (
+                  renderOption={(props, option, { selected }) => (
                     <li
+                      key={option.slug}
                       {...props}
-                      className={`${styles.option} ${styles.active_li
+                      className={`${styles.option} ${
+                        selected && styles.active_li
                       }`}
                     >
                       <input
+                        key={option.slug}
                         type="checkbox"
                         checked={selected}
-                        value={option.slug}
-                        onChange={handlePrimaryCategoryChange}
+                        onChange={() => {}}
                       />
                       <div className={styles.icon_wrapper}>
                         <img src={option?.icon} alt="" />
@@ -311,14 +329,14 @@ const MobileFilters: React.FC<Iprops> = ({
                       {option?.label}
                     </li>
                   )}
-                  value={worktype}
+                  value={worktype || []}
                   onChange={(_, newValue: any) => {
-                    setWorktype(newValue.label);
+                    setWorktype(newValue);
                   }}
                   renderInput={(params) => (
                     <CustomTextField
                       {...params}
-                      placeholder="Search for worktype"
+                      label="Search for worktype"
                       variant="outlined"
                     />
                   )}
@@ -328,8 +346,7 @@ const MobileFilters: React.FC<Iprops> = ({
               <div className={styles.button_wrapper}>
                 <button
                   type="submit"
-                  className={`${styles.button} ${styles.active_button
-                  }`}
+                  className={`${styles.button} ${styles.active_button}`}
                 >
                   Confirm
                 </button>
