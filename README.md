@@ -4,7 +4,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 Clone the repo by:
 ```
-git clone https://github.com/Project-Hero-Tech/network-web
+git clone https://github.com/saransh79/ProjectHero
 ```
 
 Install the dependencies:
