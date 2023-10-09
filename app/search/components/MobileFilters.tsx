@@ -105,18 +105,19 @@ const MobileFilters: React.FC<Iprops> = ({
             <KeyboardArrowDown />
           </div>
 
-          {selectedPrimaryCategories && (
+          {selectedRootCategory && (
             <div
               className={`${styles.filters} ${
-                selectedPrimaryCategories?.length > 0 && styles.active_category
+                selectedPrimaryCategories?
+                selectedPrimaryCategories?.length > 0 && styles.active_category : ""
               }`}
               onClick={() => setShowWorktype(true)}
             >
-              {selectedPrimaryCategories?.length > 0 && (
+              {selectedPrimaryCategories ? selectedPrimaryCategories?.length > 0 && (
                 <div className={styles.wrapper}>
                   <b className={styles.b}>{selectedPrimaryCategories?.length}</b>
                 </div>
-              )}
+              ) : null}
 
               <div className={styles.fieldText2}>WorkType</div>
               <KeyboardArrowDown />
@@ -145,6 +146,7 @@ const MobileFilters: React.FC<Iprops> = ({
 
                 <Autocomplete
                   id="checkboxes-tags-demo"
+                  className={styles.custom_autocomplete}
                   size="small"
                   freeSolo
                   // disableCloseOnSelect
@@ -330,7 +332,7 @@ const MobileFilters: React.FC<Iprops> = ({
                   renderInput={(params) => (
                     <CustomTextField
                       {...params}
-                      label="Search for worktype"
+                      placeholder="Search for worktype"
                       variant="outlined"
                     />
                   )}

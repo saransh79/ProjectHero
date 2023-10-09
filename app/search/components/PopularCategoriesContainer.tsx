@@ -157,7 +157,8 @@ const PopularCategoriesContainer: React.FC<Iprops> = ({
             }}
           >
             <Pagination
-              count={5}
+            size="small"
+              count={10}
               page={pageNumber}
               onChange={handlePageChange}
               disabled={!hasMore}

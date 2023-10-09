@@ -17,6 +17,7 @@
   object-fit: cover;
 }
 .patagoniaConstructions {
+  text-align: center;
   position: relative;
   line-height: 18px;
 }
@@ -388,6 +389,7 @@
     justify-content: flex-start;
     gap: 4px;
     font-size: 16px;
+    text-align: center;
   }
   .patagoniaPrivateLimited1 {
     font-weight: 500;
