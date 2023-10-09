@@ -74,17 +74,17 @@
   justify-content: center;
   border-radius: 50%;
 }
-.gst{
-  background-color: #DAF3ED;
+.gst {
+  background-color: #daf3ed;
 }
-.company{
-  background-color: #FFF4E7;
+.company {
+  background-color: #fff4e7;
 }
-.turnover{
-  background-color: #FFF0B2;
+.turnover {
+  background-color: #fff0b2;
 }
-.year{
-  background-color: #E4F3FF;
+.year {
+  background-color: #e4f3ff;
 }
 .groupParent {
   display: flex;
@@ -235,7 +235,7 @@
   .bangaloreKarnatakaMobile {
     display: inline-block;
   }
-  .whatsapp1Parent{
+  .whatsapp1Parent {
     top: 20px;
   }
   .bangaloreKarnataka {

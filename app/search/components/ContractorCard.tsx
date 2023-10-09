@@ -44,8 +44,8 @@ const ContractorCard: React.FC<Iprops> = ({ data }) => {
               <div className={styles.patagoniaConstructionsGeneParent}>
                 <div className={styles.patagoniaConstructions1}>
                   {data?.personalDetails?.companyName}
-                  {data?.businessCardDetails?.rootPersona && <span> | </span>}
-                  {data?.businessCardDetails?.rootPersona}
+                  {data?.personalDetails?.rootPersona && <span> | </span>}
+                  {data?.personalDetails?.rootPersona}
                 </div>
                 <div className={styles.ajayVarmaParent}>
                   <div

@@ -1,4 +1,3 @@
-import Link from "next/link";
 import styles from "./user-card.module.css";
 import { PersonalDetails } from "@/Api's/interface/PersonDetails";
 import { useState } from "react";

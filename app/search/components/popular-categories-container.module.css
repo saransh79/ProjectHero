@@ -29,7 +29,7 @@
 .popularCategories {
   font-weight: 500;
 }
-.viewmore{
+.viewmore {
   margin: 0 auto;
 }
 @media only screen and (max-width: 440px) {
@@ -49,7 +49,7 @@
   .topBuildingContractorsWrapper {
     padding-left: 20px;
   }
-  .viewmore{
+  .viewmore {
     font-weight: 14px;
   }
 }

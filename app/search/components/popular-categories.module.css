@@ -84,18 +84,19 @@
 }
 
 @media only screen and (max-width: 440px) {
-  .frameParent, .radioButtonParent {
+  .frameParent,
+  .radioButtonParent {
     width: 100%;
   }
-  .radioButtonWrapper{
+  .radioButtonWrapper {
     height: 140px;
     width: 156px;
   }
-  .fieldText{
+  .fieldText {
     font-size: 14px;
     line-height: normal;
   }
-  .label{
+  .label {
     font-size: 12px;
   }
 }

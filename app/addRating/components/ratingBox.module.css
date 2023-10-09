@@ -151,7 +151,7 @@
 .item {
   display: flex;
   flex: 0 0 calc(50% - 10px);
-    margin: 5px;
+  margin: 5px;
   padding: 12px;
   align-items: center;
   gap: 8px;
@@ -218,11 +218,11 @@
   gap: 16px;
 }
 
-.submitted_image{
+.submitted_image {
   height: 150px;
   width: 150px;
 }
-.submitted_image img{
+.submitted_image img {
   width: 100%;
   height: 100%;
 }
@@ -232,10 +232,10 @@
     margin: 0;
     font-size: 14px;
   }
-  .submitted_card{
+  .submitted_card {
     height: 330px;
   }
-  .submitted_image{
+  .submitted_image {
     height: 80px;
     width: 80px;
   }
@@ -299,5 +299,4 @@
   .submitted_content {
     height: 300px;
   }
-
 }

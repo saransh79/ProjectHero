@@ -79,19 +79,19 @@
   height: 1px;
   background-color: #d9d9d9;
 }
-.mobile_filters{
+.mobile_filters {
   display: none;
 }
-.viewmore{
+.viewmore {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 @media only screen and (max-width: 440px) {
-  .frameParent{
+  .frameParent {
     display: none;
   }
-  .mobile_filters{
+  .mobile_filters {
     display: inline-block;
   }
   .fieldText2 {

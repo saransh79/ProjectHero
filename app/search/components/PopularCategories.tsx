@@ -1,20 +1,19 @@
-// import type { NextPage } from "next";
 import styles from "./popular-categories.module.css";
 
 interface Iprops {
   setSelectedRootCategory: any;
 }
-const PopularCategories: React.FC<Iprops> = ({setSelectedRootCategory }) => {
+const PopularCategories: React.FC<Iprops> = ({ setSelectedRootCategory }) => {
   const handleRootCategoryChange = (value: any) => {
     setSelectedRootCategory(value);
   };
-  
+
   return (
     <div className={styles.frameParent}>
       <div className={styles.popularCategories}>Popular Categories</div>
       <div className={styles.radioButtonParent}>
         <div
-          onClick={()=>handleRootCategoryChange("SUB_CONTRACTOR")}
+          onClick={() => handleRootCategoryChange("SUB_CONTRACTOR")}
           className={styles.radioButtonWrapper}
         >
           <div className={styles.radioButton}>
@@ -30,7 +29,7 @@ const PopularCategories: React.FC<Iprops> = ({setSelectedRootCategory }) => {
         </div>
 
         <div
-          onClick={()=>handleRootCategoryChange("GENERAL_CONTRACTOR")}
+          onClick={() => handleRootCategoryChange("GENERAL_CONTRACTOR")}
           className={styles.radioButtonWrapper}
         >
           <div className={styles.radioButton}>
@@ -45,7 +44,9 @@ const PopularCategories: React.FC<Iprops> = ({setSelectedRootCategory }) => {
         </div>
 
         <div
-          onClick={()=>handleRootCategoryChange("ARCHITECT_OR_INTERIOR_DESIGNER")}
+          onClick={() =>
+            handleRootCategoryChange("ARCHITECT_OR_INTERIOR_DESIGNER")
+          }
           className={styles.radioButtonWrapper}
         >
           <div className={styles.radioButton}>
@@ -62,7 +63,9 @@ const PopularCategories: React.FC<Iprops> = ({setSelectedRootCategory }) => {
           </div>
         </div>
         <div
-          onClick={()=>handleRootCategoryChange("LABOUR_CONTRACTOR_OR_SUPPLIER")}
+          onClick={() =>
+            handleRootCategoryChange("LABOUR_CONTRACTOR_OR_SUPPLIER")
+          }
           className={styles.radioButtonWrapper}
         >
           <div className={styles.radioButton}>
@@ -78,7 +81,7 @@ const PopularCategories: React.FC<Iprops> = ({setSelectedRootCategory }) => {
         </div>
 
         <div
-          onClick={()=>handleRootCategoryChange("PMC_OR_CONSULTANTS")}
+          onClick={() => handleRootCategoryChange("PMC_OR_CONSULTANTS")}
           className={styles.radioButtonWrapper}
         >
           <div className={styles.radioButton}>
@@ -94,7 +97,7 @@ const PopularCategories: React.FC<Iprops> = ({setSelectedRootCategory }) => {
         </div>
 
         <div
-          onClick={()=>handleRootCategoryChange("CUSTOMER")}
+          onClick={() => handleRootCategoryChange("CUSTOMER")}
           className={styles.radioButtonWrapper}
         >
           <div className={styles.radioButton}>

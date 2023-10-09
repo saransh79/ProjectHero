@@ -1,14 +1,13 @@
-// import { NextPage } from "next";
 import { useState, useEffect, useRef } from "react";
 import styles from "./popular-categories-container.module.css";
 import Download from "../../components/Download";
 import ContractorCard from "./ContractorCard";
 import PopularCategories from "./PopularCategories";
 import Viewmore from "../../components/Viewmore";
-import { Customer, Payload } from "@/Api's/interface/Users";
+import { Payload } from "@/Api's/interface/Users";
 import { fetchAllUsers } from "@/Api's";
 import { Pagination } from "@mui/material";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 
 interface Iprops {
   selectedRootCategory?: string;
@@ -30,9 +29,9 @@ const PopularCategoriesContainer: React.FC<Iprops> = ({
   const [pageSize, setPageSize] = useState<number>(10);
   const [hasMore, setHasMore] = useState<boolean>(false);
 
-  const searchParams = useSearchParams()
- 
-  const search = searchParams.get('query')
+  const searchParams = useSearchParams();
+
+  const search = searchParams.get("query");
 
   useEffect(() => {
     fetchAllUsers(
@@ -58,7 +57,7 @@ const PopularCategoriesContainer: React.FC<Iprops> = ({
     pageNumber,
     pageSize,
     location,
-    search
+    search,
   ]);
 
   const handlePageChange = (
@@ -157,7 +156,7 @@ const PopularCategoriesContainer: React.FC<Iprops> = ({
             }}
           >
             <Pagination
-            size="small"
+              size="small"
               count={10}
               page={pageNumber}
               onChange={handlePageChange}

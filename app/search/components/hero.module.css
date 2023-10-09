@@ -1,9 +1,9 @@
 .hero {
   height: 266px;
   background: url("/assets/hero-background.jpeg");
-  background-position:center;
+  background-position: center;
   background-repeat: no-repeat;
-  background-size:cover;
+  background-size: cover;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,14 +16,13 @@
   font-weight: 400;
   line-height: 140%; /* 50.4px */
 }
-.searchBox_wrapper{
+.searchBox_wrapper {
   width: 695px;
   height: 68px;
 }
 @media only screen and (max-width: 440px) {
-  .searchBox_wrapper{
+  .searchBox_wrapper {
     width: 320px;
     height: 42px;
   }
 }
-

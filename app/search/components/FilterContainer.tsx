@@ -324,8 +324,6 @@ const FilterContainer: React.FC<Iprops> = ({
           selectedPrimaryCategories={selectedPrimaryCategories}
           setSelectedRootCategory={setSelectedRootCategory}
           setSelectedPrimaryCategories={setSelectedPrimaryCategories}
-          handleRootCategoryChange={handleRootCategoryChange}
-          handlePrimaryCategoryChange={handlePrimaryCategoryChange}
           rootCategories={rootCategories}
           primaryCategories={primaryCategories}
         />

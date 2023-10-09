@@ -25,8 +25,6 @@ interface Iprops {
   onLocationChange?: any;
   selectedRootCategory?: string;
   selectedPrimaryCategories?: string[];
-  handlePrimaryCategoryChange?: any;
-  handleRootCategoryChange?: any;
   setSelectedRootCategory?: any;
   setSelectedPrimaryCategories?: any;
   rootCategories: RootCategory[];
@@ -40,8 +38,6 @@ const MobileFilters: React.FC<Iprops> = ({
   selectedRootCategory,
   setSelectedRootCategory,
   setSelectedPrimaryCategories,
-  handlePrimaryCategoryChange,
-  handleRootCategoryChange,
   rootCategories,
   primaryCategories,
 }) => {
@@ -51,13 +47,6 @@ const MobileFilters: React.FC<Iprops> = ({
   const [selectedLocation, setSelectedLocation] = useState("");
   const [category, setCategory] = useState("");
   const [worktype, setWorktype] = useState<PrimaryCategory[]>([]);
-
-  // console.log("category :", category);
-  // console.log("location :", location);
-  // console.log("selectedLocation :", selectedLocation);
-  // console.log("selectedRootCategory :", selectedRootCategory);
-  // console.log("worktype :", worktype);
-  // console.log("selectedPrimary :", selectedPrimaryCategories);
 
   const handleLocationSubmit = (e: any) => {
     e.preventDefault();
@@ -89,7 +78,8 @@ const MobileFilters: React.FC<Iprops> = ({
             className={`${styles.filters} ${
               location && styles.active_category
             }`}
-            onClick={() => setShowLocation(true)}
+            onClick={() => {setShowLocation(true)
+            document.body.style.overflow= "hidden"}}
           >
             <div className={styles.fieldText2}>{location || "Location"}</div>
             <KeyboardArrowDown />
@@ -131,7 +121,9 @@ const MobileFilters: React.FC<Iprops> = ({
           <div className={styles.filter_container}>
             <div className={styles.heading_container}>
               <div className={styles.heading}>Location</div>
-              <div onClick={() => setShowLocation(false)}>
+              <div onClick={() => {setShowLocation(false)
+              document.body.style.overflow= "auto";
+              }}>
                 <Close />
               </div>
             </div>

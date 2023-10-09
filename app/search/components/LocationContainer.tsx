@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styles from "./location-container.module.css";
 import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
 import { Autocomplete, TextField } from "@mui/material";
 import { states } from "../data/states";
 import { styled } from "@mui/material/styles";
-import { useRouter, useSearchParams } from "next/navigation";
 
 const CustomTextField = styled(TextField)`
   & .MuiOutlinedInput-root {
@@ -24,7 +23,6 @@ interface Iprops {
   onLocationChange?: any;
 }
 const LocationContainer: React.FC<Iprops> = ({ onLocationChange }) => {
-
   const [loc, setLoc] = useState<string | null>("");
   const [show, setShow] = useState(true);
 
@@ -39,7 +37,7 @@ const LocationContainer: React.FC<Iprops> = ({ onLocationChange }) => {
     e.preventDefault();
     onLocationChange(loc);
   };
-  
+
   return (
     <div className={styles.frameGroup}>
       <div className={styles.locationParent}>
