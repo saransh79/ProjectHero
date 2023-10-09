@@ -3,11 +3,14 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ## Getting Started
 
 Clone the repo by:
-
+```
 git clone https://github.com/Project-Hero-Tech/network-web
+```
 
 Install the dependencies:
+```
 npm install
+```
 
 Run the development server:
 ```bash
