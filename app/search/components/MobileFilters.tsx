@@ -81,12 +81,6 @@ const MobileFilters: React.FC<Iprops> = ({
     setShowWorktype(false);
   };
 
-  // if (selectedLocation === null) onLocationChange("");
-  // if (!category) {
-  //   handleRootCategoryChange("");
-  //   setSelectedPrimaryCategories([]);
-  // }
-
   return (
     <div className={styles.filter_parent}>
       <div className={styles.filter_type_parent}>
@@ -111,16 +105,16 @@ const MobileFilters: React.FC<Iprops> = ({
             <KeyboardArrowDown />
           </div>
 
-          {category && (
+          {selectedPrimaryCategories && (
             <div
               className={`${styles.filters} ${
-                worktype?.length > 0 && styles.active_category
+                selectedPrimaryCategories?.length > 0 && styles.active_category
               }`}
               onClick={() => setShowWorktype(true)}
             >
-              {worktype?.length > 0 && (
+              {selectedPrimaryCategories?.length > 0 && (
                 <div className={styles.wrapper}>
-                  <b className={styles.b}>{worktype?.length}</b>
+                  <b className={styles.b}>{selectedPrimaryCategories?.length}</b>
                 </div>
               )}
 
